@@ -47,7 +47,8 @@
 			<h1>Le Menu</h1>
 
 		<?php
-			echo "Christian la pute";
+
+			noé aime les zizi
 			try
 			{
 			    $bdd = new PDO('mysql:host=localhost;dbname=bd_menu', 'root', 'root');
