@@ -47,6 +47,7 @@
 			<h1>Le Menu</h1>
 
 		<?php
+			echo "Yann la pute";
 			try
 			{
 			    $bdd = new PDO('mysql:host=localhost;dbname=bd_menu', 'root', 'root');
