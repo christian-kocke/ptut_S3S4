@@ -45,10 +45,9 @@
 		<div class="menu">
 		
 			<h1>Le Menu</h1>
+			Noé aime les zizi vraiment !
 
 		<?php
-
-			noé aime les zizi
 			try
 			{
 			    $bdd = new PDO('mysql:host=localhost;dbname=bd_menu', 'root', 'root');
