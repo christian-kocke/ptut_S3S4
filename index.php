@@ -45,8 +45,7 @@
 		<div class="menu">
 		
 			<h1>Le Menu</h1>
-			Noé aime les zizi vraiment !
-
+		
 		<?php
 			try
 			{
