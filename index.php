@@ -12,8 +12,8 @@
 				<img src="assets/images/fork.png" alt="icone">
 				<h1>Le Restaurant</h1>
 				<ul>
-					<li>Se connecter</li>
-					<li>S'inscrire
+					<li>S'inscrire</li>
+					<li>Se connecter
 						<div class="hoverLogin">
 							<form method="post">
 								<fieldset>
