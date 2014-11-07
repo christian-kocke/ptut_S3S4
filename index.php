@@ -41,12 +41,8 @@
 		</div>
 		<div id="suite">
 		</div>
-
-		<div class="menu">
 		
-			<h1>Le Menu</h1>
-		
-		<?php
+			<?php
 			try
 			{
 			    $bdd = new PDO('mysql:host=localhost;dbname=bd_menu', 'root', 'root');
@@ -99,7 +95,8 @@
 			
 		?>
 
-		</div>	
+					
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		
 		<footer>
 			<div>©Le Restaurant 2014</div>
@@ -126,4 +123,5 @@
 				
 			</script>	
 		</body>
-	</html>					
+	</html>	
+	
