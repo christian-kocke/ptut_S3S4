@@ -42,6 +42,10 @@
 		<div id="suite">
 		</div>
 		
+		<div class="menu">
+		
+			<h1>Le Menu</h1>
+			
 			<?php
 			try
 			{
@@ -94,14 +98,15 @@
 			$reponse->closeCursor();
 			
 		?>
+	</div>
 
 					
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		
 		
 		<footer>
 			<div>©Le Restaurant 2014</div>
 			<div>Back to <a href="#top">top</div>
-			</footer>
+		</footer>
 			
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 			<script>window.jQuery || document.write('<script src="/js/libs/jquery.min.js"><\/script>')</script>  
