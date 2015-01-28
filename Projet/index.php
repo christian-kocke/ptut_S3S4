@@ -18,7 +18,7 @@
 							<form method="post">
 								<fieldset>
 									<p>Identifiant <br><input type="text" name="login" id="login"> <br></p>
-									<p>Mot de passe <br><input type="text" name="password" id="password"><br></p>
+									<p>Mot de passe <br><input type="password" name="password" id="password"><br></p>
 									<p><input type="submit"value="Connexion"></p>
 								</fieldset>
 							</form>
@@ -49,7 +49,7 @@
 			<?php
 			try
 			{
-			    $bdd = new PDO('mysql:host=localhost;dbname=bd_menu', 'root', 'root');
+			   $bdd = new PDO('mysql:host=iutdoua-webetu.univ-lyon1.fr;dbname=p1300909', 'p1300909', '188035');
 			}
 			catch (Exception $e)
 			{

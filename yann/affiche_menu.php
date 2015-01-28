@@ -12,7 +12,7 @@
 
 	try
 	{
-	    $bdd = new PDO('mysql:host=localhost;dbname=bd_menu', 'root', 'root');
+	    $bdd = new PDO('mysql:host=iutdoua-webetu.univ-lyon1.fr;dbname=p1300909', 'p1300909', '188035');
 	}
 	catch (Exception $e)
 	{

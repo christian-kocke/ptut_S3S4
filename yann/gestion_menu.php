@@ -12,7 +12,7 @@
 	
 	try
 	{
-	    $bdd = new PDO('mysql:host=localhost;dbname=bd_menu', 'root', 'root');
+	    $bdd = new PDO('mysql:host=iutdoua-webetu.univ-lyon1.fr;dbname=p1300909', 'p1300909', '188035');
 	}
 	catch (Exception $e)
 	{
@@ -61,7 +61,7 @@
 			$checked='';
 		}
 
-		echo "<form action=ptut2.php method=post>";
+		echo "<form action=gestion_menu.php method=post>";
 		echo "<tr>";
 		echo "<td>" . "<input type=text name=nom value='" . $record['nom']  . "' </td>";
 		echo "<td>" . "<input type=text name=ingredient size = 50 value='" . $record['ingredient'] . "' </td>";
@@ -77,7 +77,7 @@
 
 	$reponse->closeCursor();
 
-	echo "<form action=ptut2.php method=post>";
+	echo "<form action=gestion_menu.php method=post>";
 	echo "<tr>";
 	echo "<td><input type=text name=addnom1></td>";
 	echo "<td><input type=text size=50 name=addingredient1></td>";
@@ -131,7 +131,7 @@
 			$checked='';
 		}
 
-		echo "<form action=ptut2.php method=post>";
+		echo "<form action=gestion_menu.php method=post>";
 		echo "<tr>";
 		echo "<td>" . "<input type=text name=nom value='" . $record['nom']  . "' </td>";
 		echo "<td>" . "<input type=text name=ingredient size = 50 value='" . $record['ingredient'] . "' </td>";
@@ -148,7 +148,7 @@
 
 	$reponse->closeCursor();
 
-	echo "<form action=ptut2.php method=post>";
+	echo "<form action=gestion_menu.php method=post>";
 	echo "<tr>";
 	echo "<td><input type=text name=addnom2></td>";
 	echo "<td><input type=text size=50 name=addingredient2></td>";
@@ -201,7 +201,7 @@
 			$checked='';
 		}
 
-		echo "<form action=ptut2.php method=post>";
+		echo "<form action=gestion_menu.php method=post>";
 		echo "<tr>";
 		echo "<td>" . "<input type=text name=nom value='" . $record['nom']  . "' </td>";
 		echo "<td>" . "<input type=text name=ingredient size = 50 value='" . $record['ingredient'] . "' </td>";
@@ -217,7 +217,7 @@
 
 	$reponse->closeCursor();
 
-	echo "<form action=ptut2.php method=post>";
+	echo "<form action=gestion_menu.php method=post>";
 	echo "<tr>";
 	echo "<td><input type=text name=addnom3></td>";
 	echo "<td><input type=text size=50 name=addingredient3></td>";
