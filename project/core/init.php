@@ -4,10 +4,10 @@ session_start();
 
 $GLOBALS['config'] = array(
     'mysql' => array(
-        'host' => 'iutdoua-webetu.univ-lyon1.fr',
-        'username' => 'p1300909',
-        'password' => '188035',
-        'db' => 'p1300909'
+        'host' => 'localhost',
+        'username' => 'root',
+        'password' => 'root',
+        'db' => 'web'
     ),
     'remember' => array(
         'cookie_name' => 'hash',
