@@ -13,11 +13,12 @@
 		<!-- include dataTables css -->
 		<link rel="stylesheet" type="text/css" href="assets/DataTables-1.10.4/media/css/jquery.dataTables.css">
 		<!-- include favicon -->
-		<link rel="icon" href="assets/images/favicon.ico" />
+		<link rel="icon" href="assets/img/favicon.ico" />
 		<!-- include modernizr.js -->
 	  	<script src="js/vendor/modernizr.js"></script>
 	  	<!-- include jquery -->
-	  	<script src="js/vendor/jquery.js"></script>
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery.js"><\/script>')</script>  
 		<!-- include dataTables js -->
 	  	<script type="text/javascript" charset="utf8" src="assets/DataTables-1.10.4/media/js/jquery.dataTables.min.js"></script>
 
@@ -28,7 +29,7 @@
 		<nav class="top-bar" data-topbar role="navigation">
 			<ul class="title-area">
 				<li class="name">
-					<h1><a href="index.php"><img src="assets/img/fork.png" alt="icon"> Le Restaurant</a></h1>
+					<h1><a href="index.php">Le Restaurant</a></h1>
 				</li>
 			</ul>
 			<section class="top-bar-section">
@@ -46,15 +47,25 @@
 					<?php
 					}else{
 					?>
-					<li><a href="#">S'inscrire</a></li>
 					<li>
-						<a href="#" data-dropdown="hover1" data-options="is_hover:true;">Se connecter</a>
-						<ul id="hover1" class="f-dropdown" data-dropdown-content>
-						  <li><input type="text" name="username" id="username" placeholder="Identifiant"></li>
-						  <li><input type="password" placeholder="mot de passe"></li>
-						  <li><button>Connexion</button></li>
-						</ul>
+						<a href="#" data-dropdown="login" data-options="is_hover:true;">Se connecter</a>
 					</li>
+					<ul id="login" class="content f-dropdown" data-dropdown-content>
+						<form action="" method="post">
+					  	<li>
+					  	
+					  		<input type="text" name="username" id="username" placeholder="Identifiant">
+					  	</li>
+					  	<li>
+					  		<input type="password" placeholder="mot de passe">
+					  	</li>
+					  	<li>
+					  		<button>Connexion</button>
+					  	</li>
+					  	</form>
+					</ul>
+					<li><a href="#">S'inscrire</a></li>
+					
 					<?php
 					}
 					?>

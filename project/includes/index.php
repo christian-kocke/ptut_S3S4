@@ -5,9 +5,10 @@ include_once "head.php";
 ?>
 		
 		<div class="background">
-			
-			<h2>Bienvenue sur
-			<em>Le Restaurant</em></h2>
+			<div class="row">
+				<div class="column large-12 large-centered text-center t1">Bienvenue sur</div> 
+				<div class="column large-12 large-centered text-center t2">Le Restaurant</div>
+			</div>
 			<div class="arrowContainer">
 				<a href="#suite">
 					<img src="assets/img/down.png" alt="downarrow">
@@ -74,17 +75,6 @@ include_once "head.php";
 			
 		?>
 	</div>
-
-					
-		
-		
-		<footer>
-			<div>©Le Restaurant 2014</div>
-			<div>Back to <a href="#top">top</div>
-		</footer>
-			
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-			<script>window.jQuery || document.write('<script src="/js/libs/jquery.min.js"><\/script>')</script>  
-		</body>
-	</html>	
+<?php
+include_once 'footer.php';
 	
