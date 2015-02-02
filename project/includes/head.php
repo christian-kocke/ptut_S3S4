@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<meta name = "viewport" content = "width = device-width, initial-scale = 0.4, user-scalable = yes">
 
+		<link rel="stylesheet" href="css/style.css">
 		<!-- include foundation css -->
 		<link rel="stylesheet" href="css/foundation.css">
 		<!-- include costum css -->
