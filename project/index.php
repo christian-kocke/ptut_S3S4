@@ -9,7 +9,7 @@
 	<body>
 		<header>
 			<div class="container">
-				<img src="assets/images/fork.png" alt="icone">
+				<img src="assets/images/fork.png" alt="icon">
 				<h1>Le Restaurant</h1>
 				<ul>
 					<li>S'inscrire</li>

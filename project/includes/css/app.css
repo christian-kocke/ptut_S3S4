@@ -1,184 +1,36 @@
-* {
-	z-index: 1;
+/* FONTS */
+@font-face {
+	font-family: 'Dancing';
+	font-style: normal;
+	font-weight: 100;
+	src: local('Dancing Script'), local('Dancing Script'), url(../assets/fonts/Dancing_Script_regular.ttf);
 }
-.orbit-container{
-	z-index: 0;
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 100;
+	src: local('Roboto Thin'), local('Roboto-Thin'), url(../assets/fonts/Roboto.ttf);
 }
-@font-face{
-font-family: Bebas Regular;
-src:url('../fonts/bebas/BebasNeue Regular.otf');
+@font-face {
+	font-family: 'Arvo';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Arvo'), local('Arvo-Regular'), url(../assets/fonts/Arvo_regular.ttf);
 }
-@font-face{
-font-family: Bebas Thin;
-src:url('../fonts/bebas/BebasNeue Thin.otf');
+@font-face {
+	font-family: 'Roboto condensed';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Roboto condensed'), local('Roboto condensed'), url(../assets/fonts/Roboto_Condensed.ttf);
 }
-@font-face{
-font-family: Bebas Light;
-src:url('../fonts/bebas/BebasNeue Light.otf');
-}
-@font-face{
-font-family: Bebas Bold;
-src:url('../fonts/bebas/BebasNeue Bold.otf');
-}
+/* FIN DES FONTS */
 
-
-.top-bar .name h1 a{
-	font-family: 'Bebas Bold';
-	letter-spacing: 0.5px;
+/* HEADER */
+.top-bar .name h1, .top-bar-section ul li > a{
+	font-size: 1.5em;
+	font-family: 'Dancing' ,sans-serif;
 }
-
-.top-bar-section ul li > a{
-	font-family: 'Bebas Regular';
-	font-size: 0.9em;
-	letter-spacing: 0.5px;	
-}
-body{
-}
-.bullet-item img{
-	width:13em;
-	height:12.5em;
-}
-.pricing-table .description{
-	height:7em;
-	overflow-y: scroll;
-}
-.alert-box .close{
-	padding: 9px 6px 8px;
-}
-
-.row{
-	margin-top: 3em;
-}
-.product-image{
-	float:left;
- 	padding-right: 1em;
-  	width:4.5em;
-  	height:4em;
-}
-
-#table tbody tr td{
-	line-height: 4em;
-}
-
-#table tbody tr td form * {
-	margin:0;
-}
-
-input[type="search"] {
-	padding: 0;
-}
-
-button, .button{
-	font-family: 'Bebas Regular';
-	letter-spacing: 0.5px;
-	padding-bottom: .9000rem;
-}
-.postfix.button{
-	line-height: 2.6rem;
-}
-.pricing-table .title {
-	font-family: 'Bebas Regular';
-	letter-spacing: 0.5px;
-}
-
-.button[value='remove'], .button[value='delete'] {
-	background-color: #f04124;
-	border-color: #cf2a0e;
-	color: white; 
-}
-
-.button[value='remove']:hover, .button[value='delete']:hover, .button[value='remove']:focus, .button[value='delete']:focus {
-	background-color: #cf2a0e; 
-}
-
-.button[value='remove']:hover, .button[value='delete']:hover, .button[value='remove']:focus, .button[value='delete']:focus {
-	color: white; 
-}
-
-.button[value='add'] {
-	background-color: #43ac6a;
-	border-color: #368a55;
-	color: white; 
-}
-
-.button[value='add']:hover, .button[value='add']:focus {
-  background-color: #368a55; 
-}
-
-.button[value='add']:hover, .button[value='add']:focus {
-  color: white; 
-}
-
-#mainAlert1, #mainAlert4 {
-	position: fixed;
-	top:55px;
-	right:15%;
-	left:15%;
-	z-index: 2;
-}
-.alert-container {
-	margin: 0;
-	padding: 0;
-}
-
-.flash{
-	margin:0;
-}
-
-.alert-box .close{
-	padding: 16px 6px 2px;
-	font-size: 2.5rem;
-}
-
-.staff:hover{
-	opacity: 0.7;
-}
-
-h1{
-	font-family: 'Bebas Regular';
-	letter-spacing: 0.5px;
-}
-
-.orbit-prev, .orbit-next{
-	color:black;
-}
-
-.orbit-container .orbit-next span{
-	border-left-color:#333;
-}
-.orbit-container .orbit-prev span {
-	border-right-color:#333;
-}
-
-.orbit-caption{
-	font-family: 'Bebas Regular';
-	letter-spacing: 0.5px;
-	text-align: center;
-}
-
-.orbit-container .orbit-timer .orbit-progress{
-	background-color:#333;
-}
-.orbit-container .orbit-timer.paused > span{
-	border-left-color:#333;
-}
-
-h4 {
-	font-family: 'Bebas Regular';
-}
-
-.mailInfo{
-	padding-top: 3%;
-}
-
-.login > .column {
-	padding-left: 3em;
-}
-
-.orbit-slides-container img {
-	height: 520px;
-	width: inherit;
-}
-.orbit-container .orbit-slide-number{
-	color:gray;
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+	background-color: #ff8b00;
+	cursor:pointer;
 }
