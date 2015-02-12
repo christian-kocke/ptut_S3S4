@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('.fdatepicker').fdatepicker();
 
 	// smooth scroll function
-	$('a[href^="#"]').on('click',function (e) {
+	$('a[href^="#"]').on('click',function(e) {
 		e.preventDefault();
 		
 		var target = this.hash,
