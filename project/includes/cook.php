@@ -29,8 +29,9 @@ $bdd = $db->getPDO();
 
 
 	$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
-	
-	echo "<h1>Entrée</h1>";
+	echo "<div class='row'>";
+	echo "<div class='large-12 columns'>";
+	echo "<h1 class='text-center subheader'>Entrée</h1>";
 	echo "<table>
 	<tr>
 	<th>Nom</th>
@@ -52,8 +53,8 @@ $bdd = $db->getPDO();
 		echo "<td>" . "<input type=text name=ingredient size = 50 value='" . $record['ingredient'] . "' </td>";
 		echo "<td>" . "<input type=number name=prix value='" . $record['prix'] . "' </td>";
 		echo "<td>" . "Disponible : <input type=checkbox name=dispo $checked"  ." </td>";
-		echo "<td>" . "<button class='button tiny' type=submit name=maj >Modifier</button>" . " </td>";
-		echo "<td>" . "<button class='button tiny alert' type=submit name=suprimer>X</button>" . " </td>";
+		echo "<td>" . "<button class='button small' type=submit name=maj >Modifier</button>" . " </td>";
+		echo "<td>" . "<button class='button small alert' type=submit name=suprimer>X</button>" . " </td>";
 		echo "<input type=hidden name=hidden value='" . $record['nom'] ."' ";
 		echo "</tr>";
 		echo "</form>";
@@ -66,11 +67,13 @@ $bdd = $db->getPDO();
 	echo "<td><input type=text name=addnom1></td>";
 	echo "<td><input type=text size=50 name=addingredient1></td>";
 	echo "<td><input type=number name=addprix1></td>";
-	echo "<td>" . "<button class='button success tiny' type=submit name=add1 >Ajouter</button>" . " </td>";
+	echo "<td>" . "<button class='button success small' type=submit name=add1 >Ajouter</button>" . " </td>";
 	echo "</form>";
 	echo "</table>";
 	echo "</br>";
 	echo "</br>";
+
+	echo "</div>";
 
 
 
@@ -98,8 +101,8 @@ $bdd = $db->getPDO();
 
 
 	$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
-	
-	echo "<h1>Plat</h1>";
+	echo "<div class='large-12 columns'>";
+	echo "<h1 class='text-center subheader'>Plat</h1>";
 	echo "<table>
 	<tr>
 	<th>Nom</th>
@@ -122,8 +125,8 @@ $bdd = $db->getPDO();
 		echo "<td>" . "<input type=number name=prix value='" . $record['prix'] . "' </td>";
 		
 		echo "<td>" . "Disponible : <input type=checkbox name=dispo $checked"  ." </td>";
-		echo "<td>" . "<button class='button tiny' type=submit name=maj>Modifier</button>" . " </td>";
-		echo "<td>" . "<button class='button tiny alert'input type=submit name=suprimer>X</button>" . " </td>";
+		echo "<td>" . "<button class='button small' type=submit name=maj>Modifier</button>" . " </td>";
+		echo "<td>" . "<button class='button small alert'input type=submit name=suprimer>X</button>" . " </td>";
 		echo "<input type=hidden name=hidden value='" . $record['nom'] ."'";
 		echo "</tr>";
 		echo "</form>";
@@ -136,11 +139,12 @@ $bdd = $db->getPDO();
 	echo "<td><input type=text name=addnom2></td>";
 	echo "<td><input type=text size=50 name=addingredient2></td>";
 	echo "<td><input type=number name=addprix2></td>";
-	echo "<td>" . "<button class='button success tiny' type=submit name=add2 >Ajouter</button>" . " </td>";
+	echo "<td>" . "<button class='button success small' type=submit name=add2 >Ajouter</button>" . " </td>";
 	echo "</form>";
 	echo "</table>";
 	echo "</br>";
 	echo "</br>";
+	echo "</div>";
 
 
 
@@ -168,7 +172,8 @@ $bdd = $db->getPDO();
 
 
 	$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
-	echo "<h1>Dessert</h1>";
+	echo "<div class='large-12 columns'>";
+	echo "<h1 class='text-center subheader'>Dessert</h1>";
 	echo "<table>
 	<tr>
 	<th>Nom</th>
@@ -190,8 +195,8 @@ $bdd = $db->getPDO();
 		echo "<td>" . "<input type=text name=ingredient size = 50 value='" . $record['ingredient'] . "' </td>";
 		echo "<td>" . "<input type=number name=prix value='" . $record['prix'] . "' </td>";
 		echo "<td>" . "Disponible :<input type=checkbox name=dispo $checked"  ." </td>";
-		echo "<td>" . "<button class='button tiny' type=submit name=maj >Modifier</button>" . " </td>";
-		echo "<td>" . "<button class='button tiny alert' type=submit name=suprimer >X</button>" . " </td>";
+		echo "<td>" . "<button class='button small' type=submit name=maj >Modifier</button>" . " </td>";
+		echo "<td>" . "<button class='button small alert' type=submit name=suprimer >X</button>" . " </td>";
 		echo "<td>" . "<input type=hidden name=hidden value='" . $record['nom'] ."' </td>";
 		echo "</tr>";
 		echo "</form>";
@@ -204,11 +209,14 @@ $bdd = $db->getPDO();
 	echo "<td><input type=text name=addnom3></td>";
 	echo "<td><input type=text size=50 name=addingredient3></td>";
 	echo "<td><input type=number name=addprix3></td>";
-	echo "<td>" . "<button class='button success tiny' type=submit name=add3 >Ajouter</button>" . " </td>";
+	echo "<td>" . "<button class='button success small' type=submit name=add3 >Ajouter</button>" . " </td>";
 	echo "</form>";
 	echo "</table>";
 	echo "</br>";
 	echo "</br>";
+
+	echo "</div>";
+	echo "</div>";
 
 	?>
 
