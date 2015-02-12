@@ -56,65 +56,72 @@
 						</li>
 						<ul id="login" class="content f-dropdown" data-dropdown-content>
 							<form action="" method="post">
-								<li>
-
-									<input type="text" name="username" id="username" placeholder="Identifiant">
-								</li>
-								<li>
-									<input type="password" placeholder="mot de passe">
-								</li>
-								<li>
-									<button>Connexion</button>
-								</li>
+								<div class="row">	
+									<div class="large-12 columns">
+										<input type="text" placeholder="Login"/>	
+									</div>
+								</div>
+								<div class="row">
+									<div class="large-12 columns">	
+										<input type="password" placeholder="Password" />
+									</div>
+									<div class="large-12 columns">
+										<button class="button"> Connexion </button>
+									</div>
+								</div>
 							</form>
 						</ul>
 						<li><a href="#" data-reveal-id="myModal">S'inscrire</a></li>
 
 						<div id="myModal" class="reveal-modal" data-reveal>
 							<h2>Inscription</h2>
-							<form>
-								<div class="row">
-									<div class="large-6 columns">
-										<input type="text" name="pseudo" placeholder="Pseudo" />
-									</div>
-								</div>
-								<div class="row">
-									<div class="large-6 columns">
-										<input type="password" name="password" placeholder="Mot de passe" />
-									</div>
-									<div class="large-6 columns">
-										<input type="password" name="password2" placeholder="Resaisir Mot de passe" />
-									</div>
-								</div>
-								<div class="row">
-									<div class="large-6 columns">
-										<input type="text" name="nom" placeholder="Nom" />
-									</div>
-									<div class="large-6 columns">
-										<input type="text" name="prenom" placeholder="Prénom" />
-									</div>
-								</div>
-								<div class="row">
-									 	<div class="input-append date large-4 collumns" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-  											<input class="span2" size="16" type="text" value="12-02-2012">
-  											<span class="add-on">
-  												<i class="fa fa-th"></i>
-  											</span>
+							<div class="row">
+								<form>
+									<div class="row">
+										<div class="large-6 columns">
+											<input type="text" name="nom" placeholder="Nom" />
 										</div>
-								</div>
-								<div class="row">
-									<div class="large-6 columns">
-										<input type="email" name="email" placeholder="Email" />
+										<div class="large-6 columns">
+											<input type="text" name="prenom" placeholder="Prénom" />
+										</div>
 									</div>
-									<div class="large-6 columns">
-										<input type="text" name="phone" placeholder="Téléphone" />
+									<div class="row">
+										<div class="large-6 columns">
+											<input type="text" name="pseudo" placeholder="Pseudo" />
+										</div>
+										<div class="large-6 columns">
+											<input type="email" name="email" placeholder="Email" />
+										</div>
 									</div>
-								</div>
-								<button>Valider</button>
-							</form>
+									<div class="row">
+										<div class="large-6 columns">
+											<input type="password" name="password" placeholder="Mot de passe" />
+										</div>
+										<div class="large-6 columns">
+											<input type="password" name="password2" placeholder="Confirmation" />
+										</div>
+									</div>
+									<div class="row">
+										<div class="large-6 columns">
+											<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+												<input class="span2" size="16" type="text" value="12-02-2012">
+												<span class="add-on"><i class="fa fa-th"></i></span>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="large-6 columns">
+											<input type="email" name="email" placeholder="Email" />
+										</div>
+										<div class="large-6 columns">
+											<input type="text" name="phone" placeholder="Téléphone" />
+										</div>
+									</div>
+									<button>Valider</button>
+								</form>
+							</div>
 							<a class="close-reveal-modal">&#215;</a>
 						</div>
-
 						<?php
 					}
 					?>
