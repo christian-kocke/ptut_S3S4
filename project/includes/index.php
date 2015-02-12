@@ -30,11 +30,11 @@ $bdd = $db->getPDO();
 
 			$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
 		
-			echo '<h2>Entrée</h2>';
+			echo '<h2>Entrée</h2></br>';
 			while ($donnees = $reponse->fetch())
 			{
 				if($donnees['disponible']==1) {
-				echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' .  '<h4>' . $donnees['ingredient'] . '</h4>'  . '<h3>' . $donnees['prix']  . ' €' . '</h3>' . '<br/> <br/>*' . '<br /> <br />';
+				echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
 				}
 			}
 
@@ -44,11 +44,11 @@ $bdd = $db->getPDO();
 
 			$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
 
-			echo '<h2>Plat</h2>';
+			echo '<h2>Plat</h2></br>';
 			while ($donnees = $reponse->fetch())
 			{
 				if($donnees['disponible']==1) {
-				echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />' . '<h4>' . $donnees['ingredient'] . '</h4>'  . '<h3>' . $donnees['prix'] . ' €' . '</h3>' . '<br/> <br/>*' . '<br /> <br />';
+				echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
 				}
 			}
 
@@ -58,11 +58,11 @@ $bdd = $db->getPDO();
 
 			$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
 
-			echo '<h2>Dessert</h2>';
+			echo '<h2>Dessert</h2></br>';
 			while ($donnees = $reponse->fetch())
 			{
 				if($donnees['disponible']==1) {
-				echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />' . '<h4>' .  $donnees['ingredient'] . '</h4>'  . '<h3>' . $donnees['prix'] . ' €' . '</h3>' . '<br/> <br/>*'. '<br /> <br />';
+				echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
 				}
 			}	
 
