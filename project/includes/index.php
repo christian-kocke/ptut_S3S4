@@ -2,6 +2,8 @@
 include_once "../core/init.php";
 $user = new user();
 include_once "head.php";
+$db = db::getInstance();
+$bdd = $db->getPDO();
 ?>
 		
 		<div class="background">
@@ -23,14 +25,7 @@ include_once "head.php";
 			<h1>Le Menu</h1>
 			
 			<?php
-			try
-			{
-			   $bdd = new PDO('mysql:host=iutdoua-webetu.univ-lyon1.fr;dbname=p1300909', 'p1300909', '188035');
-			}
-			catch (Exception $e)
-			{
-			        die('Erreur : ' . $e->getMessage());
-			}
+		
 
 
 			$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
@@ -77,4 +72,5 @@ include_once "head.php";
 	</div>
 <?php
 include_once 'footer.php';
+?>
 	
