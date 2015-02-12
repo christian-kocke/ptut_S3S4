@@ -1,4 +1,8 @@
-$(document).ready(function(){ // smooth scroll function
+$(document).ready(function(){ 
+	// Datepicker
+	$('.fdatepicker').fdatepicker();
+
+	// smooth scroll function
 	$('a[href^="#"]').on('click',function (e) {
 		e.preventDefault();
 		

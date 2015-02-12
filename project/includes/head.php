@@ -79,7 +79,7 @@
 								<form>
 									<div class="row">
 										<div class="large-6 columns">
-											<input type="text" name="nom" placeholder="Nom" />
+											<input type="text" name="nom" placeholder="Nom" autofocus/>
 										</div>
 										<div class="large-6 columns">
 											<input type="text" name="prenom" placeholder="Prénom" />
@@ -95,28 +95,23 @@
 									</div>
 									<div class="row">
 										<div class="large-6 columns">
+											<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+												<input class="span2 fdatepicker" size="16" type="text" value="" placeholder="Date de naissance">
+											</div>
+										</div>
+										<div class="large-6 columns">
+											<input type="text" name="phone" placeholder="Téléphone" />
+										</div>
+									</div>
+									<div class="row">
+										<div class="large-6 columns">
 											<input type="password" name="password" placeholder="Mot de passe" />
 										</div>
 										<div class="large-6 columns">
 											<input type="password" name="password2" placeholder="Confirmation" />
 										</div>
 									</div>
-									<div class="row">
-										<div class="large-6 columns">
-											<div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-												<input class="span2" size="16" type="text" value="12-02-2012">
-												<span class="add-on"><i class="fa fa-th"></i></span>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="large-6 columns">
-											<input type="email" name="email" placeholder="Email" />
-										</div>
-										<div class="large-6 columns">
-											<input type="text" name="phone" placeholder="Téléphone" />
-										</div>
-									</div>
+									
 									<button>Valider</button>
 								</form>
 							</div>
@@ -138,9 +133,7 @@
 		      	<section class="right-small">
 		        	<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
 		      	</section>
-		    </nav>
-
-		    
+		    </nav>		    
 		    <aside class="right-off-canvas-menu">
 		      <ul class="off-canvas-list">
 		        <li><label>Foundation</label></li>
@@ -148,11 +141,7 @@
 		        <li><a href="#">The Merchant Princes</a></li>
 		      </ul>
 		    </aside>
-
-
-
 		<a class="exit-off-canvas"></a>
-
 	  </div>
 	</div>
 	</header>
