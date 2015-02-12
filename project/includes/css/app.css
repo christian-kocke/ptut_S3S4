@@ -39,6 +39,14 @@
 	padding:0;
 }
 
+.button.datepicker-close.small.alert.right {
+	display: none;
+}
+
+.large-12.columns.text-center .button.radius {
+	margin-top: 2vh;
+}
+
 /* FIN HEADER */
 
 h2 {
