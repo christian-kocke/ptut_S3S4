@@ -5,7 +5,6 @@
 	<meta name = "viewport" content = "width = device-width, initial-scale = 0.4, user-scalable = yes">
 	
 
-	<link rel="stylesheet" href="css/style.css">
 
 	<link rel="stylesheet" href="css/foundation-datepicker.css">
 	<!-- include foundation css -->
@@ -182,5 +181,24 @@
 				</aside>
 				<a class="exit-off-canvas"></a>
 			</div>
+		  	<div class="inner-wrap">
+		    	<nav class="tab-bar">
+			      	<section class="left tab-bar-section">
+			        	<h1 class="title">Le restaurant</h1>
+			      	</section>
+
+			      	<section class="right-small">
+			        	<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+			      	</section>
+			    </nav>		    
+			    <aside class="right-off-canvas-menu">
+			      <ul class="off-canvas-list">
+			        <li><label>Foundation</label></li>
+			        <li><a href="#">The Traders</a></li>
+			        <li><a href="#">The Merchant Princes</a></li>
+			      </ul>
+			    </aside>
+				<a class="exit-off-canvas"></a>
+		  	</div>
 		</div>
 	</header>
