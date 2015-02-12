@@ -71,6 +71,12 @@ h2 {
 	text-align: center;
 }
 
+footer{
+	background-color: #333333;
+	color : white;
+	padding: 2vh 0 2vh 0;
+}
+
 .t1{
 	padding-top: 3%;
 	font-family:'Arvo', sans-serif;

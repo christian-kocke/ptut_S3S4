@@ -5,7 +5,6 @@
 	<meta name = "viewport" content = "width = device-width, initial-scale = 0.4, user-scalable = yes">
 	
 
-	<link rel="stylesheet" href="css/style.css">
 
 	<link rel="stylesheet" href="css/foundation-datepicker.css">
 	<!-- include foundation css -->
