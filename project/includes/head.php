@@ -55,16 +55,22 @@
 						</li>
 						<ul id="login" class="content f-dropdown" data-dropdown-content>
 							<form action="" method="post">
+								<!-- Login form -->
 								<div class="row">	
 									<div class="large-12 columns">
-										<input type="text" placeholder="Login"/>	
+										<input type="text" name="login_username" placeholder="Login"/>	
 									</div>
 								</div>
 								<div class="row">
 									<div class="large-12 columns">	
-										<input type="password" placeholder="Password" />
+										<input type="password" name="login_password" placeholder="Password" />
 									</div>
 									<div class="large-12 columns">
+										<input type="checkbox" name="remember" id="remember">
+										<label for="remember">Se souvenir de moi</label>
+									</div>
+									<div class="large-12 columns">
+										<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
 										<button class="button"> Connexion </button>
 									</div>
 								</div>
@@ -95,7 +101,7 @@
 													<span class="prefix"><i class="fa fa-user"></i></span>
 												</div>
 												<div class="small-10 columns">
-													<input type="text" name="pseudo" placeholder="Pseudo" required pattern="alpha_numeric"/>
+													<input type="text" name="username" placeholder="Pseudo" required pattern="alpha_numeric"/>
 													<small class="error">Uniquement des lettres minuscules/majuscules ou des chiffres (6 caractères min).</small>
 												</div>
 											</div>
@@ -160,6 +166,7 @@
 									</div>	
 									<div class="row">
 										<div class="large-12 columns text-center">
+											<input type="hidden" name="token_register" value="<?php echo $token ?>"/>
 											<button class="button radius">Valider</button>
 										</div>
 									</div>
