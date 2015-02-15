@@ -124,7 +124,7 @@ footer{
 	.top-bar {
 		display: block;
 	}
-	.off-canvas-wrap {
+	.tab-bar {
 		display: none;
 	}
 } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
@@ -136,7 +136,7 @@ footer{
 	.top-bar {
 		display: block;
 	}
-	.off-canvas-wrap {
+	.tab-bar {
 		display: none;
 	}
 } /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
