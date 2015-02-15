@@ -50,12 +50,19 @@ if (input::exists()) { // test si la variable $_POST est set
                 'required' => true,
                 'matches' => 'password'
             ),
-            'name' => array( // critères de validation du champ name
-                'error' => 'the name',
+            'firstname' => array( // critères de validation du champ firstname
+                'error' => 'the firstname',
                 'required' => true,
                 'min' => 2,
-                'max' => 50,
+                'max' => 50
             ),
+            'lastname' => array( // critère de validation du champ lastname
+            	'error' => 'the lastname',
+            	'required' => true,
+            	'min' => 2,
+                'max' => 50
+            ),
+            'email' => array()
         ));
 
         if ($validation->passed()) { // si les champs sont valider

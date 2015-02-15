@@ -85,11 +85,11 @@
 									<!-- Last & First name -->
 									<div class="row">
 										<div class="large-6 columns">
-											<input type="text" name="nom" placeholder="Nom" required pattern="alpha"/>
+											<input type="text" name="lastname" placeholder="Nom" required pattern="alpha"/>
 											<small class="error">Uniquement des lettres minuscules/majuscules.</small>
 										</div>
 										<div class="large-6 columns">
-											<input type="text" name="prenom" placeholder="Prénom" required pattern="alpha"/>
+											<input type="text" name="firstname" placeholder="Prénom" required pattern="alpha"/>
 											<small class="error">Uniquement des lettres minuscules/majuscules.</small>
 										</div>
 									</div>
@@ -126,7 +126,7 @@
 													<span class="prefix"><i class="fa fa-calendar"></i></span>
 												</div>
 												<div class="small-10 columns">
-													<input class="fdatepicker" data-date-format="dd/mm/yyyy" type="text" placeholder="Date de naissance" required />
+													<input class="fdatepicker" name="dob" data-date-format="dd/mm/yyyy" type="text" placeholder="Date de naissance" required />
 												</div>
 											</div>
 										</div>
