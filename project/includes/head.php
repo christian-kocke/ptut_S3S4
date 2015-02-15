@@ -54,22 +54,38 @@
 							<a href="#" data-dropdown="login" data-options="is_hover:true;">Se connecter</a>
 						</li>
 						<ul id="login" class="content f-dropdown" data-dropdown-content>
-							<form action="" method="post">
+							<form action="" method="post" >
 								<!-- Login form -->
 								<div class="row">	
-									<div class="large-12 columns">
-										<input type="text" name="login_username" placeholder="Login"/>	
+									
+										<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-user"></i></span>
+												</div>
+												<div class="small-10 columns">
+													<input type="text" name="login_username" placeholder="Login" />
+												</div>
+											
 									</div>
-								</div>
+							
+							</div>
 								<div class="row">
-									<div class="large-12 columns">	
-										<input type="password" name="login_password" placeholder="Password" />
-									</div>
-									<div class="large-12 columns">
+									
+										<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-lock"></i></span>
+												</div>
+												<div class="small-10 columns">
+													<input type="password" name="login_password" placeholder="Password" />
+												</div>
+											</div>
+										
+									
+								
 										<input type="checkbox" name="remember" id="remember">
-										<label for="remember">Se souvenir de moi</label>
-									</div>
-									<div class="large-12 columns">
+										<label for="remember">Rester connecté</label>
+									
+									<div class="large-12 columns center">
 										<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
 										<button class="button"> Connexion </button>
 									</div>
