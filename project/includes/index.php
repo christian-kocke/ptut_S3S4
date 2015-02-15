@@ -62,7 +62,19 @@ if (input::exists()) { // test si la variable $_POST est set
             	'min' => 2,
                 'max' => 50
             ),
-            'email' => array()
+            'email' => array(
+            	'error' => "the email address",
+            	'required' => true,
+            	'min' => 4,
+            	'max' => 40,
+            ),
+            'phone' => array(
+            	'error' => "the phone number",
+            	'required' => true,
+            	'min' => 10,
+            	'max' => 20,
+            	'numeric' => true
+            )
         ));
 
         if ($validation->passed()) { // si les champs sont valider
@@ -73,7 +85,10 @@ if (input::exists()) { // test si la variable $_POST est set
                     'username' => input::get('username'),
                     'password' => hash::generate(input::get('password'), $salt), // hashage du mot de passe en 'sha256' avec un salt
                     'salt' => $salt,
-                    'name' => input::get('name'),
+                    'firstname' => input::get('firstname'),
+                    'lastname' => input::get('lastname'),
+                    'phone' => input::get('phone'),
+                    'email' => input::get('email'),
                     'joined' => date('Y-m-d H:i:s'), // date de la création de l'utilisateur
                     'group' => 1 // sont groupe (admin, user, etc ...)
                 ));
