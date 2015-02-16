@@ -97,7 +97,7 @@
 						<div id="myModal" class="reveal-modal" data-reveal>
 							<h2 class="subheader text-center">Inscription</h2>
 							<div class="row">
-								<form data-abide>
+								<form action="" method="post" data-abide>
 									<!-- Last & First name -->
 									<div class="row">
 										<div class="large-6 columns">
