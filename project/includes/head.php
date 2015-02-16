@@ -41,7 +41,7 @@
 					if($user->isLoggedIn()){
 						?>
 						<li class="has-dropdown">
-							<a href="#"><?php echo $user->data()->name ?> <i class="fa fa-user"></i></a>
+							<a href="#"><?php echo $user->data()->firstname ?> <i class="fa fa-user"></i></a>
 							<ul class="dropdown">
 								<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil</a></li>
 								<li><a href="logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
