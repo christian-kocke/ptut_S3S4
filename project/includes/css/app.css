@@ -26,9 +26,10 @@
 /* FIN DES FONTS */
 
 /* HEADER */
-.title {
+.title a {
 	font-family: 'Dancing' ,sans-serif;
-    font-size: 2em;	
+    font-size: 1.5em;	
+    color : white;
 }
 .top-bar .name h1, .top-bar-section ul li > a{
 	font-size: 1.5em;

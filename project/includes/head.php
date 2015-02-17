@@ -201,7 +201,7 @@
 			<div class="inner-wrap">
 				<nav class="tab-bar">
 					<section class="left tab-bar-section">
-						<h1 class="title left">Le Restaurant</h1>
+						<h1 class="title left"><a href="index.php">Le Restaurant</h1>
 					</section>
 
 					<section class="right-small">
