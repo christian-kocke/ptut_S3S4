@@ -82,6 +82,14 @@ require_once 'head.php';
 								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->email); ?>"/>
 							</div>
 						</div>
+						<div class="large-12 column">
+							<div class="large-2 column">
+								<label class="left inline" for="name">Mot de passe : </label>
+							</div>
+							<div class="large-8 column">
+								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->password); ?>"/>
+							</div>
+						</div>
 
 
 
