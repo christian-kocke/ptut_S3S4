@@ -224,7 +224,7 @@
 					}else{
 						?>
 						<li>
-							<a href="#" data-dropdown="login" data-options="is_hover:true;">Se connecter</a>
+							<a href="#" data-dropdown="login" data-options="align:left">Se connecter</a>
 						</li>
 						<ul id="login" class="content f-dropdown" data-dropdown-content>
 							<form action="" method="post" >
