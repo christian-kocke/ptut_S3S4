@@ -40,20 +40,57 @@ if(input::exists()){
 require_once 'head.php';
 ?>
 			<div class="row">
-				<div class="large-12 column">
+				
 					<form action="" method="post">
-						<div class="large-2 column">
-							<label class="right inline" for="name">Name : </label>
+						<div class="large-12 column">
+							<div class="large-2 column">
+								<label class="left inline" for="name">Username : </label>
+							</div>
+							<div class="large-8 column">
+								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->username); ?>"/>
+							</div>
 						</div>
-						<div class="large-8 column">
-							<input type="text" name="name" id="name" value="<?php echo escape($user->data()->name); ?>"/>
+						<div class="large-12 column">
+							<div class="large-2 column">
+								<label class="left inline" for="name">Prénom : </label>
+							</div>
+							<div class="large-8 column">
+								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->firstname); ?>"/>
+							</div>
 						</div>
+						<div class="large-12 column">
+							<div class="large-2 column">
+								<label class="left inline" for="name">Nom : </label>
+							</div>
+							<div class="large-8 column">
+								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->lastname); ?>"/>
+							</div>
+						</div>
+						<div class="large-12 column">
+							<div class="large-2 column">
+								<label class="left inline" for="name">Téléphone : </label>
+							</div>
+							<div class="large-8 column">
+								<input type="text" name="name" id="name" value="0<?php echo escape($user->data()->phone); ?>"/>
+							</div>
+						</div>
+						<div class="large-12 column">
+							<div class="large-2 column">
+								<label class="left inline" for="name">Email : </label>
+							</div>
+							<div class="large-8 column">
+								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->email); ?>"/>
+							</div>
+						</div>
+
+
+
 						<div class="large-2 column end">
 							<input type="hidden" name="token" value="<?php echo token::generate(); ?>"/>
 							<input type="submit" class="button postfix" value="Update"/>
 						</div>
 					</form>
-				</div>
+				
 			</div>
 <?php
 include_once 'footer.php';
