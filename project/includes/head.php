@@ -201,7 +201,7 @@
 			<div class="inner-wrap">
 				<nav class="tab-bar">
 					<section class="left tab-bar-section">
-						<h1 class="title">Le restaurant</h1>
+						<h1 class="title left">Le Restaurant</h1>
 					</section>
 
 					<section class="right-small">
@@ -210,9 +210,162 @@
 				</nav>		    
 				<aside class="right-off-canvas-menu">
 					<ul class="off-canvas-list">
-						<li><label>Foundation</label></li>
-						<li><a href="#">The Traders</a></li>
-						<li><a href="#">The Merchant Princes</a></li>
+						<?php
+					if($user->isLoggedIn()){
+						?>
+						<li class="has-dropdown">
+							<a href="#"><?php echo $user->data()->firstname ?> <i class="fa fa-user"></i></a>
+							<ul class="dropdown">
+								<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil</a></li>
+								<li><a href="logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
+							</ul>
+						</li>
+						<?php
+					}else{
+						?>
+						<li>
+							<a href="#" data-dropdown="login" data-options="is_hover:true;">Se connecter</a>
+						</li>
+						<ul id="login" class="content f-dropdown" data-dropdown-content>
+							<form action="" method="post" >
+								<!-- Login form -->
+								<div class="row">	
+									
+										<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-user"></i></span>
+												</div>
+												<div class="small-10 columns">
+													<input type="text" name="login_username" placeholder="Login" />
+												</div>
+											
+									</div>
+							
+							</div>
+								<div class="row">
+									
+										<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-lock"></i></span>
+												</div>
+												<div class="small-10 columns">
+													<input type="password" name="login_password" placeholder="Password" />
+												</div>
+											</div>
+										
+									
+								
+										<input type="checkbox" name="remember" id="remember">
+										<label for="remember">Rester connecté</label>
+									
+									<div class="large-12 columns center">
+										<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
+										<button class="button"> Connexion </button>
+									</div>
+								</div>
+							</form>
+						</ul>
+						<li><a href="#" data-reveal-id="myModal">S'inscrire</a></li>
+
+						<div id="myModal" class="reveal-modal" data-reveal>
+							<h2 class="subheader text-center">Inscription</h2>
+							<div class="row">
+								<form action="" method="post" data-abide>
+									<!-- Last & First name -->
+									<div class="row">
+										<div class="large-6 columns">
+											<input type="text" name="lastname" placeholder="Nom" required pattern="alpha"/>
+											<small class="error">Uniquement des lettres minuscules/majuscules.</small>
+										</div>
+										<div class="large-6 columns">
+											<input type="text" name="firstname" placeholder="Prénom" required pattern="alpha"/>
+											<small class="error">Uniquement des lettres minuscules/majuscules.</small>
+										</div>
+									</div>
+									<!-- Login & Email -->
+									<div class="row">
+										<div class="large-6 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-user"></i></span>
+												</div>
+												<div class="small-10 columns">
+													<input type="text" name="username" placeholder="Pseudo" required pattern="alpha_numeric"/>
+													<small class="error">Uniquement des lettres minuscules/majuscules ou des chiffres (6 caractères min).</small>
+												</div>
+											</div>
+										</div>
+										<div class="large-6 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-envelope-o"></i></span>
+												</div>
+												<div class="small-10 columns email-field">
+													<input type="email" name="email" placeholder="Email" required pattern="email"/>
+													<small class="error">Votre email doit être de la forme: exemple@exemple.com</small>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Date Of Birth & Phone -->
+									<div class="row">
+										<div class="large-6 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-calendar"></i></span>
+												</div>
+												<div class="small-10 columns">
+													<input class="fdatepicker" name="dob" data-date-format="dd/mm/yyyy" type="text" placeholder="Date de naissance" required />
+												</div>
+											</div>
+										</div>
+										<div class="large-6 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-mobile fa-lg"></i></span>
+												</div>
+												<div class="small-10 columns">
+													<input type="text" name="phone" placeholder="Téléphone" required />
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Password & Confirmation -->
+									<div class="row">
+										<div class="large-6 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-lock"></i></span>
+												</div>
+												<div class="small-10 columns">
+													<input type="password" name="password" placeholder="Mot de passe" required />
+												</div>
+											</div>
+										</div>
+										<div class="large-6 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-check"></i></span>
+												</div>
+												<div class="small-10 columns">
+													<input type="password" name="password2" placeholder="Confirmation" required />
+												</div>
+											</div>
+										</div>
+									</div>	
+									<div class="row">
+										<div class="large-12 columns text-center">
+											<input type="hidden" name="token_register" value="<?php echo $token ?>"/>
+											<button class="button radius">Valider</button>
+										</div>
+									</div>
+								</form>
+							</div> <!-- End of Row -->
+							<a class="close-reveal-modal">&#215;</a>
+						</div>
+						<?php
+					}
+					?>
 					</ul>
 				</aside>
 				<section class="main-section">
