@@ -49,3 +49,15 @@ for (i=12; i<=22; i++){
     }
 }
 /* END SCHEDULE */
+
+/* RESERVATION MODAL */
+$("#MenuDisplay").click(function() {
+    $("#ResaForm").slideUp("slow");
+    $("#MenuModal").slideDown("slow");
+});
+$("#MenuHide").click(function() {
+    $("#ResaForm").slideDown("slow");
+    $("#MenuModal").slideUp("slow");
+});
+
+/* END RESERVATION MODAL */

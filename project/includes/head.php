@@ -36,8 +36,8 @@
 					<!-- ////////////////////////////////////////////  RESERVATION PART  ////////////////////////////////////////////////////////////////////// -->
 					<li><a href="#" data-reveal-id="TypeResaModal"> Réservez </a></li>
 					
-					<!-- RESERVATION WITH A CLIENT ACCOUNT OR NOT ? -->
-					<div id="TypeResaModal" class="reveal-modal" data-reveal>
+					<!-- RESERVATION WITH A CLIENT ACCOUNT OR NOT ? (MODAL) -->
+					<div id="TypeResaModal" class="reveal-modal medium" data-reveal>
 						
 						<!-- DIRECT RESERVATION -->
 						<div class="row">
@@ -54,64 +54,66 @@
 
 							<!-- CONNECTION BEFORE RESERVATION -->
 							<div class="small-6 columns">
-								<div class="panel text-center" data-equalizer-watch>
+								<div class="panel text-center equalizerPanel" data-equalizer-watch>
 									<h3 class="subheader"> Connexion </h3>
 									<p> Connectez-vous et profitez des avantages clients (points fidelité). </p>
 									<div class="row">
-										
-										<!-- LOGIN -->
-										<div class="small-12 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-user"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns">
-													<input type="text" name="login_username" placeholder="Login" />
-												</div><!-- class small-10 columns -->
-											</div><!-- class row collapse prefix-radius -->
-										</div><!-- class small-12 columns -->
-										
-										<!-- PASSWORD -->
-										<div class="small-12 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-lock"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns">
-													<input type="password" name="login_password" placeholder="Password" />
-												</div><!-- class small-10 columns -->
-											</div><!-- class row collapse prefix-radius -->
-											<input type="checkbox" name="remember" id="remember">
-											<label for="remember"> Rester connecté </label>		
-											<div class="large-12 columns center">
-												<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
-												<button class="button"> Se connecter </button>
-											</div><!-- class large-12 columns center -->
-										</div><!-- class small-12 columns -->	
-									</div><!-- class row for connectionForm -->
+										<form action="" method="post" data-abide>
 
+											<!-- LOGIN -->
+											<div class="small-12 columns">
+												<div class="row collapse prefix-radius">
+													<div class="small-2 columns">
+														<span class="prefix"><i class="fa fa-user"></i></span>
+													</div><!-- class small-2 columns -->
+													<div class="small-10 columns">
+														<input type="text" name="login_username" placeholder="Login" />
+													</div><!-- class small-10 columns -->
+												</div><!-- class row collapse prefix-radius -->
+											</div><!-- class small-12 columns -->
+
+											<!-- PASSWORD -->
+											<div class="small-12 columns">
+												<div class="row collapse prefix-radius">
+													<div class="small-2 columns">
+														<span class="prefix"><i class="fa fa-lock"></i></span>
+													</div><!-- class small-2 columns -->
+													<div class="small-10 columns">
+														<input type="password" name="login_password" placeholder="Password" />
+													</div><!-- class small-10 columns -->
+												</div><!-- class row collapse prefix-radius -->
+												<input type="checkbox" name="remember" id="remember">
+												<label for="remember"> Rester connecté </label>		
+												<div class="large-12 columns center">
+													<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
+													<button class="button"> Se connecter </button>
+												</div><!-- class large-12 columns center -->
+											</div><!-- class small-12 columns -->
+
+										</form>
+									</div><!-- class row for connectionForm -->
 								</div><!-- class panel text-center -->
 							</div><!-- class small-6 columns -->
 
 							<!-- SUBSCRIBTION BEFORE RESERVATION -->
 							<div class="small-6 columns">
-								<div class="panel text-center" data-equalizer-watch>
+								<div class="panel text-center equalizerPanel" data-equalizer-watch>
 									<h3 class="subheader"> Inscription </h3>
 									<p> Inscrivez-vous et cumulez des points de fidelités afin d'obtenir des réductions sur vos prochaines réservations. </p>
 									<p> Vous aurez accès à un récapitulatif des anciennes réservations effectuées. </p>
 									<button class="button radius" data-reveal-id="SubscribtionModal"> S'inscrire </button>
 								</div><!-- class panel text-center -->
 							</div><!-- class small-6 columns -->
-						
+
 						</div><!-- class row -->
 						<a class="close-reveal-modal">&#215;</a>
 					</div><!-- class reveal-modal of TypeResaModal -->
 
-					<!-- MODAL RESERVATION -->
-					<div id="ResaModal" class="reveal-modal" data-reveal>
-						<h2 class="subheader text-center"> Reservation </h2>
+					<!-- RESERVATION MODAL -->
+					<div id="ResaModal" class="reveal-modal small" data-reveal>
 						<div class="row">
-							<form action="" method="post" data-abide>
+							<form id="ResaForm" action="" method="post" data-abide>
+								<h2 class="subheader text-center"> Reservation </h2>
 
 								<!-- RESERVATION NAME -->
 								<div class="row">
@@ -184,7 +186,7 @@
 											<span class="prefix"><i class="fa fa-cutlery"></i></span>
 										</div><!-- small-2 columns -->
 										<div class="small-10 columns">
-											<a href="#" data-reveal-id="MenuModal"><input type="text" placeholder="Cliquez ici ..."></a>
+											<a href="#" id="MenuDisplay"><input type="text" placeholder="Cliquez ici ..."></a>
 										</div><!-- class small-10 columns -->
 									</div><!-- class row collapse prefix-radius -->
 								</div><!-- class row -->
@@ -196,26 +198,30 @@
 									</div><!-- class large-12 columns text-center -->
 								</div><!-- class row -->
 							</form>
+
+							<!-- MODAL MENU -->
+							<div id="MenuModal" class="text-center">
+								<h2 class="subheader text-center"> Menu </h2>
+								<div class="row">
+									<div class="small-12 columns">
+										<p> ICI LE MENU </p>
+									</div><!-- class small-12 columns -->
+									<div class="small-12 columns">
+										<a href="#" id="MenuHide"><button class="button radius"> Valider </button></a>
+									</div><!-- class small-12 columns -->
+								</div><!-- class row -->
+								<a class="close-reveal-modal">&#215;</a>
+							</div><!-- MenuDisplay -->
+
 						</div><!-- class row -->
 						<a class="close-reveal-modal">&#215;</a>
 					</div><!-- class reveal-modal of ResaModal -->
 
-					<!-- MODAL MENU -->
-					<div id="MenuModal" class="reveal-modal" data-reveal>
-						<h2 class="subheader text-center"> Menu </h2>
-						<div class="row">
-							<div class="small-12 columns">
-								<p> ICI LE MENU </p>
-							</div><!-- class menu -->
-							<div class="small-12 columns">
-								<a href="#" data-reveal-id="ResaModal"><button class="button radius"> Valider </button></a>
-							</div><!-- class small-10 columns -->
-						</div><!-- class row -->
-						<a class="close-reveal-modal">&#215;</a>
-					</div><!-- class reveal-modal of MenuModal -->
-
 					<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
+					<!-- ////////////////////////////////////////////  CONNECTION PART  ////////////////////////////////////////////////////////////////////// -->
+					
+					<!-- IF SOMEONE IS CONNECTED -->
 					<?php
 					if($user->isLoggedIn()){
 						?>
@@ -229,41 +235,57 @@
 						<?php
 					} else {
 						?>
-						<li><a href="#" data-dropdown="login" data-options="is_hover:true;">Se connecter</a></li>
-						<ul id="login" class="content f-dropdown" data-dropdown-content>
-							<form action="" method="post" >
-								<!-- Login form -->
-								<div class="row">
-									<div class="row collapse prefix-radius">
-										<div class="small-2 columns">
-											<span class="prefix"><i class="fa fa-user"></i></span>
-										</div>
-										<div class="small-10 columns">
-											<input type="text" name="login_username" placeholder="Login" />
-										</div>
-									</div>
-								</div>
-								<div class="row">	
-									<div class="row collapse prefix-radius">
-										<div class="small-2 columns">
-											<span class="prefix"><i class="fa fa-lock"></i></span>
-										</div>
-										<div class="small-10 columns">
-											<input type="password" name="login_password" placeholder="Password" />
-										</div>
-									</div>
-									<input type="checkbox" name="remember" id="remember">
-									<label for="remember"> Rester connecté </label>		
-									<div class="large-12 columns center">
-										<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
-										<button class="button"> Connexion </button>
-									</div>
-								</div>
-							</form>
-						</ul>
+						
+						<li><a href="#" data-reveal-id="ConnectionModal"> Se connecter </a></li>
+						
+						<!-- CONNECTION MODAL -->
+						<div id="ConnectionModal" class="reveal-modal" data-reveal>
+							<h2 class="subheader text-center"> Connection </h2>
+							<div class="row">
+								<form action="" method="post" data-abide>
+									<div class="row">	
+
+										<!-- LOGIN -->
+										<div class="small-12 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-user"></i></span>
+												</div><!-- class small-2 columns -->
+												<div class="small-10 columns">
+													<input type="text" name="login_username" placeholder="Login" required pattern="alpha"/>
+													<small class="error">Uniquement des lettres minuscules/majuscules.</small>
+												</div><!-- class small-10 columns -->
+											</div><!-- class row collapse prefix-radius -->
+										</div><!-- class small-12 columns -->
+
+										<!-- PASSWORD -->
+										<div class="small-12 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-lock"></i></span>
+												</div><!-- class small-2 columns -->
+												<div class="small-10 columns">
+													<input type="password" name="login_password" placeholder="Password" />
+												</div><!-- class small-10 columns -->
+											</div><!-- class row collapse prefix-radius -->
+											<input type="checkbox" name="remember" id="remember">
+											<label for="remember"> Rester connecté </label>		
+											<div class="large-12 columns center">
+												<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
+												<button class="button"> Se connecter </button>
+											</div><!-- class large-12 columns center -->
+										</div><!-- class small-12 columns -->
+
+									</div><!-- class row -->
+								</form>
+							</div><!-- class row  -->
+						</div><!-- class reveal-modal of ConnectionModal -->
+
+						<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+						
 						<li><a href="#" data-reveal-id="SubscribtionModal">S'inscrire</a></li>
 
-						<div id="SubscribtionModal" class="reveal-modal" data-reveal>
+						<div id="SubscribtionModal" class="reveal-modal medium" data-reveal>
 							<h2 class="subheader text-center">Inscription</h2>
 							<div class="row">
 								<form action="" method="post" data-abide>
