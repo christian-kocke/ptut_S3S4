@@ -2,6 +2,9 @@
 include_once "../core/init.php";
 $user = new user();
 include_once "head.php";
+if(!$user->hasPermission("cook")){
+	redirect::to('index.php');
+}
 $db = db::getInstance();
 $bdd = $db->getPDO();
 
