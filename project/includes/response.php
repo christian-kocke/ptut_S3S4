@@ -18,6 +18,7 @@ function displayUsers($db){
   $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => count($rslt), "aaData" => array());
   foreach ($rslt as $key => $users) {
     $return['aaData'][$key] = array(
+      $users['id'],
       $users['username'],
       $users['firstname'],
       $users['lastname'],

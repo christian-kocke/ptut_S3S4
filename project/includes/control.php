@@ -17,6 +17,7 @@ include_once 'head.php';
 			<table id="table" class="row-border hover table" cellspacing="0" width="100%">
 		        <thead>
 		            <tr>
+		            	<th>ID</th>
 		                <th>Pseudo</th>
 	   					<th>Prénom</th>
 	   					<th>Nom</th>
@@ -31,6 +32,7 @@ include_once 'head.php';
 		 
 		        <tfoot>
 		            <tr>
+		            	<th>ID</th>
 		                <th>Pseudo</th>
 	   					<th>Prénom</th>
 	   					<th>Nom</th>
@@ -85,6 +87,21 @@ include_once 'head.php';
 		            "url": "response.php",
 		            "data": { action : "display_users" }
 		        }
+			});
+
+			$('#table tbody').on( 'click', 'td', function () {
+			  var cellData = table.cell( this ).data();
+			  var cell = table.cell(this).node();
+			  alert($(cell).index());
+			  $(cell).html("<input type='text' value="+cellData+" name='test'/>");
+			  var $input = $(cell).find('input');
+			  $input.focus();
+			  $input.on("change", function(){
+
+			  });
+			  $input.on("focusout", function(){
+			  	$(this).parent().html($(this).val());
+			  });
 			});
 			</script>
 			</body>
