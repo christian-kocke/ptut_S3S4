@@ -255,7 +255,7 @@
 								}
 								if($user->hasPermission("receptionist")){
 								?>
-								<li><a href="profile.php"><i class="fa fa-pencil"></i> gestion reservation</a></li>
+								<li><a href="receptionist.php"><i class="fa fa-pencil"></i> gestion reservation</a></li>
 								<?php
 								}
 								?>
