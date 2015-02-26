@@ -114,7 +114,7 @@ include_once 'head.php';
 					      	data: data,
 					      	success: function(data) {
 					      		if(data){
-					      			alert("succes");
+					      			table.draw();
 					      		}else{
 					      			alert("error");
 					      		}
@@ -126,6 +126,29 @@ include_once 'head.php';
 				  	$(this).parent().html($(this).val());
 				  });
 				}
+			});
+
+			$('#table tbody').on('click', '.remove', function () {
+				var data = {
+		      		"action": "delete",
+		      		"id": $(this).val()
+		    	};
+		    	data = $.param(data);
+		    	console.log(data);
+			    $.ajax({
+			      	type: "POST",
+			      	dataType: "json",
+			      	url: "response.php", 
+			      	data: data,
+			      	success: function(data) {
+			      		if(data){
+			      			table.draw();
+			      		}else{
+			      			alert("error");
+			      		}
+			      	}
+		    	});
+		    return false;
 			});
 			</script>
 			</body>
