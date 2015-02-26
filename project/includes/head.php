@@ -3,9 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name = "viewport" content = "width = device-width, initial-scale = 0.4, user-scalable = yes">
-	
-
-
 	<link rel="stylesheet" href="css/foundation-datepicker.css">
 	<!-- include foundation css -->
 	<link rel="stylesheet" href="css/foundation.css">
@@ -50,41 +47,166 @@
 						<?php
 					}else{
 						?>
-						<li>
-							<a href="#" data-dropdown="login" data-options="is_hover:true;">Se connecter</a>
-						</li>
+
+						<!-- ////////////////////////////////////////////  RESERVATION PART  ////////////////////////////////////////////////////////////////////// -->
+						<!-- MODAL RESERVATION -->
+						<li><a href="#" data-reveal-id="ResaModal"> Réservez </a></li>
+						<div id="ResaModal" class="reveal-modal" data-reveal>
+							<h2 class="subheader text-center"> Reservation </h2>
+							<div class="row">
+								<form action="" method="post" data-abide>
+
+									<!-- RESERVATION NAME -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-user"></i></span>
+											</div><!-- small-2 columns -->
+											<div class="small-10 columns">
+												<input type="text" name="customer_name" placeholder="Nom de la réservation" required pattern="alpha">
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
+
+									<!-- RESERVATION DATE -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-calendar"></i></span>
+											</div><!-- class small-2 columns -->
+											<div class="small-10 columns">
+												<input class="fdatepicker" name="dor" data-date-format="dd/mm/yyyy" type="text" placeholder="Date de la réservation" required />
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
+
+									<!-- SCHEDULE -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-clock-o"></i></span>
+											</div><!-- small-2 columns -->
+											<div class="small-10 columns">
+												<select id="time" name="schedule"></select>
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
+
+									<!-- NB CUSTOMERS -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-users"></i></span>
+											</div><!-- small-2 columns -->
+											<div class="small-10 columns">
+												<select name="nbpeople">
+													<option value="1" selected>1 Personne</option>
+													<option value="2">2 Personnes</option>
+													<option value="3">3 Personnes</option>
+													<option value="4">4 Personnes</option>
+													<option value="5">5 Personnes</option>
+													<option value="6">6 Personnes</option>
+													<option value="7">7 Personnes</option>
+													<option value="8">8 Personnes</option>
+													<option value="9">9 Personnes</option>
+													<option value="10">10 Personnes</option>
+													<option value="11">11 Personnes</option>
+													<option value="12">12 Personnes</option>
+													<option value="13">13 Personnes</option>
+													<option value="14">14 Personnes</option>
+													<option value="15">15 Personnes</option>
+												</select>
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
+
+									<!-- MENU -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-cutlery"></i></span>
+											</div><!-- small-2 columns -->
+											<div class="small-10 columns">
+												<a href="#" data-reveal-id="MenuModal"><input type="text" placeholder="Cliquez ici ..."></a>
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
+
+									<!-- SUBMIT -->
+									<div class="row">
+										<div class="large-12 columns text-center">
+											<button class="button radius"> Chercher une table </button>
+										</div><!-- class large-12 columns text-center -->
+									</div><!-- class row -->
+								</form>
+							</div><!-- class row -->
+							<a class="close-reveal-modal">&#215;</a>
+						</div><!-- class reveal-modal of ResaModal -->
+
+						<!-- MODAL MENU -->
+						<div id="MenuModal" class="reveal-modal" data-reveal>
+							<h2 class="subheader text-center"> Menu </h2>
+							<div class="row">
+								<div class="menu">
+									<?php
+									$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
+									echo '<h2>Entrée</h2></br>';
+									while ($donnees = $reponse->fetch()) {
+										if($donnees['disponible']==1) {
+											echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+										}
+									}
+									$reponse->closeCursor();
+									$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
+									echo '<h2>Plat</h2></br>';
+									while ($donnees = $reponse->fetch()) {
+										if($donnees['disponible']==1) {
+											echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+										}
+									}
+									$reponse->closeCursor();
+									$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
+									echo '<h2>Dessert</h2></br>';
+									while ($donnees = $reponse->fetch()) {
+										if($donnees['disponible']==1) {
+											echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
+										}
+									}	
+									$reponse->closeCursor();
+									?>
+								</div><!-- class menu -->
+							</div><!-- class row -->
+							<a class="close-reveal-modal">&#215;</a>
+						</div><!-- class reveal-modal of MenuModal -->
+
+						<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+						<li><a href="#" data-dropdown="login" data-options="is_hover:true;">Se connecter</a></li>
 						<ul id="login" class="content f-dropdown" data-dropdown-content>
 							<form action="" method="post" >
 								<!-- Login form -->
-								<div class="row">	
-									
-										<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-user"></i></span>
-												</div>
-												<div class="small-10 columns">
-													<input type="text" name="login_username" placeholder="Login" />
-												</div>
-											
-									</div>
-							
-							</div>
 								<div class="row">
-									
-										<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-lock"></i></span>
-												</div>
-												<div class="small-10 columns">
-													<input type="password" name="login_password" placeholder="Password" />
-												</div>
-											</div>
-										
-									
-								
-										<input type="checkbox" name="remember" id="remember">
-										<label for="remember">Rester connecté</label>
-									
+									<div class="row collapse prefix-radius">
+										<div class="small-2 columns">
+											<span class="prefix"><i class="fa fa-user"></i></span>
+										</div>
+										<div class="small-10 columns">
+											<input type="text" name="login_username" placeholder="Login" />
+										</div>
+									</div>
+								</div>
+								<div class="row">	
+									<div class="row collapse prefix-radius">
+										<div class="small-2 columns">
+											<span class="prefix"><i class="fa fa-lock"></i></span>
+										</div>
+										<div class="small-10 columns">
+											<input type="password" name="login_password" placeholder="Password" />
+										</div>
+									</div>
+									<input type="checkbox" name="remember" id="remember">
+									<label for="remember">Rester connecté</label>		
 									<div class="large-12 columns center">
 										<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
 										<button class="button"> Connexion </button>
@@ -197,20 +319,20 @@
 			</section>
 		</nav>
 	</header>
-		<div class="off-canvas-wrap" data-offcanvas>
-			<div class="inner-wrap">
-				<nav class="tab-bar">
-					<section class="left tab-bar-section">
-						<h1 class="title left"><a href="index.php">Le Restaurant</h1>
-					</section>
+	<div class="off-canvas-wrap" data-offcanvas>
+		<div class="inner-wrap">
+			<nav class="tab-bar">
+				<section class="left tab-bar-section">
+					<h1 class="title left"><a href="index.php">Le Restaurant</h1>
+				</section>
 
-					<section class="right-small">
-						<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
-					</section>
-				</nav>		    
-				<aside class="right-off-canvas-menu">
-					<ul class="off-canvas-list">
-						<?php
+				<section class="right-small">
+					<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+				</section>
+			</nav>		    
+			<aside class="right-off-canvas-menu">
+				<ul class="off-canvas-list">
+					<?php
 					if($user->isLoggedIn()){
 						?>
 						<li class="has-dropdown">
@@ -229,35 +351,27 @@
 						<ul id="login" class="content f-dropdown" data-dropdown-content>
 							<form action="" method="post" >
 								<!-- Login form -->
-								<div class="row">	
-									
-										<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-user"></i></span>
-												</div>
-												<div class="small-10 columns">
-													<input type="text" name="login_username" placeholder="Login" />
-												</div>
-											
+								<div class="row">			
+									<div class="row collapse prefix-radius">
+										<div class="small-2 columns">
+											<span class="prefix"><i class="fa fa-user"></i></span>
+										</div>
+										<div class="small-10 columns">
+											<input type="text" name="login_username" placeholder="Login" />
+										</div>
 									</div>
-							
-							</div>
-								<div class="row">
-									
-										<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-lock"></i></span>
-												</div>
-												<div class="small-10 columns">
-													<input type="password" name="login_password" placeholder="Password" />
-												</div>
-											</div>
-										
-									
-								
-										<input type="checkbox" name="remember" id="remember">
-										<label for="remember">Rester connecté</label>
-									
+								</div>
+								<div class="row">	
+									<div class="row collapse prefix-radius">
+										<div class="small-2 columns">
+											<span class="prefix"><i class="fa fa-lock"></i></span>
+										</div>
+										<div class="small-10 columns">
+											<input type="password" name="login_password" placeholder="Password" />
+										</div>
+									</div>
+									<input type="checkbox" name="remember" id="remember">
+									<label for="remember">Rester connecté</label>
 									<div class="large-12 columns center">
 										<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
 										<button class="button"> Connexion </button>
@@ -266,108 +380,10 @@
 							</form>
 						</ul>
 						<li><a href="#" data-reveal-id="myModal">S'inscrire</a></li>
-
-						<div id="myModal" class="reveal-modal" data-reveal>
-							<h2 class="subheader text-center">Inscription</h2>
-							<div class="row">
-								<form action="" method="post" data-abide>
-									<!-- Last & First name -->
-									<div class="row">
-										<div class="large-6 columns">
-											<input type="text" name="lastname" placeholder="Nom" required pattern="alpha"/>
-											<small class="error">Uniquement des lettres minuscules/majuscules.</small>
-										</div>
-										<div class="large-6 columns">
-											<input type="text" name="firstname" placeholder="Prénom" required pattern="alpha"/>
-											<small class="error">Uniquement des lettres minuscules/majuscules.</small>
-										</div>
-									</div>
-									<!-- Login & Email -->
-									<div class="row">
-										<div class="large-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-user"></i></span>
-												</div>
-												<div class="small-10 columns">
-													<input type="text" name="username" placeholder="Pseudo" required pattern="alpha_numeric"/>
-													<small class="error">Uniquement des lettres minuscules/majuscules ou des chiffres (6 caractères min).</small>
-												</div>
-											</div>
-										</div>
-										<div class="large-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-envelope-o"></i></span>
-												</div>
-												<div class="small-10 columns email-field">
-													<input type="email" name="email" placeholder="Email" required pattern="email"/>
-													<small class="error">Votre email doit être de la forme: exemple@exemple.com</small>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Date Of Birth & Phone -->
-									<div class="row">
-										<div class="large-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-calendar"></i></span>
-												</div>
-												<div class="small-10 columns">
-													<input class="fdatepicker" name="dob" data-date-format="dd/mm/yyyy" type="text" placeholder="Date de naissance" required />
-												</div>
-											</div>
-										</div>
-										<div class="large-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-mobile fa-lg"></i></span>
-												</div>
-												<div class="small-10 columns">
-													<input type="text" name="phone" placeholder="Téléphone" required />
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Password & Confirmation -->
-									<div class="row">
-										<div class="large-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-lock"></i></span>
-												</div>
-												<div class="small-10 columns">
-													<input type="password" name="password" placeholder="Mot de passe" required />
-												</div>
-											</div>
-										</div>
-										<div class="large-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-check"></i></span>
-												</div>
-												<div class="small-10 columns">
-													<input type="password" name="password2" placeholder="Confirmation" required />
-												</div>
-											</div>
-										</div>
-									</div>	
-									<div class="row">
-										<div class="large-12 columns text-center">
-											<input type="hidden" name="token_register" value="<?php echo $token ?>"/>
-											<button class="button radius">Valider</button>
-										</div>
-									</div>
-								</form>
-							</div> <!-- End of Row -->
-							<a class="close-reveal-modal">&#215;</a>
-						</div>
 						<?php
 					}
 					?>
-					</ul>
-				</aside>
-				<section class="main-section">
-      			<!-- content goes here -->
-	    
+				</ul>
+			</aside>
+			<section class="main-section">
+				<!-- content goes here -->
