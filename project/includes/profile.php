@@ -40,8 +40,9 @@ if(input::exists()){
 require_once 'head.php';
 ?>
 			<div class="row">
-				
-					<form action="" method="post">
+				<div class="small-12 columns">
+					<div class="panel text-center">
+						<form action="" method="post" data-abide>
 						<div class="large-12 column">
 							<div class="large-2 column">
 								<label class="left inline" for="username">Username : </label>
