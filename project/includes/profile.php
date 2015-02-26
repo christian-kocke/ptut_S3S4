@@ -44,58 +44,48 @@ require_once 'head.php';
 					<form action="" method="post">
 						<div class="large-12 column">
 							<div class="large-2 column">
-								<label class="left inline" for="name">Username : </label>
+								<label class="left inline" for="username">Username : </label>
 							</div>
 							<div class="large-8 column">
-								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->username); ?>"/>
+								<input type="text" name="username" id="username" value="<?php echo escape($user->data()->username); ?>"/>
 							</div>
 						</div>
 						<div class="large-12 column">
 							<div class="large-2 column">
-								<label class="left inline" for="name">Prénom : </label>
+								<label class="left inline" for="firstname">Prénom : </label>
 							</div>
 							<div class="large-8 column">
-								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->firstname); ?>"/>
+								<input type="text" name="firstname" id="firstname" value="<?php echo escape($user->data()->firstname); ?>"/>
 							</div>
 						</div>
 						<div class="large-12 column">
 							<div class="large-2 column">
-								<label class="left inline" for="name">Nom : </label>
+								<label class="left inline" for="lastname">Nom : </label>
 							</div>
 							<div class="large-8 column">
-								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->lastname); ?>"/>
+								<input type="text" name="lastname" id="lastname" value="<?php echo escape($user->data()->lastname); ?>"/>
 							</div>
 						</div>
 						<div class="large-12 column">
 							<div class="large-2 column">
-								<label class="left inline" for="name">Téléphone : </label>
+								<label class="left inline" for="tel">Téléphone : </label>
 							</div>
 							<div class="large-8 column">
-								<input type="text" name="name" id="name" value="0<?php echo escape($user->data()->phone); ?>"/>
+								<input type="tel" name="tel" id="tel" value="0<?php echo escape($user->data()->phone); ?>"/>
 							</div>
 						</div>
 						<div class="large-12 column">
 							<div class="large-2 column">
-								<label class="left inline" for="name">Email : </label>
+								<label class="left inline" for="email">Email : </label>
 							</div>
 							<div class="large-8 column">
-								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->email); ?>"/>
+								<input type="email" name="email" id="email" value="<?php echo escape($user->data()->email); ?>"/>
 							</div>
 						</div>
-						<div class="large-12 column">
-							<div class="large-2 column">
-								<label class="left inline" for="name">Mot de passe : </label>
-							</div>
-							<div class="large-8 column">
-								<input type="text" name="name" id="name" value="<?php echo escape($user->data()->password); ?>"/>
-							</div>
-						</div>
-
-
 
 						<div class="large-2 column end">
 							<input type="hidden" name="token" value="<?php echo token::generate(); ?>"/>
-							<input type="submit" class="button postfix" value="Update"/>
+							<input type="submit" class="button postfix" value="update"/>
 						</div>
 					</form>
 				

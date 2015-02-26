@@ -116,6 +116,12 @@ footer{
 	padding: 1em;
 }
 
+/* DATATABLES */
+#table tbody tr td{
+	line-height: 4em;
+}
+/* FIN DATATABLES */
+
 @media only screen and (max-width: 40em) {
 	.top-bar {
 		display: none;
