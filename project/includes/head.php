@@ -28,12 +28,122 @@
 	<header>
 		<nav class="top-bar" data-topbar role="navigation">
 			<ul class="title-area">
-				<li class="name">
-					<h1><a href="index.php">Le Restaurant</a></h1>
-				</li>
-			</ul>
+				<li class="name"><h1><a href="index.php">Le Restaurant</a></h1></li>
+			</ul><!-- class title-area -->
 			<section class="top-bar-section">
 				<ul class="right">
+
+					<!-- ////////////////////////////////////////////  RESERVATION PART  ////////////////////////////////////////////////////////////////////// -->
+					<!-- MODAL RESERVATION -->
+					<li><a href="#" data-reveal-id="ResaModal"> Réservez </a></li>
+					<div id="ResaModal" class="reveal-modal" data-reveal>
+						<h2 class="subheader text-center"> Reservation </h2>
+						<div class="row">
+							<form action="" method="post" data-abide>
+
+								<!-- RESERVATION NAME -->
+								<div class="row">
+									<div class="row collapse prefix-radius">
+										<div class="small-2 columns">
+											<span class="prefix"><i class="fa fa-user"></i></span>
+										</div><!-- small-2 columns -->
+										<div class="small-10 columns">
+											<input type="text" name="customer_name" placeholder="Nom de la réservation" required pattern="alpha">
+										</div><!-- class small-10 columns -->
+									</div><!-- class row collapse prefix-radius -->
+								</div><!-- class row -->
+
+								<!-- RESERVATION DATE -->
+								<div class="row">
+									<div class="row collapse prefix-radius">
+										<div class="small-2 columns">
+											<span class="prefix"><i class="fa fa-calendar"></i></span>
+										</div><!-- class small-2 columns -->
+										<div class="small-10 columns">
+											<input class="fdatepicker" name="dor" data-date-format="dd/mm/yyyy" type="text" placeholder="Date de la réservation" required />
+										</div><!-- class small-10 columns -->
+									</div><!-- class row collapse prefix-radius -->
+								</div><!-- class row -->
+
+								<!-- SCHEDULE -->
+								<div class="row">
+									<div class="row collapse prefix-radius">
+										<div class="small-2 columns">
+											<span class="prefix"><i class="fa fa-clock-o"></i></span>
+										</div><!-- small-2 columns -->
+										<div class="small-10 columns">
+											<select id="time" name="schedule"></select>
+										</div><!-- class small-10 columns -->
+									</div><!-- class row collapse prefix-radius -->
+								</div><!-- class row -->
+
+								<!-- NB CUSTOMERS -->
+								<div class="row">
+									<div class="row collapse prefix-radius">
+										<div class="small-2 columns">
+											<span class="prefix"><i class="fa fa-users"></i></span>
+										</div><!-- small-2 columns -->
+										<div class="small-10 columns">
+											<select name="nbpeople">
+												<option value="1" selected>1 Personne</option>
+												<option value="2">2 Personnes</option>
+												<option value="3">3 Personnes</option>
+												<option value="4">4 Personnes</option>
+												<option value="5">5 Personnes</option>
+												<option value="6">6 Personnes</option>
+												<option value="7">7 Personnes</option>
+												<option value="8">8 Personnes</option>
+												<option value="9">9 Personnes</option>
+												<option value="10">10 Personnes</option>
+												<option value="11">11 Personnes</option>
+												<option value="12">12 Personnes</option>
+												<option value="13">13 Personnes</option>
+												<option value="14">14 Personnes</option>
+												<option value="15">15 Personnes</option>
+											</select>
+										</div><!-- class small-10 columns -->
+									</div><!-- class row collapse prefix-radius -->
+								</div><!-- class row -->
+
+								<!-- MENU -->
+								<div class="row">
+									<div class="row collapse prefix-radius">
+										<div class="small-2 columns">
+											<span class="prefix"><i class="fa fa-cutlery"></i></span>
+										</div><!-- small-2 columns -->
+										<div class="small-10 columns">
+											<a href="#" data-reveal-id="MenuModal"><input type="text" placeholder="Cliquez ici ..."></a>
+										</div><!-- class small-10 columns -->
+									</div><!-- class row collapse prefix-radius -->
+								</div><!-- class row -->
+
+								<!-- SUBMIT -->
+								<div class="row">
+									<div class="large-12 columns text-center">
+										<button class="button radius"> Chercher une table </button>
+									</div><!-- class large-12 columns text-center -->
+								</div><!-- class row -->
+							</form>
+						</div><!-- class row -->
+						<a class="close-reveal-modal">&#215;</a>
+					</div><!-- class reveal-modal of ResaModal -->
+
+					<!-- MODAL MENU -->
+					<div id="MenuModal" class="reveal-modal" data-reveal>
+						<h2 class="subheader text-center"> Menu </h2>
+						<div class="row">
+							<div class="small-12 columns">
+								<p> ICI LE MENU </p>
+							</div><!-- class menu -->
+							<div class="small-12 columns">
+								<a href="#" data-reveal-id="ResaModal"><button class="button radius"> Valider </button></a>
+							</div><!-- class small-10 columns -->
+						</div><!-- class row -->
+						<a class="close-reveal-modal">&#215;</a>
+					</div><!-- class reveal-modal of MenuModal -->
+
+					<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 					<?php
 					if($user->isLoggedIn()){
 						?>
@@ -45,143 +155,8 @@
 							</ul>
 						</li>
 						<?php
-					}else{
+					} else {
 						?>
-
-						<!-- ////////////////////////////////////////////  RESERVATION PART  ////////////////////////////////////////////////////////////////////// -->
-						<!-- MODAL RESERVATION -->
-						<li><a href="#" data-reveal-id="ResaModal"> Réservez </a></li>
-						<div id="ResaModal" class="reveal-modal" data-reveal>
-							<h2 class="subheader text-center"> Reservation </h2>
-							<div class="row">
-								<form action="" method="post" data-abide>
-
-									<!-- RESERVATION NAME -->
-									<div class="row">
-										<div class="row collapse prefix-radius">
-											<div class="small-2 columns">
-												<span class="prefix"><i class="fa fa-user"></i></span>
-											</div><!-- small-2 columns -->
-											<div class="small-10 columns">
-												<input type="text" name="customer_name" placeholder="Nom de la réservation" required pattern="alpha">
-											</div><!-- class small-10 columns -->
-										</div><!-- class row collapse prefix-radius -->
-									</div><!-- class row -->
-
-									<!-- RESERVATION DATE -->
-									<div class="row">
-										<div class="row collapse prefix-radius">
-											<div class="small-2 columns">
-												<span class="prefix"><i class="fa fa-calendar"></i></span>
-											</div><!-- class small-2 columns -->
-											<div class="small-10 columns">
-												<input class="fdatepicker" name="dor" data-date-format="dd/mm/yyyy" type="text" placeholder="Date de la réservation" required />
-											</div><!-- class small-10 columns -->
-										</div><!-- class row collapse prefix-radius -->
-									</div><!-- class row -->
-
-									<!-- SCHEDULE -->
-									<div class="row">
-										<div class="row collapse prefix-radius">
-											<div class="small-2 columns">
-												<span class="prefix"><i class="fa fa-clock-o"></i></span>
-											</div><!-- small-2 columns -->
-											<div class="small-10 columns">
-												<select id="time" name="schedule"></select>
-											</div><!-- class small-10 columns -->
-										</div><!-- class row collapse prefix-radius -->
-									</div><!-- class row -->
-
-									<!-- NB CUSTOMERS -->
-									<div class="row">
-										<div class="row collapse prefix-radius">
-											<div class="small-2 columns">
-												<span class="prefix"><i class="fa fa-users"></i></span>
-											</div><!-- small-2 columns -->
-											<div class="small-10 columns">
-												<select name="nbpeople">
-													<option value="1" selected>1 Personne</option>
-													<option value="2">2 Personnes</option>
-													<option value="3">3 Personnes</option>
-													<option value="4">4 Personnes</option>
-													<option value="5">5 Personnes</option>
-													<option value="6">6 Personnes</option>
-													<option value="7">7 Personnes</option>
-													<option value="8">8 Personnes</option>
-													<option value="9">9 Personnes</option>
-													<option value="10">10 Personnes</option>
-													<option value="11">11 Personnes</option>
-													<option value="12">12 Personnes</option>
-													<option value="13">13 Personnes</option>
-													<option value="14">14 Personnes</option>
-													<option value="15">15 Personnes</option>
-												</select>
-											</div><!-- class small-10 columns -->
-										</div><!-- class row collapse prefix-radius -->
-									</div><!-- class row -->
-
-									<!-- MENU -->
-									<div class="row">
-										<div class="row collapse prefix-radius">
-											<div class="small-2 columns">
-												<span class="prefix"><i class="fa fa-cutlery"></i></span>
-											</div><!-- small-2 columns -->
-											<div class="small-10 columns">
-												<a href="#" data-reveal-id="MenuModal"><input type="text" placeholder="Cliquez ici ..."></a>
-											</div><!-- class small-10 columns -->
-										</div><!-- class row collapse prefix-radius -->
-									</div><!-- class row -->
-
-									<!-- SUBMIT -->
-									<div class="row">
-										<div class="large-12 columns text-center">
-											<button class="button radius"> Chercher une table </button>
-										</div><!-- class large-12 columns text-center -->
-									</div><!-- class row -->
-								</form>
-							</div><!-- class row -->
-							<a class="close-reveal-modal">&#215;</a>
-						</div><!-- class reveal-modal of ResaModal -->
-
-						<!-- MODAL MENU -->
-						<div id="MenuModal" class="reveal-modal" data-reveal>
-							<h2 class="subheader text-center"> Menu </h2>
-							<div class="row">
-								<div class="menu">
-									<?php
-									$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
-									echo '<h2>Entrée</h2></br>';
-									while ($donnees = $reponse->fetch()) {
-										if($donnees['disponible']==1) {
-											echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
-										}
-									}
-									$reponse->closeCursor();
-									$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
-									echo '<h2>Plat</h2></br>';
-									while ($donnees = $reponse->fetch()) {
-										if($donnees['disponible']==1) {
-											echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
-										}
-									}
-									$reponse->closeCursor();
-									$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
-									echo '<h2>Dessert</h2></br>';
-									while ($donnees = $reponse->fetch()) {
-										if($donnees['disponible']==1) {
-											echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
-										}
-									}	
-									$reponse->closeCursor();
-									?>
-								</div><!-- class menu -->
-							</div><!-- class row -->
-							<a class="close-reveal-modal">&#215;</a>
-						</div><!-- class reveal-modal of MenuModal -->
-
-						<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-
 						<li><a href="#" data-dropdown="login" data-options="is_hover:true;">Se connecter</a></li>
 						<ul id="login" class="content f-dropdown" data-dropdown-content>
 							<form action="" method="post" >
