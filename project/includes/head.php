@@ -4,38 +4,110 @@
 	<meta charset="utf-8">
 	<meta name = "viewport" content = "width = device-width, initial-scale = 0.4, user-scalable = yes">
 	<link rel="stylesheet" href="css/foundation-datepicker.css">
-	<!-- include foundation css -->
+	<!-- INCLUDE FOUNDATION CSS -->
 	<link rel="stylesheet" href="css/foundation.css">
-	<!-- include costum css -->
+	<!-- INCLUDE CUSTOM CSS -->
 	<link rel="stylesheet" href="css/app.css">
-	<!-- include font awesome css -->
+	<!-- INCLUDE FONT AWESOME CSS -->
 	<link rel="stylesheet" href="assets/font-awesome-4.2.0/css/font-awesome.min.css">
-	<!-- include dataTables css -->
+	<!-- INCLUDE DATATABLES CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/DataTables-1.10.4/media/css/jquery.dataTables.css">
-	<!-- include favicon -->
+	<!-- INCLUDE FAVICON -->
 	<link rel="icon" href="assets/img/favicon.ico" />
-	<!-- include modernizr.js -->
+	<!-- INCLUDE MODERNIZR.JS -->
 	<script src="js/vendor/modernizr.js"></script>
-	<!-- include jquery -->
+	<!-- INCLUDE JQUERY -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery.js"><\/script>')</script>  
-	<!-- include dataTables js -->
+	<!-- INCLUDE DATATABLES JS -->
 	<script type="text/javascript" charset="utf8" src="assets/DataTables-1.10.4/media/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" charset="utf8" src="js/foundation-datepicker.js"></script>
 	<title>Le Restaurant</title>
 </head>
 <body>
 	<header>
+		<!-- NAVBAR -->
 		<nav class="top-bar" data-topbar role="navigation">
 			<ul class="title-area">
 				<li class="name"><h1><a href="index.php">Le Restaurant</a></h1></li>
 			</ul><!-- class title-area -->
 			<section class="top-bar-section">
 				<ul class="right">
-
 					<!-- ////////////////////////////////////////////  RESERVATION PART  ////////////////////////////////////////////////////////////////////// -->
+					<li><a href="#" data-reveal-id="TypeResaModal"> Réservez </a></li>
+					
+					<!-- RESERVATION WITH A CLIENT ACCOUNT OR NOT ? -->
+					<div id="TypeResaModal" class="reveal-modal" data-reveal>
+						
+						<!-- DIRECT RESERVATION -->
+						<div class="row">
+							<div class="small-12 columns">
+								<div class="panel text-center">
+									<h3 class="subheader"> Réservation directe </h3>
+									<p> Réservez sans avoir de compte client si vous êtes pressé. </p>
+									<button class="button radius" data-reveal-id="ResaModal"> Réservez </button>
+								</div><!-- class panel -->
+							</div><!-- class small-12 columns -->
+						</div><!-- class row -->
+
+						<div class="row" data-equalizer>
+
+							<!-- CONNECTION BEFORE RESERVATION -->
+							<div class="small-6 columns">
+								<div class="panel text-center" data-equalizer-watch>
+									<h3 class="subheader"> Connexion </h3>
+									<p> Connectez-vous et profitez des avantages clients (points fidelité). </p>
+									<div class="row">
+										
+										<!-- LOGIN -->
+										<div class="small-12 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-user"></i></span>
+												</div><!-- class small-2 columns -->
+												<div class="small-10 columns">
+													<input type="text" name="login_username" placeholder="Login" />
+												</div><!-- class small-10 columns -->
+											</div><!-- class row collapse prefix-radius -->
+										</div><!-- class small-12 columns -->
+										
+										<!-- PASSWORD -->
+										<div class="small-12 columns">
+											<div class="row collapse prefix-radius">
+												<div class="small-2 columns">
+													<span class="prefix"><i class="fa fa-lock"></i></span>
+												</div><!-- class small-2 columns -->
+												<div class="small-10 columns">
+													<input type="password" name="login_password" placeholder="Password" />
+												</div><!-- class small-10 columns -->
+											</div><!-- class row collapse prefix-radius -->
+											<input type="checkbox" name="remember" id="remember">
+											<label for="remember"> Rester connecté </label>		
+											<div class="large-12 columns center">
+												<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
+												<button class="button"> Se connecter </button>
+											</div><!-- class large-12 columns center -->
+										</div><!-- class small-12 columns -->	
+									</div><!-- class row for connectionForm -->
+
+								</div><!-- class panel text-center -->
+							</div><!-- class small-6 columns -->
+
+							<!-- SUBSCRIBTION BEFORE RESERVATION -->
+							<div class="small-6 columns">
+								<div class="panel text-center" data-equalizer-watch>
+									<h3 class="subheader"> Inscription </h3>
+									<p> Inscrivez-vous et cumulez des points de fidelités afin d'obtenir des réductions sur vos prochaines réservations. </p>
+									<p> Vous aurez accès à un récapitulatif des anciennes réservations effectuées. </p>
+									<button class="button radius" data-reveal-id="SubscribtionModal"> S'inscrire </button>
+								</div><!-- class panel text-center -->
+							</div><!-- class small-6 columns -->
+						
+						</div><!-- class row -->
+						<a class="close-reveal-modal">&#215;</a>
+					</div><!-- class reveal-modal of TypeResaModal -->
+
 					<!-- MODAL RESERVATION -->
-					<li><a href="#" data-reveal-id="ResaModal"> Réservez </a></li>
 					<div id="ResaModal" class="reveal-modal" data-reveal>
 						<h2 class="subheader text-center"> Reservation </h2>
 						<div class="row">
@@ -181,7 +253,7 @@
 										</div>
 									</div>
 									<input type="checkbox" name="remember" id="remember">
-									<label for="remember">Rester connecté</label>		
+									<label for="remember"> Rester connecté </label>		
 									<div class="large-12 columns center">
 										<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
 										<button class="button"> Connexion </button>
@@ -189,9 +261,9 @@
 								</div>
 							</form>
 						</ul>
-						<li><a href="#" data-reveal-id="myModal">S'inscrire</a></li>
+						<li><a href="#" data-reveal-id="SubscribtionModal">S'inscrire</a></li>
 
-						<div id="myModal" class="reveal-modal" data-reveal>
+						<div id="SubscribtionModal" class="reveal-modal" data-reveal>
 							<h2 class="subheader text-center">Inscription</h2>
 							<div class="row">
 								<form action="" method="post" data-abide>
