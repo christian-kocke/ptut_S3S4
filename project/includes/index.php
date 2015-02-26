@@ -90,7 +90,7 @@ if (input::exists()) { // test si la variable $_POST est set
                     'phone' => input::get('phone'),
                     'email' => input::get('email'),
                     'joined' => date('Y-m-d H:i:s'), // date de la création de l'utilisateur
-                    'group' => 1 // sont groupe (admin, user, etc ...)
+                    'user_group' => 1 // sont groupe (admin, user, etc ...)
                 ));
                 session::flash('home', 'You registered successfully !'); // on affiche le message pour signaler a l'utilisateur qu'il a bien été enregistrer
                 redirect::to('index.php'); // on le redirige a la page d'accueil
