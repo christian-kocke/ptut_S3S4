@@ -92,16 +92,17 @@ include_once 'head.php';
 			$('#table tbody').on( 'click', 'td', function () {
 			  var cellData = table.cell( this ).data();
 			  var cell = table.cell(this).node();
-			  alert($(cell).index());
-			  $(cell).html("<input type='text' value="+cellData+" name='test'/>");
-			  var $input = $(cell).find('input');
-			  $input.focus();
-			  $input.on("change", function(){
+			  if(jQuery.inArray($(cell).index(), [0, 7, 8, 9]) === -1){
+				  $(cell).html("<input type='text' value="+cellData+" name='test'/>");
+				  var $input = $(cell).find('input');
+				  $input.focus();
+				  $input.on("change", function(){
 
-			  });
-			  $input.on("focusout", function(){
-			  	$(this).parent().html($(this).val());
-			  });
+				  });
+				  $input.on("focusout", function(){
+				  	$(this).parent().html($(this).val());
+				  });
+				}
 			});
 			</script>
 			</body>
