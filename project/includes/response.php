@@ -7,6 +7,7 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
     $db = db::getInstance(); // nouvelle instance bd
     switch($action) { // un switch pour les differentes action possible
       case "display_users": displayUsers($db); break;
+      case "update": update($db); break;
     }
   }
 }
@@ -24,11 +25,15 @@ function displayUsers($db){
       $users['lastname'],
       $users['phone'],
       $users['email'],
-      $users['group'],
+      $users['user_group'],
       $users['joined'],
       "<button class='tiny' ><i class='fa fa-pencil'></i></button>",
       "<button class='tiny alert' ><i class='fa fa-trash'></i></button>"
     );
   }
   echo json_encode($return);
+}
+
+function update($db){
+  echo $db->update("users", input::get('id'), array(input::get('header') => input::get('value')));
 }

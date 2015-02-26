@@ -90,14 +90,37 @@ include_once 'head.php';
 			});
 
 			$('#table tbody').on( 'click', 'td', function () {
-			  var cellData = table.cell( this ).data();
-			  var cell = table.cell(this).node();
-			  if(jQuery.inArray($(cell).index(), [0, 7, 8, 9]) === -1){
-				  $(cell).html("<input type='text' value="+cellData+" name='test'/>");
-				  var $input = $(cell).find('input');
-				  $input.focus();
-				  $input.on("change", function(){
-
+				var id = table.row(table.cell(this).index().row).data()[0];
+				var cellData = table.cell( this ).data();
+				var cell = table.cell(this).node();
+				var headers = ["id", "username", "firstname", "lastname", "phone", "email", "user_group"];
+			  	if(jQuery.inArray($(cell).index(), [0, 7, 8, 9]) === -1){
+				  	$(cell).html("<input type='text' value="+cellData+" name='test'/>");
+				  	var $input = $(cell).find('input');
+				  	$input.focus();
+				  	$input.on("change", function(){
+				  		var data = {
+				      		"action": "update",
+				      		"id": id,
+				      		"header": headers[$(cell).index()],
+				      		"value": $(this).val()
+				    	};
+				    	data = $.param(data);
+				    	console.log(data);
+					    $.ajax({
+					      	type: "POST",
+					      	dataType: "json",
+					      	url: "response.php", 
+					      	data: data,
+					      	success: function(data) {
+					      		if(data){
+					      			alert("succes");
+					      		}else{
+					      			alert("error");
+					      		}
+					      	}
+				    	});
+				    return false;
 				  });
 				  $input.on("focusout", function(){
 				  	$(this).parent().html($(this).val());

@@ -93,7 +93,7 @@ class user {
     // tester si l'utilisateur a la permisions $key
     public function hasPermission($key){
         if($this->isLoggedIn()){
-            $group = $this->_db->get('groups', array('id', '=', $this->data()->group));
+            $group = $this->_db->get('groups', array('id', '=', $this->data()->user_group));
             if($group->count()){
                 $permissions = json_decode($group->first()->permissions, true);
                 if($permissions[$key] === 1){
