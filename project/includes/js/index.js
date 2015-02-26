@@ -59,5 +59,11 @@ $("#MenuHide").click(function() {
     $("#ResaForm").slideDown("slow");
     $("#MenuModal").slideUp("slow");
 });
-
 /* END RESERVATION MODAL */
+
+/* MODAL EQUALIZER CUSTOM */
+$(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
+    // Force Foundation to recalculate the Equalizer panel heights
+    Foundation.libs.equalizer.reflow();
+});
+/* END MODAL EQUALIZER CUSTOM */

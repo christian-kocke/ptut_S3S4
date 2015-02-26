@@ -36,6 +36,10 @@
 	display: none;
 }
 
+.persoHeight {
+	height: 372px;
+}
+
 .top-bar .name h1, .top-bar-section ul li > a{
 	font-size: 1.5em;
 	font-family: 'Dancing' ,sans-serif;
@@ -124,30 +128,17 @@ footer{
 }
 /* FIN DATATABLES */
 
-@media only screen and (max-width: 40em) {
+/* SMALL SCREENS */
+@media only screen and (max-width: 64em) {
 	.top-bar {
 		display: none;
-	}
-	.off-canvas-wrap {
-		display: block;
-	}
-} /* max-width 640px, mobile-only styles, use when QAing mobile issues */
-
-// Medium screens
-@media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
-
-@media only screen and (min-width: 40.063em) and (max-width: 64em) { 
-	.top-bar {
-		display: block;
 	}
 	.tab-bar {
-		display: none;
+		display: block;
 	}
-} /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+} /* max-width 1024px, mobile-only styles, use when QAing mobile issues */
 
-// Large screens
-@media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
-
+/* LARGE SCREENS */
 @media only screen and (min-width: 64.063em) and (max-width: 90em) { 
 	.top-bar {
 		display: block;
