@@ -1,4 +1,5 @@
 /* FONTS */
+
 @font-face {
 	font-family: 'Dancing';
 	font-style: normal;
@@ -23,23 +24,22 @@
 	font-weight: 400;
 	src: local('Roboto condensed'), local('Roboto condensed'), url(../assets/fonts/Roboto_Condensed.ttf);
 }
+
 /* FIN DES FONTS */
 
 /* HEADER */
+
 .title a {
 	font-family: 'Dancing' ,sans-serif;
     font-size: 1.5em;	
     color : white;
 }
-
 #MenuModal {
 	display: none;
 }
-
 .persoHeight {
 	height: 372px;
 }
-
 .top-bar .name h1, .top-bar-section ul li > a{
 	font-size: 1.5em;
 	font-family: 'Dancing' ,sans-serif;
@@ -51,11 +51,9 @@
 .top-bar form {
 	padding:0;
 }
-
 .button.datepicker-close.small.alert.right {
 	display: none;
 }
-
 .large-12.columns.text-center .button.radius {
 	margin-top: 2vh;
 }
@@ -65,7 +63,6 @@
 h2 {
 	margin: 0;
 }
-
 .background {
 	position: relative;
 	margin: 0;
@@ -78,8 +75,6 @@ h2 {
 	-o-background-size: cover; /* pour Opera */
 	background-size: cover; /* version standardisée */
 }
-
-
 .menu {
 	margin: 0;
 	padding:0;
@@ -92,14 +87,12 @@ h2 {
 
 	text-align: center;
 }
-
-footer{
+footer {
 	background-color: #333333;
 	color : white;
 	padding: 2vh 0 2vh 0;
 }
-
-.t1{
+.t1 {
 	padding-top: 3%;
 	font-family:'Arvo', sans-serif;
 	color : white;
@@ -107,28 +100,36 @@ footer{
 	text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
 	
 }
-.t2{
+.t2 {
 	font-size:6em;
 	color : white;
 	text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
 	font-family:'Dancing', sans-serif;
 }
-
-.arrowContainer{
+.arrowContainer {
 	position: absolute;
 	bottom:10%;
 	width: 100%;
 	text-align: center;
 	padding: 1em;
 }
+#back-top {
+  position: fixed;
+  bottom:20px;
+  right: 2%;
+  z-index: 100; 
+ }
 
 /* DATATABLES */
-#table tbody tr td{
+
+#table tbody tr td {
 	line-height: 4em;
 }
+
 /* FIN DATATABLES */
 
 /* SMALL SCREENS */
+
 @media only screen and (max-width: 64em) {
 	.top-bar {
 		display: none;

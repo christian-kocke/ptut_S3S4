@@ -9,7 +9,7 @@ if(input::exists()) { // test si la variable $_POST est set
         $validation = $validation->check($_POST, array( // validation des champs
             'login_username' => array('required' => true, 'error' => 'the username', 'numeric' => false), // critères de validation du champ username
             'login_password' => array('required' => true, 'error' => 'the password') // critères de validation du champ password
-        ));
+            ));
         if($validation->passed()) { // si les champs sont valider
             $user = new user(); // nouvelle instance utilisateur
             $remember = (input::get('remember') === 'on') ? true : false; // on regarde si l'utilisateur veut être retenue dans un cookie
@@ -17,7 +17,7 @@ if(input::exists()) { // test si la variable $_POST est set
 
             if($login) { // si la connection à été effectuer
               redirect::to('index.php'); // redirection a la page d'accueil
-            } else {
+          } else {
                 session::flash('login', array('connection failed')); // sinon on notifie l'utilisateur que la connection a échoué
             }
         } else {
@@ -39,43 +39,43 @@ if (input::exists()) { // test si la variable $_POST est set
                 'max' => 20,
                 'unique' => 'users',
                 'numeric' => false
-            ),
+                ),
             'password' => array( // critères de validation du champ password n°1
                 'error' => 'the password',
                 'required' => true,
                 'min' => 6,
-            ),
+                ),
             'password2' => array( // critères de validation du champ password n°2
                 'error' => 'the second password',
                 'required' => true,
                 'matches' => 'password'
-            ),
+                ),
             'firstname' => array( // critères de validation du champ firstname
                 'error' => 'the firstname',
                 'required' => true,
                 'min' => 2,
                 'max' => 50
-            ),
+                ),
             'lastname' => array( // critère de validation du champ lastname
             	'error' => 'the lastname',
             	'required' => true,
             	'min' => 2,
                 'max' => 50
-            ),
+                ),
             'email' => array(
             	'error' => "the email address",
             	'required' => true,
             	'min' => 4,
             	'max' => 40,
-            ),
+                ),
             'phone' => array(
             	'error' => "the phone number",
             	'required' => true,
             	'min' => 10,
             	'max' => 20,
             	'numeric' => true
-            )
-        ));
+                )
+            ));
 
         if ($validation->passed()) { // si les champs sont valider
             $user = new user(); // nouvelle instance utilisateur
@@ -91,7 +91,7 @@ if (input::exists()) { // test si la variable $_POST est set
                     'email' => input::get('email'),
                     'joined' => date('Y-m-d H:i:s'), // date de la création de l'utilisateur
                     'user_group' => 1 // sont groupe (admin, user, etc ...)
-                ));
+                    ));
                 session::flash('home', 'You registered successfully !'); // on affiche le message pour signaler a l'utilisateur qu'il a bien été enregistrer
                 redirect::to('index.php'); // on le redirige a la page d'accueil
 
@@ -104,76 +104,68 @@ if (input::exists()) { // test si la variable $_POST est set
     }
 }
 
-$token = token::generate(); // on génère le token pour évité les 'cross site forgeries'
+$token = token::generate(); // on génère le token pour éviter les 'cross site forgeries'
 
 include_once "head.php";
 ?>
-		
-		<div class="background">
-			<div class="row">
-				<div class="column large-12 large-centered text-center t1">Bienvenue sur</div> 
-				<div class="column large-12 large-centered text-center t2">Le Restaurant</div>
-			</div>
-			<div class="arrowContainer">
-				<a href="#suite">
-					<img src="assets/img/down.png" alt="downarrow">
-				</a>
-			</div>
-		</div>
-		<div id="suite">
-		</div>
-		
-		<div class="menu">
-		
-			<h1>Le Menu</h1>
-			
-			<?php
-		
+<div class="background">
+
+    <div class="row">
+        <div class="column large-12 large-centered text-center t1">Bienvenue sur</div> 
+        <div class="column large-12 large-centered text-center t2">Le Restaurant</div>
+    </div><!-- class row -->
+    <div class="arrowContainer">
+        <a href="#suite"><img src="assets/img/down.png" alt="downarrow"></a>
+    
+    </div><!-- class arrowContainer -->
+</div><!-- class background -->
+
+<div id="suite">
+</div><!-- class suite -->
+
+<div class="menu">
+   <h1>Le Menu</h1>
+   <?php
+   $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
+
+   echo '<h2>Entrée</h2></br>';
+   while ($donnees = $reponse->fetch())
+   {
+    if($donnees['disponible']==1) {
+        echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+    }
+}
+$reponse->closeCursor();
+
+$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
+
+echo '<h2>Plat</h2></br>';
+while ($donnees = $reponse->fetch())
+{
+    if($donnees['disponible']==1) {
+        echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+    }
+}
+
+$reponse->closeCursor();
 
 
-			$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
-		
-			echo '<h2>Entrée</h2></br>';
-			while ($donnees = $reponse->fetch())
-			{
-				if($donnees['disponible']==1) {
-				echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
-				}
-			}
 
-			$reponse->closeCursor();
+$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
 
+echo '<h2>Dessert</h2></br>';
+while ($donnees = $reponse->fetch())
+{
+    if($donnees['disponible']==1) {
+        echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
+    }
+}	
 
+$reponse->closeCursor();
 
-			$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
-
-			echo '<h2>Plat</h2></br>';
-			while ($donnees = $reponse->fetch())
-			{
-				if($donnees['disponible']==1) {
-				echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
-				}
-			}
-
-			$reponse->closeCursor();
-
-			
-
-			$reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
-
-			echo '<h2>Dessert</h2></br>';
-			while ($donnees = $reponse->fetch())
-			{
-				if($donnees['disponible']==1) {
-				echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
-				}
-			}	
-
-			$reponse->closeCursor();
-			
-		?>
-	</div>
+?>
+</div>
 <?php
 include_once 'footer.php';
 ?>
-	
+

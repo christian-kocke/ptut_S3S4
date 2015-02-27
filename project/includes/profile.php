@@ -15,14 +15,14 @@ if(input::exists()){
 				'error' => 'new name',
 				'required' => true,
 				'max' => 50
-			)
-		));
+				)
+			));
 
 		if($validation->passed()){
 			try{
 				$user->update(array(
 					'name' => input::get('name')
-				));
+					));
 				session::flash('home', 'Your name has been updated successfuly');
 				redirect::to('index.php');
 
@@ -37,73 +37,84 @@ if(input::exists()){
 		}
 	}
 }
-require_once 'head.php';
+include_once 'head.php';
 ?>
-			<div class="row">
-				<div class="small-12 columns">
-					<div class="panel text-center">
-						<form action="" method="post" data-abide>
-						
-						<!-- USERNAME -->
-						fa fa-user
-						<div class="small-12 columns">
-							<div class="row collapse prefix-radius">
-								<div class="small-2 columns">
-									<span class="prefix"><i class="fa fa-user"></i></span>
-								</div><!-- class small-2 columns -->
-								<div class="small-10 columns">
-									<input type="text" name="login_username" placeholder="Login" />
-								</div><!-- class small-10 columns -->
-							</div><!-- class row collapse prefix-radius -->
-						</div><!-- class small-12 columns -->
-						<div class="large-12 column">
-							<div class="large-2 column">
-								<label class="left inline" for="username">Username : </label>
-							</div>
-							<div class="large-8 column">
-								<input type="text" name="username" id="username" value="<?php echo escape($user->data()->username); ?>"/>
-							</div>
-						</div>
-						<div class="large-12 column">
-							<div class="large-2 column">
-								<label class="left inline" for="firstname">Prénom : </label>
-							</div>
-							<div class="large-8 column">
-								<input type="text" name="firstname" id="firstname" value="<?php echo escape($user->data()->firstname); ?>"/>
-							</div>
-						</div>
-						<div class="large-12 column">
-							<div class="large-2 column">
-								<label class="left inline" for="lastname">Nom : </label>
-							</div>
-							<div class="large-8 column">
-								<input type="text" name="lastname" id="lastname" value="<?php echo escape($user->data()->lastname); ?>"/>
-							</div>
-						</div>
-						<div class="large-12 column">
-							<div class="large-2 column">
-								<label class="left inline" for="tel">Téléphone : </label>
-							</div>
-							<div class="large-8 column">
-								<input type="tel" name="tel" id="tel" value="0<?php echo escape($user->data()->phone); ?>"/>
-							</div>
-						</div>
-						<div class="large-12 column">
-							<div class="large-2 column">
-								<label class="left inline" for="email">Email : </label>
-							</div>
-							<div class="large-8 column">
-								<input type="email" name="email" id="email" value="<?php echo escape($user->data()->email); ?>"/>
-							</div>
-						</div>
+<div class="row">
+	<div class="panel">
+		<h2 class="subheader text-center"> Profil </h2>
+		<form action="" method="post">
 
-						<div class="large-2 column end">
-							<input type="hidden" name="token" value="<?php echo token::generate(); ?>"/>
-							<input type="submit" class="button postfix" value="update"/>
-						</div>
-					</form>
-				
-			</div>
+			<!-- USERNAME -->
+			<div class="small-12 columns">
+				<div class="row">
+					<div class="small-2 columns">
+						<label for="username" class="right inline"> Login </label>
+					</div><!-- class small-2 columns -->
+					<div class="small-10 columns">
+						<input type="text" name="username" id="username" value="<?php echo escape($user->data()->username); ?>"/>
+					</div><!-- class small-10 columns -->
+				</div><!-- class row -->
+			</div><!-- class small-12 columns -->
+
+			<!-- FIRSTNAME -->
+			<div class="small-12 columns">
+				<div class="row">
+					<div class="small-2 columns">
+						<label for="firstname" class="right inline"> Prénom : </label>
+					</div><!-- class small-2 columns -->
+					<div class="small-10 columns">
+						<input type="text" name="firstname" id="firstname" value="<?php echo escape($user->data()->firstname); ?>"/>
+					</div><!-- class small-10 columns -->
+				</div><!-- class row -->
+			</div><!-- class small-12 columns -->
+
+			<!-- LASTNAME -->
+			<div class="small-12 columns">
+				<div class="row">
+					<div class="small-2 columns">
+						<label for="lastname" class="right inline"> Nom : </label>
+					</div><!-- class small-2 columns -->
+					<div class="small-10 columns">
+						<input type="text" name="lastname" id="lastname" value="<?php echo escape($user->data()->lastname); ?>"/>
+					</div><!-- class small-10 columns -->
+				</div><!-- class row -->
+			</div><!-- class small-12 columns -->
+
+			<!-- PHONE -->
+			<div class="small-12 columns">
+				<div class="row">
+					<div class="small-2 columns">
+						<label for="tel" class="right inline"> Téléphone : </label>
+					</div><!-- class small-2 columns -->
+					<div class="small-10 columns">
+						<input type="tel" name="tel" id="tel" value="0<?php echo escape($user->data()->phone); ?>"/>
+					</div><!-- class small-10 columns -->
+				</div><!-- class row -->
+			</div><!-- class small-12 columns -->
+
+			<!-- EMAIL -->
+			<div class="small-12 columns">
+				<div class="row">
+					<div class="small-2 columns">
+						<label for="email" class="right inline"> Email : </label>
+					</div><!-- class small-2 columns -->
+					<div class="small-10 columns">
+						<input type="email" name="email" id="email" value="<?php echo escape($user->data()->email); ?>"/>
+					</div><!-- class small-10 columns -->
+				</div><!-- class row -->
+			</div><!-- class small-12 columns -->
+
+			<!-- UPDATE -->
+			<div class="row">
+				<div class="small-12 columns text-center">
+					<input type="hidden" name="token" value="<?php echo token::generate(); ?>"/>
+					<button class="button radius"> Update </button>
+				</div><!-- class small-12 columns text-center -->
+			</div><!-- class row -->
+
+		</form>
+	</div><!-- class panel -->
+</div><!-- class row -->
 <?php
 include_once 'footer.php';
 ?>
