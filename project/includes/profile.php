@@ -43,6 +43,19 @@ require_once 'head.php';
 				<div class="small-12 columns">
 					<div class="panel text-center">
 						<form action="" method="post" data-abide>
+						
+						<!-- USERNAME -->
+						fa fa-user
+						<div class="small-12 columns">
+							<div class="row collapse prefix-radius">
+								<div class="small-2 columns">
+									<span class="prefix"><i class="fa fa-user"></i></span>
+								</div><!-- class small-2 columns -->
+								<div class="small-10 columns">
+									<input type="text" name="login_username" placeholder="Login" />
+								</div><!-- class small-10 columns -->
+							</div><!-- class row collapse prefix-radius -->
+						</div><!-- class small-12 columns -->
 						<div class="large-12 column">
 							<div class="large-2 column">
 								<label class="left inline" for="username">Username : </label>

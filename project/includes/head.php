@@ -271,7 +271,7 @@
 						
 						<!-- CONNECTION MODAL -->
 						<div id="ConnectionModal" class="reveal-modal tiny" data-reveal>
-							<h2 class="subheader text-center"> Connection </h2>
+							<h2 class="subheader text-center"> Connexion </h2>
 							<div class="row">
 								<form action="" method="post" data-abide>
 									<div class="row">	
