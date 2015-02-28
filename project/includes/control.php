@@ -30,7 +30,7 @@ include_once 'head.php';
 						<th>Action</th>
 					</tr>
 				</thead>
-				
+
 				<tfoot>
 					<tr>
 						<th>ID</th>
@@ -45,7 +45,7 @@ include_once 'head.php';
 						<th>Action</th>
 					</tr>
 				</tfoot>
-				
+
 				<tbody>
 
 				</tbody>
@@ -54,8 +54,14 @@ include_once 'head.php';
 	</div>
 	<footer>
 		<div class="row">
-			<div class="large-4 large-centered text-center columns">Back to <a href="#top">top</a> ©Le Restaurant 2014</div>
-		</div>
+			<div class="small-12 columns">
+				<p class="text-center"> ©Le Restaurant 2014 </p>
+			</div><!-- class small-12 columns -->
+			<!-- BACK TO TOP BUTTON -->
+			<div class="small-1 columns" id="back-top">
+				<a href="#top" class="button info"><i class="fa fa-arrow-up fa-2x"></i></a>
+			</div><!-- class small-2 columns -->
+		</div><!-- class row -->
 		<script src="js/index.js"></script>
 		<script src="js/vendor/fastclick.js"></script>
 		<script src="js/foundation.min.js"></script>

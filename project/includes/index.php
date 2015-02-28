@@ -165,12 +165,12 @@ $reponse->closeCursor();
 
 ?>
 </div>
-<div class="fondindex">
+<div class="chef">
     <div class="row">
         <div class="column large-12 large-centered text-center t2">L'équipe du restaurant</div> 
         <div class="row" data-equalizer>
 
-            <!-- CONNECTION BEFORE RESERVATION -->
+            <!-- DESCRIPTION CHEF -->
             <div class="small-4 columns">
                 <div class="panel text-center " data-equalizer-watch>
                     <h3 class="subheader"> Chef Yann </h3>
@@ -179,7 +179,7 @@ $reponse->closeCursor();
                 </div><!-- class panel text-center -->
             </div><!-- class small-4 columns -->
 
-            <!-- SUBSCRIBTION BEFORE RESERVATION -->
+            <!-- DESCRIPTION CHEF -->
             <div class="small-4 columns">
                 <div class="panel text-center " data-equalizer-watch>
                     <h3 class="subheader"> Esclave Christian </h3>
@@ -188,6 +188,7 @@ $reponse->closeCursor();
                 </div><!-- class panel text-center -->
             </div><!-- class small-4 columns -->
 
+             <!-- DESCRIPTION CHEF -->
             <div class="small-4 columns">
                 <div class="panel text-center " data-equalizer-watch>
                     <h3 class="subheader"> Esclvae Noé </h3>
@@ -198,7 +199,7 @@ $reponse->closeCursor();
         </div><!-- class row -->
 </div><!-- class row -->
 
-</div><!-- class background -->
+</div><!-- class chef -->
 <?php
 include_once 'footer.php';
 ?>
