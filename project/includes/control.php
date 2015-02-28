@@ -13,6 +13,7 @@ include_once 'head.php';
 </head>
 <body>
 	<div class="row">
+		<h2 class="subheader text-center"> Gestion des utilisateurs </h2>
 		<div class="large-12 large-centered column">
 			<table id="table" class="row-border hover table" cellspacing="0" width="100%">
 		        <thead>
@@ -154,7 +155,7 @@ include_once 'head.php';
 			</body>
 		</html>	
 		</footer>
-	</section>
+
   	<a class="exit-off-canvas"></a>
   </div>
 </div>

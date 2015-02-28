@@ -9,6 +9,7 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
       case "display_users": displayUsers($db); break;
       case "update": update($db); break;
       case "delete": deleteUser($db); break;
+      case "display_reservation": displayReservation($db); break;
     }
   }
 }
@@ -41,4 +42,23 @@ function update($db){
 
 function deleteUser($db){
   echo json_encode($db->delete("users", array("id", "=", input::get('id'))));
+}
+
+
+function displayReservation($db){
+  $sth = $db->getPDO()->prepare("SELECT * FROM reservation");
+  $sth->execute();
+  $rslt = $sth->fetchAll();
+  $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => count($rslt), "aaData" => array());
+  foreach ($rslt as $key => $users) {
+    $return['aaData'][$key] = array(
+      $users['id'],
+      $users['name'],
+      $users['nbPerson'],
+      $users['dateResa'],
+      $users['schedule'],
+      "<button class='tiny alert remove' value=".$users['id']."><i class='fa fa-trash'></i></button>"
+    );
+  }
+  echo json_encode($return);
 }
