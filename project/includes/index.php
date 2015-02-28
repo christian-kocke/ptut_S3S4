@@ -116,7 +116,7 @@ include_once "head.php";
     </div><!-- class row -->
     <div class="arrowContainer">
         <a href="#suite"><img src="assets/img/down.png" alt="downarrow"></a>
-    
+
     </div><!-- class arrowContainer -->
 </div><!-- class background -->
 
@@ -124,13 +124,13 @@ include_once "head.php";
 </div><!-- class suite -->
 
 <div class="menu">
-   <h1>Le Menu</h1>
-   <?php
-   $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
+ <h1>Le Menu</h1>
+ <?php
+ $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
 
-   echo '<h2>Entrée</h2></br>';
-   while ($donnees = $reponse->fetch())
-   {
+ echo '<h2>Entrée</h2></br>';
+ while ($donnees = $reponse->fetch())
+ {
     if($donnees['disponible']==1) {
         echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
     }
@@ -165,6 +165,40 @@ $reponse->closeCursor();
 
 ?>
 </div>
+<div class="fondindex">
+    <div class="row">
+        <div class="column large-12 large-centered text-center t2">L'équipe du restaurant</div> 
+        <div class="row" data-equalizer>
+
+            <!-- CONNECTION BEFORE RESERVATION -->
+            <div class="small-4 columns">
+                <div class="panel text-center " data-equalizer-watch>
+                    <h3 class="subheader"> Chef Yann </h3>
+                    <img src="assets/img/photochef.jpg" alt="View">
+                    <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
+                </div><!-- class panel text-center -->
+            </div><!-- class small-4 columns -->
+
+            <!-- SUBSCRIBTION BEFORE RESERVATION -->
+            <div class="small-4 columns">
+                <div class="panel text-center " data-equalizer-watch>
+                    <h3 class="subheader"> Esclave Christian </h3>
+                    <img src="assets/img/photochef.jpg" alt="View">
+                    <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
+                </div><!-- class panel text-center -->
+            </div><!-- class small-4 columns -->
+
+            <div class="small-4 columns">
+                <div class="panel text-center " data-equalizer-watch>
+                    <h3 class="subheader"> Esclvae Noé </h3>
+                    <img src="assets/img/photochef.jpg" alt="View">
+                    <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
+                </div><!-- class panel text-center -->
+            </div><!-- class small-4 columns -->
+        </div><!-- class row -->
+</div><!-- class row -->
+
+</div><!-- class background -->
 <?php
 include_once 'footer.php';
 ?>
