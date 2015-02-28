@@ -10,6 +10,8 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
       case "update": update($db); break;
       case "delete": deleteUser($db); break;
       case "display_reservation": displayReservation($db); break;
+      case "update_reservation": updateReservation($db); break;
+      case "delete_reservation": deleteReservation($db); break;
     }
   }
 }
@@ -61,4 +63,13 @@ function displayReservation($db){
     );
   }
   echo json_encode($return);
+}
+
+
+function updateReservation($db){
+  echo $db->update("reservation", input::get('id'), array(input::get('header') => input::get('value')));
+}
+
+function deleteReservation($db){
+  echo json_encode($db->delete("reservation", array("id", "=", input::get('id'))));
 }

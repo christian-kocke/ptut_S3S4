@@ -96,7 +96,7 @@ $result = $db->get("reservation");
                     $input.focus();
                     $input.on("change", function(){
                         var data = {
-                            "action": "update",
+                            "action": "update_reservation",
                             "id": id,
                             "header": headers[$(cell).index()],
                             "value": $(this).val()
@@ -126,7 +126,7 @@ $result = $db->get("reservation");
 
             $('#table tbody').on('click', '.remove', function () {
                 var data = {
-                    "action": "delete",
+                    "action": "delete_reservation",
                     "id": $(this).val()
                 };
                 data = $.param(data);
