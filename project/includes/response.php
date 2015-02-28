@@ -16,6 +16,7 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
   }
 }
 
+// ACTION PHP POUR LA TABLE UTILISATEUR
 function displayUsers($db){
   $sth = $db->getPDO()->prepare("SELECT * FROM users");
   $sth->execute();
@@ -46,6 +47,10 @@ function deleteUser($db){
   echo json_encode($db->delete("users", array("id", "=", input::get('id'))));
 }
 
+// FIN PHP POUR LA TABLE UTILISATEUR
+
+
+// ACTION PHP POUR LA TABLE DES RESERVATION
 
 function displayReservation($db){
   $sth = $db->getPDO()->prepare("SELECT * FROM reservation");
@@ -73,3 +78,4 @@ function updateReservation($db){
 function deleteReservation($db){
   echo json_encode($db->delete("reservation", array("id", "=", input::get('id'))));
 }
+// FIN PHP POUR LA TABLE RESEVATION

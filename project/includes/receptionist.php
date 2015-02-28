@@ -16,7 +16,7 @@ $result = $db->get("reservation");
 </head>
 <body>
 	   <div class="row">
-        <h2 class="subheader text-center"> Gestion des reservation </h2>
+        <h2 class="subheader text-center"> Gestion des réservations </h2>
         <div class="large-12 large-centered column">
             <table id="table" class="row-border hover table" cellspacing="0" width="100%">
                 <thead>
@@ -90,7 +90,7 @@ $result = $db->get("reservation");
                 var cellData = table.cell( this ).data();
                 var cell = table.cell(this).node();
                 var headers = ["id", "name", "nbPerson", "dateResa", "schedule"];
-                if(jQuery.inArray($(cell).index(), [0, 7, 8, 9]) === -1){
+                if(jQuery.inArray($(cell).index(), [0]) === -1){
                     $(cell).html("<input type='text' value="+cellData+" name='test'/>");
                     var $input = $(cell).find('input');
                     $input.focus();
