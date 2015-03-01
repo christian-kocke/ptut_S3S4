@@ -71,7 +71,15 @@ include_once 'head.php';
 		var table = $("#table").DataTable({
 			"columnDefs": [
 			{ className: "dt-body-center", "targets": "_all" },
-			{ "searchable": false, "targets": [8, 9]}
+			{ "searchable": false, "targets": [8, 9]},
+			{ "name": "id",   "targets": 0 },
+			{ "name": "username",   "targets": 1 },
+			{ "name": "firstname",   "targets": 2 },
+			{ "name": "lastname",   "targets": 3 },
+			{ "name": "phone",   "targets": 4 },
+			{ "name": "email",   "targets": 5 },
+			{ "name": "joined",   "targets": 6 },
+			{ "name": "user_group",   "targets": 7 }
 			],
 			"oLanguage": {
 				"sEmptyTable": "Aucun utilisateur enregistrer",

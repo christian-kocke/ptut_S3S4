@@ -36,6 +36,6 @@ function array_orderby()
             }
     }
     $args[] = &$data;
-    call_user_func_array('array_multisort', $args);
+    error_log(call_user_func_array('array_multisort', $args));
     return array_pop($args);
 }

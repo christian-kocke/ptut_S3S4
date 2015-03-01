@@ -18,13 +18,10 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
 
 // ACTION PHP POUR LA TABLE UTILISATEUR
 function displayUsers($db){
-  $sth = $db->getPDO()->prepare("SELECT * FROM users");
+  $sth = $db->getPDO()->prepare("SELECT * FROM users ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
   $sth->execute();
   $rslt = $sth->fetchAll(PDO::FETCH_NUM);
   $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => ($_POST['search']['value'] === "") ? count($rslt) : 0, "aaData" => array());
-  error_log(print_r($_POST['order'], TRUE));
-  //error_log(print_r($rslt, TRUE));
-  $rslt = array_orderby($rslt, (string) $_POST['order'][0]['column'], ($_POST['order'][0]['dir'] === 'asc') ? SORT_ASC : SORT_DESC);
   foreach ($rslt as $key => $user) {
     $values = array_exclude_keys($user, array(2, 3));
     if($_POST['search']['value'] !== ""){
