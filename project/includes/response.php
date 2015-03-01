@@ -21,19 +21,28 @@ function displayUsers($db){
   $sth = $db->getPDO()->prepare("SELECT * FROM users");
   $sth->execute();
   $rslt = $sth->fetchAll();
-  $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => count($rslt), "aaData" => array());
-  foreach ($rslt as $key => $users) {
+  $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => ($_POST['search']['value'] === "") ? count($rslt) : 0, "aaData" => array());
+  foreach ($rslt as $key => $user) {
+    if($_POST['search']['value'] !== ""){
+      $pattern = "/\b".escape(trim($_POST['search']['value']))."/i";
+      if(is_match_in_array($pattern, array_exclude_keys($user, array('password', 'salt')))){
+        $key =  $return["recordsFiltered"];
+        $return["recordsFiltered"] += 1;
+      }else{
+        continue;
+      }
+    }
     $return['aaData'][$key] = array(
-      $users['id'],
-      $users['username'],
-      $users['firstname'],
-      $users['lastname'],
-      $users['phone'],
-      $users['email'],
-      $users['user_group'],
-      $users['joined'],
+      $user['id'],
+      $user['username'],
+      $user['firstname'],
+      $user['lastname'],
+      $user['phone'],
+      $user['email'],
+      $user['user_group'],
+      $user['joined'],
       "<button class='tiny edit' ><i class='fa fa-pencil'></i></button>",
-      "<button class='tiny alert remove' value=".$users['id']."><i class='fa fa-trash'></i></button>"
+      "<button class='tiny alert remove' value=".$user['id']."><i class='fa fa-trash'></i></button>"
     );
   }
   echo json_encode($return);

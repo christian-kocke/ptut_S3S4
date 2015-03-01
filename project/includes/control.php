@@ -15,7 +15,7 @@ include_once 'head.php';
 	<div class="row">
 		<h2 class="subheader text-center"> Gestion des utilisateurs </h2>
 		<div class="large-12 large-centered column">
-			<table id="table" class="row-border hover table" cellspacing="0" width="100%">
+			<table id="table" class="row-border hover table display" cellspacing="0" width="100%">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -70,7 +70,8 @@ include_once 'head.php';
 
 		var table = $("#table").DataTable({
 			"columnDefs": [
-			{ className: "dt-body-center", "targets": "_all" }
+			{ className: "dt-body-center", "targets": "_all" },
+			{ "searchable": false, "targets": [8, 9]}
 			],
 			"oLanguage": {
 				"sEmptyTable": "Aucun utilisateur enregistrer",
@@ -82,7 +83,7 @@ include_once 'head.php';
 				'<option value="-1">All</option>'+
 				'</select> '
 			},
-			"bFilter": false,
+			"bFilter": true,
 			"iDisplayLength": 5,
 			"bLengthChange": true,
 			"bPaginate": true,
