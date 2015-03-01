@@ -20,31 +20,28 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
 function displayUsers($db){
   $sth = $db->getPDO()->prepare("SELECT * FROM users");
   $sth->execute();
-  $rslt = $sth->fetchAll();
+  $rslt = $sth->fetchAll(PDO::FETCH_NUM);
   $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => ($_POST['search']['value'] === "") ? count($rslt) : 0, "aaData" => array());
+  error_log(print_r($_POST['order'], TRUE));
+  //error_log(print_r($rslt, TRUE));
+  $rslt = array_orderby($rslt, (string) $_POST['order'][0]['column'], ($_POST['order'][0]['dir'] === 'asc') ? SORT_ASC : SORT_DESC);
   foreach ($rslt as $key => $user) {
+    $values = array_exclude_keys($user, array(2, 3));
     if($_POST['search']['value'] !== ""){
       $pattern = "/\b".escape(trim($_POST['search']['value']))."/i";
-      if(is_match_in_array($pattern, array_exclude_keys($user, array('password', 'salt')))){
+      if(is_match_in_array($pattern, $values)){
         $key =  $return["recordsFiltered"];
         $return["recordsFiltered"] += 1;
       }else{
         continue;
       }
     }
-    $return['aaData'][$key] = array(
-      $user['id'],
-      $user['username'],
-      $user['firstname'],
-      $user['lastname'],
-      $user['phone'],
-      $user['email'],
-      $user['user_group'],
-      $user['joined'],
+    $return['aaData'][$key] = array_merge($values, array(
       "<button class='tiny edit' ><i class='fa fa-pencil'></i></button>",
-      "<button class='tiny alert remove' value=".$user['id']."><i class='fa fa-trash'></i></button>"
-    );
+      "<button class='tiny alert remove' value=".$user[0]."><i class='fa fa-trash'></i></button>"
+    ));
   }
+  $return['aaData'] = array_slice($return['aaData'], $_POST['start'], $_POST['length']);
   echo json_encode($return);
 }
 

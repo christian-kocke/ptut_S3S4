@@ -9,7 +9,6 @@ function is_ajax() {
 
 function is_match_in_array($pattern, $haystack = array()){
 	foreach ($haystack as $key => $str){
-		error_log($key, 0);
 		if(preg_match_all($pattern, $str)){
 	  		return true;
 	  	}
@@ -22,4 +21,21 @@ function array_exclude_keys($array, Array $excludeKeys){
         unset($array[$key]);
     }
     return $array;
+}
+
+function array_orderby()
+{
+    $args = func_get_args();
+    $data = array_shift($args);
+    foreach ($args as $n => $field) {
+        if (is_string($field)) {
+            $tmp = array();
+            foreach ($data as $key => $row)
+                $tmp[$key] = $row[$field];
+            $args[$n] = $tmp;
+            }
+    }
+    $args[] = &$data;
+    call_user_func_array('array_multisort', $args);
+    return array_pop($args);
 }

@@ -24,8 +24,8 @@ include_once 'head.php';
 						<th>Nom</th>
 						<th>Téléphone</th>
 						<th>Email</th>
-						<th>Groupe</th>
 						<th>Date enregistrement</th>
+						<th>Groupe</th>
 						<th>Mot de passe</th>
 						<th>Action</th>
 					</tr>
@@ -39,8 +39,8 @@ include_once 'head.php';
 						<th>Nom</th>
 						<th>Téléphone</th>
 						<th>Email</th>
-						<th>Groupe</th>
 						<th>Date enregistrement</th>
+						<th>Groupe</th>
 						<th>Mot de passe</th>
 						<th>Action</th>
 					</tr>
