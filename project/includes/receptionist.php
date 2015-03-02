@@ -65,11 +65,16 @@ $result = $db->get("reservation");
 
         var table = $("#table").DataTable({
             "columnDefs": [
-            { className: "dt-body-center", "targets": "_all" }
+            { className: "dt-body-center", "targets": "_all" },
+            { "name": "id",   "targets": 0 },
+            { "name": "name",   "targets": 1 },
+            { "name": "nbPerson",   "targets": 2 },
+            { "name": "dateResa",   "targets": 3 },
+            { "name": "schedule",   "targets": 4 }
             ],
             "oLanguage": {
-                "sEmptyTable": "Aucun utilisateur enregistrer",
-                "sInfo": "_TOTAL_ utilisateurs enregistrer (de _START_ à _END_)",
+                "sEmptyTable": "Aucune reservation enregistrer",
+                "sInfo": "_TOTAL_ reservation(s) enregistrer (de _START_ à _END_)",
                 "sLengthMenu": 'Afficher <select>'+
                 '<option value="5">5</option>'+
                 '<option value="10">10</option>'+
@@ -77,7 +82,7 @@ $result = $db->get("reservation");
                 '<option value="-1">All</option>'+
                 '</select> '
             },
-            "bFilter": false,
+            "bFilter": true,
             "iDisplayLength": 5,
             "bLengthChange": true,
             "bPaginate": true,

@@ -56,20 +56,25 @@ function deleteUser($db){
 // ACTION PHP POUR LA TABLE DES RESERVATION
 
 function displayReservation($db){
-  $sth = $db->getPDO()->prepare("SELECT * FROM reservation");
+  $sth = $db->getPDO()->prepare("SELECT * FROM reservation ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
   $sth->execute();
-  $rslt = $sth->fetchAll();
-  $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => count($rslt), "aaData" => array());
-  foreach ($rslt as $key => $users) {
-    $return['aaData'][$key] = array(
-      $users['id'],
-      $users['name'],
-      $users['nbPerson'],
-      $users['dateResa'],
-      $users['schedule'],
-      "<button class='tiny alert remove' value=".$users['id']."><i class='fa fa-trash'></i></button>"
-    );
+  $rslt = $sth->fetchAll(PDO::FETCH_NUM);
+  $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => ($_POST['search']['value'] === "") ? count($rslt) : 0, "aaData" => array());
+  foreach ($rslt as $key => $reservation) {
+     if($_POST['search']['value'] !== ""){
+      $pattern = "/\b".escape(trim($_POST['search']['value']))."/i";
+      if(is_match_in_array($pattern, $reservation)){
+        $key =  $return["recordsFiltered"];
+        $return["recordsFiltered"] += 1;
+      }else{
+        continue;
+      }
+    }
+    $return['aaData'][$key] = array_merge($reservation, array(
+      "<button class='tiny alert remove' value=".$reservation[0]."><i class='fa fa-trash'></i></button>"
+    ));
   }
+  $return['aaData'] = array_slice($return['aaData'], $_POST['start'], $_POST['length']);
   echo json_encode($return);
 }
 
