@@ -102,7 +102,8 @@ $result = $db->get("reservation");
             var cell = table.cell(this).node();
             var headers = ["id", "name", "nbPerson", "dateResa", "schedule"];
             if(jQuery.inArray($(cell).index(), [0]) === -1){
-                $(cell).html("<input type='text' value="+cellData+" name='test'/>");
+                $(cell).html("<input type='text' value='' name='test'/>");
+                $(cell).children().val(cellData);
                 var $input = $(cell).find('input');
                 $input.focus();
                 $input.on("change", function(){

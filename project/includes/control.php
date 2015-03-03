@@ -111,7 +111,8 @@ include_once 'head.php';
 			var cell = table.cell(this).node();
 			var headers = ["id", "username", "firstname", "lastname", "phone", "email", "user_group"];
 			if(jQuery.inArray($(cell).index(), [0, 7, 8, 9]) === -1){
-				$(cell).html("<input type='text' value="+cellData+" name='test'/>");
+				$(cell).html("<input type='text' value='' name='test'/>");
+				$(cell).children().val(cellData);
 				var $input = $(cell).find('input');
 				$input.focus();
 				$input.on("change", function(){

@@ -93,11 +93,12 @@ $bdd = $db->getPDO();
 
         $('#table tbody').on( 'click', 'td', function () {
             var id = table.row(table.cell(this).index().row).data()[0];
-            var cellData = table.cell( this ).data();
+            var cellData = table.cell(this).data();
             var cell = table.cell(this).node();
             var headers = ["id", "nom", "ingredient", "prix", "disponible"];
             if(jQuery.inArray($(cell).index(), [0]) === -1){
-                $(cell).html("<input type='text' value="+cellData+" name='test'/>");
+                $(cell).html("<input type='text' value='' name='test'/>");
+                $(cell).children().val(cellData);
                 var $input = $(cell).find('input');
                 $input.focus();
                 $input.on("change", function(){
@@ -108,7 +109,6 @@ $bdd = $db->getPDO();
                         "value": $(this).val()
                     };
                     data = $.param(data);
-                    console.log(data);
                     $.ajax({
                         type: "POST",
                         dataType: "json",
