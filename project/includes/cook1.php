@@ -90,7 +90,10 @@ $bdd = $db->getPDO();
                 "data": { action : "display_entree" }
             }
         });
-
+        function encode(s){
+            s.replace("&a", "\340");
+            return s;
+        }
         $('#table tbody').on( 'click', 'td', function () {
             var id = table.row(table.cell(this).index().row).data()[0];
             var cellData = table.cell(this).data();

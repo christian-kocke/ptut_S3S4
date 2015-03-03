@@ -39,3 +39,9 @@ function array_orderby()
     error_log(call_user_func_array('array_multisort', $args));
     return array_pop($args);
 }
+
+function utf8_encode_walk(&$item){
+    if(is_string($item)){
+        htmlspecialchars_decode($item);
+    }
+}
