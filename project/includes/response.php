@@ -12,6 +12,9 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
       case "display_reservation": displayReservation($db); break;
       case "update_reservation": updateReservation($db); break;
       case "delete_reservation": deleteReservation($db); break;
+      case "display_entree": displayentree($db); break;
+      case "update_entree": updateentree($db); break;
+      case "delete_entree": deleteentree($db); break;
     }
   }
 }
@@ -87,3 +90,40 @@ function deleteReservation($db){
   echo json_encode($db->delete("reservation", array("id", "=", input::get('id'))));
 }
 // FIN PHP POUR LA TABLE RESEVATION
+
+
+
+// ACTION PHP POUR LA TABLE DES ENTREE
+
+function displayentree($db){
+  $sth = $db->getPDO()->prepare("SELECT * FROM entree ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
+  $sth->execute();
+  $rslt = $sth->fetchAll(PDO::FETCH_NUM);
+  $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => ($_POST['search']['value'] === "") ? count($rslt) : 0, "aaData" => array());
+  foreach ($rslt as $key => $entree) {
+     if($_POST['search']['value'] !== ""){
+      $pattern = "/\b".escape(trim($_POST['search']['value']))."/i";
+      if(is_match_in_array($pattern, $entree)){
+        $key =  $return["recordsFiltered"];
+        $return["recordsFiltered"] += 1;
+      }else{
+        continue;
+      }
+    }
+    $return['aaData'][$key] = array_merge($entree, array(
+      "<button class='tiny alert remove' value=".$entree[0]."><i class='fa fa-trash'></i></button>"
+    ));
+  }
+  $return['aaData'] = array_slice($return['aaData'], $_POST['start'], $_POST['length']);
+  echo json_encode($return);
+}
+
+
+function updateentree($db){
+  echo $db->update("entree", input::get('id'), array(input::get('header') => input::get('value')));
+}
+
+function deleteentree($db){
+  echo json_encode($db->delete("entree", array("id", "=", input::get('id'))));
+}
+// FIN PHP POUR LA TABLE ENTREE
