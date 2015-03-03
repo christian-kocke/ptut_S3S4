@@ -51,19 +51,19 @@
 
 							<!-- DIRECT RESERVATION -->
 							<div class="row">
-								<div class="small-12 columns">
+								<div class="small-12 medium-12 large-12 columns">
 									<div class="panel text-center">
 										<h3 class="subheader"> Réservation directe </h3>
 										<p> Réservez sans avoir de compte client si vous êtes pressé. </p>
 										<button class="button radius" data-reveal-id="ResaModal"> Réservez </button>
 									</div><!-- class panel -->
-								</div><!-- class small-12 columns -->
+								</div><!-- class small-12 medium-12 large-12 columns -->
 							</div><!-- class row -->
 
 							<div class="row" data-equalizer>
 
 								<!-- CONNECTION BEFORE RESERVATION -->
-								<div class="small-6 columns">
+								<div class="small-12 medium-12 large-6 columns">
 									<div class="panel text-center persoHeight" data-equalizer-watch>
 										<h3 class="subheader"> Connexion </h3>
 										<p> Connectez-vous et profitez des avantages clients (points fidelité). </p>
@@ -71,49 +71,49 @@
 											<form action="" method="post" data-abide>
 
 												<!-- LOGIN -->
-												<div class="small-12 columns">
+												<div class="small-12 medium-12 large-12 columns">
 													<div class="row collapse prefix-radius">
 														<div class="small-2 columns">
 															<span class="prefix"><i class="fa fa-user"></i></span>
 														</div><!-- class small-2 columns -->
-														<div class="small-10 columns">
+														<div class="small-10 medium-10 large-10 columns">
 															<input type="text" name="login_username" placeholder="Login" />
-														</div><!-- class small-10 columns -->
+														</div><!-- class small-10 medium-10 large-10 columns -->
 													</div><!-- class row collapse prefix-radius -->
-												</div><!-- class small-12 columns -->
+												</div><!-- class small-12 medium-12 large-12 columns -->
 
 												<!-- PASSWORD -->
-												<div class="small-12 columns">
+												<div class="small-12 medium-12 large-12 columns">
 													<div class="row collapse prefix-radius">
-														<div class="small-2 columns">
+														<div class="small-2 medium-2 large-2 columns">
 															<span class="prefix"><i class="fa fa-lock"></i></span>
-														</div><!-- class small-2 columns -->
-														<div class="small-10 columns">
+														</div><!-- class small-2 medium-2 large-2 columns -->
+														<div class="small-10 medium-10 large-10 columns">
 															<input type="password" name="login_password" placeholder="Password" />
-														</div><!-- class small-10 columns -->
+														</div><!-- class small-10 medium-10 large-10 columns -->
 													</div><!-- class row collapse prefix-radius -->
 													<input type="checkbox" name="remember" id="remember">
 													<label for="remember"> Rester connecté </label>		
-													<div class="large-12 columns center">
+													<div class="small-12 medium-12 large-12 columns center">
 														<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
 														<button class="button"> Se connecter </button>
-													</div><!-- class large-12 columns center -->
-												</div><!-- class small-12 columns -->
+													</div><!-- class small-12 medium-12 large-12 columns center -->
+												</div><!-- class small-12 medium-12 large-12 columns -->
 
 											</form>
 										</div><!-- class row for connectionForm -->
 									</div><!-- class panel text-center -->
-								</div><!-- class small-6 columns -->
+								</div><!-- class small-12 medium-12 large-6 columns -->
 
 								<!-- SUBSCRIBTION BEFORE RESERVATION -->
-								<div class="small-6 columns">
+								<div class="small-12 medium-12 large-6 columns">
 									<div class="panel text-center persoHeight" data-equalizer-watch>
 										<h3 class="subheader"> Inscription </h3>
 										<p> Inscrivez-vous et cumulez des points de fidelités afin d'obtenir des réductions sur vos prochaines réservations. </p>
 										<p> Vous aurez accès à un récapitulatif des anciennes réservations effectuées. </p>
 										<button class="button radius" data-reveal-id="SubscribtionModal"> S'inscrire </button>
 									</div><!-- class panel text-center -->
-								</div><!-- class small-6 columns -->
+								</div><!-- class small-12 medium-12 large-6 columns -->
 
 							</div><!-- class row -->
 							<a class="close-reveal-modal">&#215;</a>
@@ -277,37 +277,37 @@
 									<div class="row">	
 
 										<!-- LOGIN -->
-										<div class="small-12 columns">
+										<div class="small-12 medium-12 large-12 columns">
 											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
+												<div class="small-2 medium-2 large-2 columns">
 													<span class="prefix"><i class="fa fa-user"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns">
+												</div><!-- class small-2 medium-2 large-2 columns -->
+												<div class="small-10 medium-10 large-10 columns">
 													<input type="text" name="login_username" placeholder="Login" required pattern="alpha"/>
 													<small class="error"> Uniquement des lettres minuscules/majuscules. </small>
-												</div><!-- class small-10 columns -->
+												</div><!-- class small-10 medium-10 large-10 columns -->
 											</div><!-- class row collapse prefix-radius -->
-										</div><!-- class small-12 columns -->
+										</div><!-- class small-12 medium-12 large-12 columns -->
 
 										<!-- PASSWORD -->
-										<div class="small-12 columns">
+										<div class="small-12 medium-12 large-12 columns">
 											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
+												<div class="small-2 medium-2 large-2 columns">
 													<span class="prefix"><i class="fa fa-lock"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns">
+												</div><!-- class small-2 medium-2 large-2 columns -->
+												<div class="small-10 medium-10 large-10 columns">
 													<input type="password" name="login_password" placeholder="Password" />
-												</div><!-- class small-10 columns -->
+												</div><!-- class small-10 medium-10 large-10 columns -->
 											</div><!-- class row collapse prefix-radius -->
-											<div class="large-12 columns text-center">
+											<div class="small-12 medium-12 large-12 columns text-center">
 												<input type="checkbox" name="remember" id="remember">
 												<label for="remember"> Rester connecté </label>
-											</div><!-- class large-12 columns center -->
-											<div class="large-12 columns text-center">	
+											</div><!-- class small-12 medium-12 large-12 columns center -->
+											<div class="small-12 medium-12 large-12 columns text-center">	
 												<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
 												<button class="button"> Se connecter </button>
-											</div><!-- class large-12 columns center -->
-										</div><!-- class small-12 columns -->
+											</div><!-- class small-12 medium-12 large-12 columns center -->
+										</div><!-- class small-12 medium-12 large-12 columns -->
 
 									</div><!-- class row -->
 								</form>
@@ -482,7 +482,8 @@
 						<?php
 					}else{
 						?>
-
+						<li><a href="#" data-reveal-id="TypeResaModal"> Réservez </a></li>
+						
 						<li><a href="#" data-reveal-id="ConnectionModal"> Se connecter </a></li>
 
 						<li><a href="#" data-reveal-id="SubscribtionModal"> S'inscrire </a></li>

@@ -31,8 +31,8 @@
 
 .title a {
 	font-family: 'Dancing' ,sans-serif;
-    font-size: 1.5em;	
-    color : white;
+	font-size: 1.5em;	
+	color : white;
 }
 #MenuModal {
 	display: none;
@@ -63,12 +63,14 @@
 h2 {
 	margin: 0;
 }
-.background {
+.parts {
 	position: relative;
 	margin: 0;
-	padding:0;
-	width:100%;
-	height:100vh;
+	padding: 0;
+	width: 100%;
+	height: 100vh;
+}
+.background {
 	background: url(../assets/img/background.jpg) no-repeat center fixed; 
 	-webkit-background-size: cover; /* pour Chrome et Safari */
 	-moz-background-size: cover; /* pour Firefox */
@@ -77,11 +79,6 @@ h2 {
 }
 
 .chef {
-	position: relative;
-	margin: 0;
-	padding:0;
-	width:100%;
-	height:100vh;
 	background: url(../assets/img/fond1.jpg) no-repeat center fixed; 
 	-webkit-background-size: cover; /* pour Chrome et Safari */
 	-moz-background-size: cover; /* pour Firefox */
@@ -90,15 +87,12 @@ h2 {
 }
 
 .menu {
-	margin: 0;
-	padding:0;
-	width:100%;
-	background: url(../assets/img/menu.png) no-repeat center fixed; 	
+	background: url(../assets/img/menu.png) no-repeat center fixed;
+	background-color: white;
 	-webkit-background-size: cover; /* pour Chrome et Safari */
 	-moz-background-size: cover; /* pour Firefox */
 	-o-background-size: cover; /* pour Opera */
 	background-size: cover; /* version standardisée */
-
 	text-align: center;
 }
 footer {
@@ -106,6 +100,7 @@ footer {
 	color : white;
 	padding: 2vh 0 2vh 0;
 }
+
 .t1 {
 	padding-top: 3%;
 	font-family:'Arvo', sans-serif;
@@ -128,11 +123,11 @@ footer {
 	padding: 1em;
 }
 #back-top {
-  position: fixed;
-  bottom:20px;
-  right: 2%;
-  z-index: 100; 
- }
+	position: fixed;
+	bottom: 20px;
+	right: 2%;
+	z-index: 100; 
+}
 
 /* DATATABLES */
 
@@ -143,7 +138,6 @@ footer {
 /* FIN DATATABLES */
 
 /* SMALL SCREENS */
-
 @media only screen and (max-width: 64em) {
 	.top-bar {
 		display: none;
@@ -151,10 +145,17 @@ footer {
 	.tab-bar {
 		display: block;
 	}
+	img[alt="View"] {
+		width: 182px;
+		height: 182px;
+	}
+	.parts.exception {
+		height: 100%;
+	}
 } /* max-width 1024px, mobile-only styles, use when QAing mobile issues */
 
 /* LARGE SCREENS */
-@media only screen and (min-width: 64.063em) and (max-width: 90em) { 
+@media only screen and (min-width: 64.063em) and (max-width: 100em) { 
 	.top-bar {
 		display: block;
 	}
