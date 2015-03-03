@@ -90,9 +90,10 @@ $bdd = $db->getPDO();
                 "data": { action : "display_entree" }
             }
         });
-        function encode(s){
-            s.replace("&a", "\340");
-            return s;
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
         }
         $('#table tbody').on( 'click', 'td', function () {
             var id = table.row(table.cell(this).index().row).data()[0];
@@ -101,7 +102,7 @@ $bdd = $db->getPDO();
             var headers = ["id", "nom", "ingredient", "prix", "disponible"];
             if(jQuery.inArray($(cell).index(), [0]) === -1){
                 $(cell).html("<input type='text' value='' name='test'/>");
-                $(cell).children().val(cellData);
+                $(cell).children().val(decodeHtml(cellData));
                 var $input = $(cell).find('input');
                 $input.focus();
                 $input.on("change", function(){
