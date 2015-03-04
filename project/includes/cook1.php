@@ -101,13 +101,17 @@ $bdd = $db->getPDO();
             var cell = table.cell(this).node();
             var headers = ["id", "nom", "ingredient", "prix", "disponible"];
             if($(cell).children().val()=='on'){
-                $(cell).children().on("change", function(){
+                if($(cell).children().is(":checked") == true){
+                    $val = 1;
+                } else {
+                    $val = 0;
+                }
                     console.log($(cell).children().is(":checked"));
                  var data = {
                         "action": "update_entree",
                         "id": id,
                         "header": headers[$(cell).index()],
-                        "value": $(cell).children().is(":checked")
+                        "value": $val
                     };
                      data = $.param(data);
                     $.ajax({
@@ -124,7 +128,7 @@ $bdd = $db->getPDO();
                         }
                     });
             
-                });
+                
 
             }
             if(jQuery.inArray($(cell).index(), [0,4]) === -1){
