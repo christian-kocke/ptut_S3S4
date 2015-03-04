@@ -110,9 +110,14 @@ function displayentree($db){
         continue;
       }
     }
-    $return['aaData'][$key] = array_merge($entree, array(
+    $return['aaData'][$key] = array(
+      $entree[0],
+      $entree[1],
+      $entree[2],
+      $entree[3],
+      "<input type='checkbox' ".(($entree[4]) ? "checked" : "")."/>",
       "<button class='tiny alert remove' value=".$entree[0]."><i class='fa fa-trash'></i></button>"
-    ));
+    );
   }
   $return['aaData'] = array_slice($return['aaData'], $_POST['start'], $_POST['length']);
   echo json_encode($return);

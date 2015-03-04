@@ -100,7 +100,34 @@ $bdd = $db->getPDO();
             var cellData = table.cell(this).data();
             var cell = table.cell(this).node();
             var headers = ["id", "nom", "ingredient", "prix", "disponible"];
-            if(jQuery.inArray($(cell).index(), [0]) === -1){
+            if($(cell).children().val()=='on'){
+                $(cell).children().on("change", function(){
+                    console.log($(cell).children().is(":checked"));
+                 var data = {
+                        "action": "update_entree",
+                        "id": id,
+                        "header": headers[$(cell).index()],
+                        "value": $(cell).children().is(":checked")
+                    };
+                     data = $.param(data);
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: "response.php", 
+                        data: data,
+                        success: function(data) {
+                            if(data){
+                                table.draw();
+                            }else{
+                                alert("error");
+                            }
+                        }
+                    });
+            
+                });
+
+            }
+            if(jQuery.inArray($(cell).index(), [0,4]) === -1){
                 $(cell).html("<input type='text' value='' name='test'/>");
                 $(cell).children().val(decodeHtml(cellData));
                 var $input = $(cell).find('input');
