@@ -134,6 +134,6 @@ function deleteentree($db){
 }
 
 function addentree($db){
-  echo $db->insert("entree", array());
+  echo $db->insert("entree", array("nom" => "", "ingredient" => "", "prix" => 0, "disponible" => 0));
 }
 // FIN PHP POUR LA TABLE ENTREE
