@@ -101,11 +101,7 @@ $('#table tbody').on( 'click', 'td', function () {
     var cell = table.cell(this).node();
     var headers = ["id", "nom", "ingredient", "prix", "disponible"];
     if($(cell).children().val()=='on'){
-        if($(cell).children().is(":checked") == true){
-            $val = 1;
-        } else {
-            $val = 0;
-        }
+        $val = (($(cell).children().is(":checked")) ? 1 : 0); 
         var data = {
             "action": "update_entree",
             "id": id,
@@ -126,9 +122,6 @@ $('#table tbody').on( 'click', 'td', function () {
                 }
             }
         });
-
-
-
     }
     if(jQuery.inArray($(cell).index(), [0,4]) === -1){
         $(cell).html("<input type='text' value='' name='test'/>");
