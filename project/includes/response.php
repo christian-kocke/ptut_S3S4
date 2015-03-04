@@ -15,6 +15,7 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
       case "display_entree": displayentree($db); break;
       case "update_entree": updateentree($db); break;
       case "delete_entree": deleteentree($db); break;
+      case "add_entree": addentree($db); break;
     }
   }
 }
@@ -130,5 +131,9 @@ function updateentree($db){
 
 function deleteentree($db){
   echo json_encode($db->delete("entree", array("id", "=", input::get('id'))));
+}
+
+function addentree($db){
+  echo $db->insert("entree", array());
 }
 // FIN PHP POUR LA TABLE ENTREE
