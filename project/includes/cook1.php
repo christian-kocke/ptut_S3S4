@@ -189,8 +189,7 @@ $('#table tbody').on('click', '.remove', function () {
 
 $('#buttonentree').on('click', function () {
     var data = {
-        "action": "add_entree",
-        "value": ""
+        "action": "add_entree"
     };
     data = $.param(data);
     console.log(data);
