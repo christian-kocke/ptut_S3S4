@@ -146,6 +146,10 @@ h2 {
 	line-height: 4em;
 }
 
+.dataTables_wrapper .dataTables_filter input{	
+	padding:0;
+}
+
 /* FIN DATATABLES */
 
 /* SMALL SCREENS */
