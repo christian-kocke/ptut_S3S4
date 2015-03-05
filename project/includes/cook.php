@@ -80,7 +80,7 @@ $bdd = $db->getPDO();
             "type": "POST",
             "dataType": "json",
             "url": "response.php",
-            "data": { action : "display_entree" }
+            "data": { action : "display" }
         }
     });
 function decodeHtml(html) {
