@@ -67,15 +67,8 @@ $bdd = $db->getPDO();
         { "name": "prix",   "targets": 3 },
         { "name": "disponible",   "targets": 4 }
         ],
-        "oLanguage": {
-            "sEmptyTable": "Aucune entrée enregistrer",
-            "sInfo": "_TOTAL_ entrée(s) enregistrer (de _START_ à _END_)",
-            "sLengthMenu": 'Afficher <select>'+
-            '<option value="5">5</option>'+
-            '<option value="10">10</option>'+
-            '<option value="20">20</option>'+
-            '<option value="-1">All</option>'+
-            '</select> '
+        "language": {
+            "url": "assets/lang/french.json"
         },
         "bFilter": true,
         "iDisplayLength": 5,
