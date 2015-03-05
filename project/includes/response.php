@@ -14,14 +14,13 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
   }
 }
 
-
 function displayItems($db){
   switch(input::get("table")){
     case "users": $table = "users"; break;
     case "reservation": $table = "reservation"; break;
     case "entree": $table = "entree"; break;
     case "plat": $table = "plat"; break;
-    case "desert": $table = "desert"; break;
+    case "dessert": $table = "desert"; break;
   }
   $sth = $db->getPDO()->prepare("SELECT * FROM ".$table." ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
   $sth->bindParam(":table", $table);
@@ -38,7 +37,7 @@ function displayItems($db){
         break;
       case "entree":
       case "plat":
-      case "desert":
+      case "dessert":
         $actions = array(
           "<input type='checkbox' ".(($item[4]) ? "checked" : "")."/>",
         );
