@@ -153,13 +153,10 @@ $('#table tbody').on('click', '.remove', function () {
     });
     return false;
 });
-</script>
-</body>
-</html> 
-</footer>
-
-<a class="exit-off-canvas"></a>
-</div>
-</div>
+        </script>
+    </section><!-- class main-section -->
+    <a class="exit-off-canvas"></a>
+</div><!-- class inner-wrap -->
+</div><!-- class off-canvas-wrap -->
 </body>
 </html>

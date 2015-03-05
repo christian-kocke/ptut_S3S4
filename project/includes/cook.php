@@ -128,16 +128,8 @@ $bdd = $db->getPDO();
 
 		<!-- fin table dessert-->
 	</div>
-	
+
 </div>
-
-
-
-
-
-
-
-
 
 <div class="row">
 	<div class="small-12 columns">
@@ -588,8 +580,10 @@ $('#buttondessert').on('click', function () {
 // fin script table desert
 
 
-
 </script>
+</section><!-- class main-section -->
+<a class="exit-off-canvas"></a>
+</div><!-- class inner-wrap -->
+</div><!-- class off-canvas-wrap -->
 </body>
-</html> 
-</footer>
+</html>

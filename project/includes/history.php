@@ -1,7 +1,7 @@
 <?php
 include_once "../core/init.php";
 $user = new user();
-if(!$user->hasPermission("cook")){
+if(!$user->isLoggedIn()){
 	redirect::to('index.php');
 }
 include_once "head.php";
@@ -54,16 +54,16 @@ $bdd = $db->getPDO();
 <script src="js/vendor/fastclick.js"></script>
 <script src="js/foundation.min.js"></script>
 <script>
-
+$(document).foundation();
 // Script pour table historique
 var tablehistorique = $("#tablehistorique").DataTable({
 	"columnDefs": [
 	{ className: "dt-body-center", "targets": "_all" },
-	{ "name": "id",   "targets": 0 },
-	{ "name": "name",   "targets": 1 },
-	{ "name": "nbPerson",   "targets": 2 },
-	{ "name": "dateResa",   "targets": 3 },
-	{ "name": "schedule",   "targets": 4 }
+	{ "name": "reservation.id",   "targets": 0 },
+	{ "name": "users.lastname",   "targets": 1 },
+	{ "name": "reservation.nbPerson",   "targets": 2 },
+	{ "name": "reservation.dateResa",   "targets": 3 },
+	{ "name": "reservation.schedule",   "targets": 4 }
 	],
 	"language": {
 		"url": "assets/lang/french.json"
@@ -78,7 +78,7 @@ var tablehistorique = $("#tablehistorique").DataTable({
 		"type": "POST",
 		"dataType": "json",
 		"url": "response.php",
-		"data": { action : "display", table :"reservation", id: "<?php echo $user->data()->id; ?>"}
+		"data": { action : "display", table :"history", id: "<?php echo $user->data()->id; ?>"}
 	}
 });
 function decodeHtml(html) {
@@ -89,7 +89,10 @@ function decodeHtml(html) {
 
  // fin script table historique
 
- </script>
+		</script>
+	</section><!-- class main-section -->
+	<a class="exit-off-canvas"></a>
+</div><!-- class inner-wrap -->
+</div><!-- class off-canvas-wrap -->
 </body>
-</html> 
-</footer>
+</html>
