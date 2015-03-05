@@ -109,6 +109,122 @@ $token = token::generate(); // on génère le token pour éviter les 'cross site
 
 include_once "head.php";
 ?>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<!-- Alert d'erreur login -->
+<div class="small-12 large-12 columns background parts">
+    <div class="row">
+        <h3 class="subheader text-center t1"> Bienvenue sur </h3> 
+        <h1 class="subheader text-center t2"> Le Restaurant </h1>
+    </div><!-- class row -->
+    <div class="arrowContainer">
+        <a href="#suite"><img src="assets/img/down.png" alt="downarrow"></a>
+    </div><!-- class arrowContainer -->
+</div><!-- class small-12 large-12 columns background parts -->
+
+
+   
+
+    <div class="row">
+        <div class="small-12 large-12 columns menu exception" data-equalizer>
+             <h1 class="subheader text-center t2"> Le Menu </h1>
+            <div class="small-12 large-4 columns">
+
+                <?php
+                $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
+
+                echo '<h2>Entrée</h2></br>';
+                while ($donnees = $reponse->fetch())
+                {
+                    if($donnees['disponible']==1) {
+                        echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+                    }
+                }
+                $reponse->closeCursor();
+
+                ?>
+            </div>
+            <div class="small-12 large-4 columns">
+                <?php
+
+                $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
+
+                echo '<h2>Plat</h2></br>';
+                while ($donnees = $reponse->fetch())
+                {
+                    if($donnees['disponible']==1) {
+                        echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+                    }
+                }
+
+                $reponse->closeCursor();
+
+                ?>
+            </div>
+            <div class="small-12 large-4 columns">
+                <?php
+
+
+
+                $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
+
+                echo '<h2>Dessert</h2></br>';
+                while ($donnees = $reponse->fetch())
+                {
+                    if($donnees['disponible']==1) {
+                        echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
+                    }
+                }	
+
+                $reponse->closeCursor();
+
+                ?>
+            </div>
+        </div>
+
+</div><!-- class small-12 large-12 columns menu parts -->
+
+<div class="small-12 large-12 columns chef parts exception">
+    <div class="row">
+        <div class="small-12 large-12 columns" data-equalizer>
+            <h1 class="subheader text-center t2"> L'équipe du restaurant </h1>
+
+            <!-- DESCRIPTION CHEF -->
+            <div class="small-12 large-4 columns">
+                <div class="panel text-center" data-equalizer-watch>
+                    <h3 class="subheader text-center"> Chef Yann </h3>
+                    <img src="assets/img/photochef.jpg" alt="View">
+                    <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
+                </div><!-- class panel text-center -->
+            </div><!-- class small-12 large-4 columns -->
+
+            <!-- DESCRIPTION CHEF -->
+            <div class="small-12 large-4 columns">
+                <div class="panel text-center" data-equalizer-watch>
+                    <h3 class="subheader text-center"> Esclave Christian </h3>
+                    <img src="assets/img/photochef.jpg" alt="View">
+                    <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
+                </div><!-- class panel text-center -->
+            </div><!-- class small-12 large-4 columns -->
+
+            <!-- DESCRIPTION CHEF -->
+            <div class="small-12 large-4 columns">
+                <div class="panel text-center" data-equalizer-watch>
+                    <h3 class="subheader text-center"> Esclave Noé </h3>
+                    <img src="assets/img/photochef.jpg" alt="View">
+                    <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
+                </div><!-- class panel text-center -->
+            </div><!-- class small-12 large-4 columns -->
+
+        </div><!-- class small-12 large-12 columns -->
+    </div><!-- class row -->
+</div><!-- class small-12 large-12 columns chef parts -->
+<?php
+include_once 'footer.php';
+?>
+=======
+>>>>>>> Stashed changes
     <!-- Alert success -->
     <div id="mainAlert4" data-alert class="alert-box success hide large-8 medium-7 small-6 large-centered medium-centered small-centered column" tabindex="0" aria-live="assertive" role="dialogalert">
         <p class="flash"><?php
@@ -209,4 +325,5 @@ include_once "head.php";
     <?php
     include_once 'footer.php';
     ?>
+>>>>>>> origin/master
 
