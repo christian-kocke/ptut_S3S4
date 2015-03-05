@@ -96,7 +96,8 @@ $('#table tbody').on( 'click', 'td', function () {
     if($(cell).children().val()=='on'){
         $val = (($(cell).children().is(":checked")) ? 1 : 0); 
         var data = {
-            "action": "update_entree",
+            "action": "update",
+            "table": "entree",
             "id": id,
             "header": headers[$(cell).index()],
             "value": $val
@@ -123,7 +124,8 @@ $('#table tbody').on( 'click', 'td', function () {
         $input.focus();
         $input.on("change", function(){
             var data = {
-                "action": "update_entree",
+                "action": "update",
+                "table": "entree",
                 "id": id,
                 "header": headers[$(cell).index()],
                 "value": $(this).val()
@@ -152,7 +154,8 @@ $('#table tbody').on( 'click', 'td', function () {
 
 $('#table tbody').on('click', '.remove', function () {
     var data = {
-        "action": "delete_entree",
+        "action": "delete",
+        "table": "entree",
         "id": $(this).val()
     };
     data = $.param(data);
@@ -175,7 +178,8 @@ $('#table tbody').on('click', '.remove', function () {
 
 $('#buttonentree').on('click', function () {
     var data = {
-        "action": "add_entree"
+        "action": "insert",
+        "table": "entree"
     };
     data = $.param(data);
     console.log(data);
