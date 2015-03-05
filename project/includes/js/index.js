@@ -87,3 +87,15 @@ $(document).ready(function(){
     });
 });
 /* END BACK TO THE TOP BUTTON */
+
+/* ALERT HANDLING */
+
+$(document).ready(function() {
+    $(".flash").each(function() {
+        if($(this).is(":empty")){
+            $(this).parent().addClass("hide");
+        }else{
+            $(this).parent().removeClass("hide");
+        }
+    });
+});

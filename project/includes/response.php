@@ -22,8 +22,9 @@ function displayItems($db){
     case "plat": $table = "plat"; break;
     case "dessert": $table = "dessert"; break;
   }
-  $sth = $db->getPDO()->prepare("SELECT * FROM ".$table." ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
-  $sth->bindParam(":table", $table);
+  $client_id = input::get("id");
+  $sth = $db->getPDO()->prepare("SELECT * FROM ".$table." ".(($client_id) ? "WHERE client_id = ?" : "")." ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
+  $sth->bindParam(1, $client_id);
   $sth->execute();
   $rslt = $sth->fetchAll(PDO::FETCH_NUM);
   $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => ($_POST['search']['value'] === "") ? count($rslt) : 0, "aaData" => array());
