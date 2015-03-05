@@ -16,7 +16,8 @@ if(input::exists()) { // test si la variable $_POST est set
             $login = $user->login(input::get('login_username'), input::get('login_password'), $remember); // connection de l'utilisateur
 
             if($login) { // si la connection à été effectuer
-              redirect::to('index.php'); // redirection a la page d'accueil
+                session::flash('home', "Bienvenue ".$user->data()->username);
+                redirect::to('index.php'); // redirection a la page d'accueil
           } else {
                 session::flash('login', array('Echec de la connection')); // sinon on notifie l'utilisateur que la connection a échoué
             }
@@ -108,7 +109,15 @@ $token = token::generate(); // on génère le token pour éviter les 'cross site
 
 include_once "head.php";
 ?>
-<!-- Alert d'erreur login -->
+    <!-- Alert success -->
+    <div id="mainAlert4" data-alert class="alert-box success hide large-8 medium-7 small-6 large-centered medium-centered small-centered column" tabindex="0" aria-live="assertive" role="dialogalert">
+        <p class="flash"><?php
+        if(session::exists('home')){
+            echo session::flash('home').'</br>';
+        }
+        ?></p>
+        <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+    </div>
     <div class="small-12 large-12 columns background parts">
         <div class="row">
             <h3 class="subheader text-center t1"> Bienvenue sur </h3> 

@@ -97,6 +97,9 @@ $(document).ready(function() {
         }else{
             $(this).parent().removeClass("hide");
             $(this).parents(".reveal-modal").foundation('reveal','open');
+            setTimeout(function() {
+                $("#mainAlert4").toggleClass("hide", true)
+            }, 3000);
         }
     });
 });
