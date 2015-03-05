@@ -189,6 +189,11 @@ h2 {
 	.parts.exception {
 		height: 100%;
 	}
+	.tab-bar h1 a{
+		font-family: 'Dancing' ,sans-serif;
+		font-size: 1.5em;	
+		color : white;
+	}
 	} /* max-width 1024px, mobile-only styles, use when QAing mobile issues */
 
 	/* LARGE SCREENS */

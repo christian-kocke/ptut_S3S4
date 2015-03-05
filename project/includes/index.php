@@ -18,7 +18,7 @@ if(input::exists()) { // test si la variable $_POST est set
             if($login) { // si la connection à été effectuer
                 session::flash('home', "Bienvenue ".$user->data()->username);
                 redirect::to('index.php'); // redirection a la page d'accueil
-          } else {
+            } else {
                 session::flash('login', array('Echec de la connection')); // sinon on notifie l'utilisateur que la connection a échoué
             }
         } else {
@@ -68,13 +68,15 @@ if (input::exists()) { // test si la variable $_POST est set
             	'required' => true,
             	'min' => 4,
             	'max' => 40,
+                'unique' => 'users'
                 ),
             'phone' => array(
             	'error' => "le numéro de téléphone",
             	'required' => true,
             	'min' => 10,
             	'max' => 20,
-            	'numeric' => true
+            	'numeric' => true,
+                'unique' => 'users'
                 )
             ));
 
@@ -93,7 +95,7 @@ if (input::exists()) { // test si la variable $_POST est set
                     'joined' => date('Y-m-d H:i:s'), // date de la création de l'utilisateur
                     'user_group' => 1 // sont groupe (admin, user, etc ...)
                     ));
-                session::flash('home', 'You registered successfully !'); // on affiche le message pour signaler a l'utilisateur qu'il a bien été enregistrer
+                session::flash('home', 'Inscription réussite, Bienvenue sur Le Restaurant !'); // on affiche le message pour signaler a l'utilisateur qu'il a bien été enregistrer
                 redirect::to('index.php'); // on le redirige a la page d'accueil
 
             } catch(Exception $e) { 
@@ -110,6 +112,14 @@ $token = token::generate(); // on génère le token pour éviter les 'cross site
 include_once "head.php";
 ?>
 <!-- Alert d'erreur login -->
+<div id="mainAlert4" data-alert class="alert-box success hide large-7 medium-6 small-5 large-centred medium-centered small-centered column text-center" tabindex="0" aria-live="assertive" role="dialogalert">
+    <p class="flash"><?php
+        if(session::exists('home')){
+            echo session::flash('home').'</br>';
+        }
+        ?></p>
+    <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+</div>
 <div class="small-12 large-12 columns background parts">
     <div class="row">
         <h3 class="subheader text-center t1"> Bienvenue sur </h3> 
@@ -121,64 +131,64 @@ include_once "head.php";
 </div><!-- class small-12 large-12 columns background parts -->
 
 
-   
-
-    <div class="row">
-        <div class="small-12 large-12 columns menu exception" data-equalizer>
-             <h1 class="subheader text-center t2"> Le Menu </h1>
-            <div class="small-12 large-4 columns">
-
-                <?php
-                $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
-
-                echo '<h2>Entrée</h2></br>';
-                while ($donnees = $reponse->fetch())
-                {
-                    if($donnees['disponible']==1) {
-                        echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
-                    }
-                }
-                $reponse->closeCursor();
-
-                ?>
-            </div>
-            <div class="small-12 large-4 columns">
-                <?php
-
-                $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
-
-                echo '<h2>Plat</h2></br>';
-                while ($donnees = $reponse->fetch())
-                {
-                    if($donnees['disponible']==1) {
-                        echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
-                    }
-                }
-
-                $reponse->closeCursor();
-
-                ?>
-            </div>
-            <div class="small-12 large-4 columns">
-                <?php
 
 
+<div class="row">
+    <div class="small-12 large-12 columns menu exception" data-equalizer>
+     <h1 class="subheader text-center t2"> Le Menu </h1>
+     <div class="small-12 large-4 columns">
 
-                $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
+        <?php
+        $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
 
-                echo '<h2>Dessert</h2></br>';
-                while ($donnees = $reponse->fetch())
-                {
-                    if($donnees['disponible']==1) {
-                        echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
-                    }
-                }	
+        echo '<h2>Entrée</h2></br>';
+        while ($donnees = $reponse->fetch())
+        {
+            if($donnees['disponible']==1) {
+                echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+            }
+        }
+        $reponse->closeCursor();
 
-                $reponse->closeCursor();
+        ?>
+    </div>
+    <div class="small-12 large-4 columns">
+        <?php
 
-                ?>
-            </div>
-        </div>
+        $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
+
+        echo '<h2>Plat</h2></br>';
+        while ($donnees = $reponse->fetch())
+        {
+            if($donnees['disponible']==1) {
+                echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+            }
+        }
+
+        $reponse->closeCursor();
+
+        ?>
+    </div>
+    <div class="small-12 large-4 columns">
+        <?php
+
+
+
+        $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
+
+        echo '<h2>Dessert</h2></br>';
+        while ($donnees = $reponse->fetch())
+        {
+            if($donnees['disponible']==1) {
+                echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
+            }
+        }	
+
+        $reponse->closeCursor();
+
+        ?>
+    </div>
+</div>
 
 </div><!-- class small-12 large-12 columns menu parts -->
 
@@ -220,104 +230,4 @@ include_once "head.php";
 <?php
 include_once 'footer.php';
 ?>
-    <!-- Alert success -->
-    <div id="mainAlert4" data-alert class="alert-box success hide large-8 medium-7 small-6 large-centered medium-centered small-centered column" tabindex="0" aria-live="assertive" role="dialogalert">
-        <p class="flash"><?php
-        if(session::exists('home')){
-            echo session::flash('home').'</br>';
-        }
-        ?></p>
-        <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
-    </div>
-    <div class="small-12 large-12 columns background parts">
-        <div class="row">
-            <h3 class="subheader text-center t1"> Bienvenue sur </h3> 
-            <h1 class="subheader text-center t2"> Le Restaurant </h1>
-        </div><!-- class row -->
-        <div class="arrowContainer">
-            <a href="#suite"><img src="assets/img/down.png" alt="downarrow"></a>
-        </div><!-- class arrowContainer -->
-    </div><!-- class small-12 large-12 columns background parts -->
-
-    <div class="small-12 large-12 columns menu parts exception">
-        <h1 class="subheader text-center t2"> Le Menu </h1>
-        <?php
-        $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
-
-        echo '<h2>Entrée</h2></br>';
-        while ($donnees = $reponse->fetch())
-        {
-            if($donnees['disponible']==1) {
-                echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
-            }
-        }
-        $reponse->closeCursor();
-
-        $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
-
-        echo '<h2>Plat</h2></br>';
-        while ($donnees = $reponse->fetch())
-        {
-            if($donnees['disponible']==1) {
-                echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
-            }
-        }
-
-        $reponse->closeCursor();
-
-
-
-        $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
-
-        echo '<h2>Dessert</h2></br>';
-        while ($donnees = $reponse->fetch())
-        {
-            if($donnees['disponible']==1) {
-                echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
-            }
-        }	
-
-        $reponse->closeCursor();
-
-        ?>
-    </div><!-- class small-12 large-12 columns menu parts -->
-
-    <div class="small-12 large-12 columns chef parts exception">
-        <div class="row">
-            <div class="small-12 large-12 columns" data-equalizer>
-                <h1 class="subheader text-center t2"> L'équipe du restaurant </h1>
-
-                <!-- DESCRIPTION CHEF -->
-                <div class="small-12 large-4 columns">
-                    <div class="panel text-center" data-equalizer-watch>
-                        <h3 class="subheader text-center"> Chef Yann </h3>
-                        <img src="assets/img/photochef.jpg" alt="View">
-                        <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
-                    </div><!-- class panel text-center -->
-                </div><!-- class small-12 large-4 columns -->
-
-                <!-- DESCRIPTION CHEF -->
-                <div class="small-12 large-4 columns">
-                    <div class="panel text-center" data-equalizer-watch>
-                        <h3 class="subheader text-center"> Esclave Christian </h3>
-                        <img src="assets/img/photochef.jpg" alt="View">
-                        <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
-                    </div><!-- class panel text-center -->
-                </div><!-- class small-12 large-4 columns -->
-
-                <!-- DESCRIPTION CHEF -->
-                <div class="small-12 large-4 columns">
-                    <div class="panel text-center" data-equalizer-watch>
-                        <h3 class="subheader text-center"> Esclave Noé </h3>
-                        <img src="assets/img/photochef.jpg" alt="View">
-                        <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
-                    </div><!-- class panel text-center -->
-                </div><!-- class small-12 large-4 columns -->
-
-            </div><!-- class small-12 large-12 columns -->
-        </div><!-- class row -->
-    </div><!-- class small-12 large-12 columns chef parts -->
-    <?php
-    include_once 'footer.php';
-    ?>
 

@@ -39,8 +39,8 @@ class validation {
                         break;
                         case 'numeric' :
                             if(is_numeric($value) != $rule_value) {
-                                $error = ($rule_value === true) ? "has to" : "can't";
-                                $this->addError("{$items[$item]['error']} {$error} doit être composé uniquement de chiffre");
+                                $error = ($rule_value === true) ? "doit être" : "ne doit pas être";
+                                $this->addError("{$items[$item]['error']} {$error} composé uniquement de chiffre");
                             }
                         break;
                     }
