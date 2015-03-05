@@ -94,7 +94,7 @@ include_once 'head.php';
 				"type": "POST",
 				"dataType": "json",
 				"url": "response.php",
-				"data": { action : "display_users" }
+				"data": { action : "display", "table": "users"}
 			}
 		});
 
@@ -111,6 +111,7 @@ include_once 'head.php';
 				$input.on("change", function(){
 					var data = {
 						"action": "update",
+						"table": "users",
 						"id": id,
 						"header": headers[$(cell).index()],
 						"value": $(this).val()
