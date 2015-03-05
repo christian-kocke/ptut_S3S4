@@ -250,16 +250,16 @@
 								}
 								if($user->hasPermission("cook")){
 								?>
-								<li><a href="cook.php"><i class="fa fa-pencil"></i> Gestion cuisine</a></li>
+								<li><a href="cook.php"><i class="fa fa-pencil"></i> Gestion du menu</a></li>
 								<?php
 								}
 								if($user->hasPermission("receptionist")){
 								?>
-								<li><a href="receptionist.php"><i class="fa fa-pencil"></i> Gestion reservation</a></li>
+								<li><a href="receptionist.php"><i class="fa fa-pencil"></i> Gestion des reservation</a></li>
 								<?php
 								}
 								?>
-								<li><a href="history.php"><i class="fa fa-pencil"></i> Historique des reservation</a></li>
+								<li><a href="history.php"><i class="fa fa-pencil"></i> Historique des reservations</a></li>
 								<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil </a></li>
 								<li><a href="logout.php"><i class="fa fa-power-off"></i> Déconnexion </a></li>
 							</ul>
