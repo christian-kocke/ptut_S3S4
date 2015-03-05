@@ -42,6 +42,9 @@
 }
 .top-bar .name h1, .top-bar-section ul li > a{
 	font-size: 1.5em;
+	font-family: 'Roboto' ,sans-serif;
+}
+.top-bar .name h1 a {
 	font-family: 'Dancing' ,sans-serif;
 }
 .top-bar-section li:not(.has-form) a:not(.button):hover {
@@ -177,17 +180,17 @@ h2 {
 	.parts.exception {
 		height: 100%;
 	}
-} /* max-width 1024px, mobile-only styles, use when QAing mobile issues */
+	} /* max-width 1024px, mobile-only styles, use when QAing mobile issues */
 
-/* LARGE SCREENS */
-@media only screen and (min-width: 64.063em) and (max-width: 100em) { 
-	.top-bar {
-		display: block;
-	}
-	.tab-bar {
-		display: none;
-	}
-	.parts.exception {
-		height: 100%;
-	}
+	/* LARGE SCREENS */
+	@media only screen and (min-width: 64.063em) and (max-width: 100em) { 
+		.top-bar {
+			display: block;
+		}
+		.tab-bar {
+			display: none;
+		}
+		.parts.exception {
+			height: 100%;
+		}
 } /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */

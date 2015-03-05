@@ -244,21 +244,21 @@
 								<?php
 								if($user->hasPermission("admin")){
 								?>
-								<li><a href="control.php"><i class="fa fa-pencil"></i> Gestion utilisateurs</a></li>
+								<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
 								<?php
 								}
 								if($user->hasPermission("cook")){
 								?>
-								<li><a href="cook.php"><i class="fa fa-pencil"></i> Gestion du menu</a></li>
+								<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
 								<?php
 								}
 								if($user->hasPermission("receptionist")){
 								?>
-								<li><a href="receptionist.php"><i class="fa fa-pencil"></i> Gestion des reservation</a></li>
+								<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
 								<?php
 								}
 								?>
-								<li><a href="history.php"><i class="fa fa-pencil"></i> Historique des reservations</a></li>
+								<li><a href="history.php"><i class="fa fa-history"></i> Historique des reservations</a></li>
 								<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil </a></li>
 								<li><a href="logout.php"><i class="fa fa-power-off"></i> Déconnexion </a></li>
 							</ul>
@@ -480,23 +480,24 @@
 								<?php
 								if($user->hasPermission("admin")){
 								?>
-								<li><a href="control.php"><i class="fa fa-pencil"></i> Gestion utilisateurs</a></li>
+								<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
 								<?php
 								}
 								if($user->hasPermission("cook")){
 								?>
-								<li><a href="cook.php"><i class="fa fa-pencil"></i> gestion cuisine</a></li>
+								<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
 								<?php
 								}
 								if($user->hasPermission("receptionist")){
 								?>
-								<li><a href="receptionist.php"><i class="fa fa-pencil"></i> gestion reservation</a></li>
+								<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
 								<?php
 								}
 								?>
+								<li><a href="history.php"><i class="fa fa-history"></i> Historique des reservations</a></li>
 								<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil </a></li>
-								<li><a href="logout.php"><i class="fa fa-power-off"></i> Logout </a></li>
-							</ul><!-- class dropdown -->
+								<li><a href="logout.php"><i class="fa fa-power-off"></i> Déconnexion </a></li>
+							</ul>
 						</li><!-- class has-dropdown -->
 						<?php
 					}else{
