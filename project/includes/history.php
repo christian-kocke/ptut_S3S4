@@ -78,7 +78,7 @@ var tablehistorique = $("#tablehistorique").DataTable({
 		"type": "POST",
 		"dataType": "json",
 		"url": "response.php",
-		"data": { action : "display", table :"history", id: "<?php echo $user->data()->id; ?>"}
+		"data": { action: "display", table: "history", id: <?php echo $user->data()->id; ?>}
 	}
 });
 function decodeHtml(html) {

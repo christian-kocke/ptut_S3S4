@@ -15,36 +15,44 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
 }
 
 function displayItems($db){
-  switch(input::get("table")){
-    case "users": $table = "users"; break;
-    case "reservation": $table = "reservation"; break;
-    case "entree": $table = "entree"; break;
-    case "plat": $table = "plat"; break;
-    case "dessert": $table = "dessert"; break;
+  if(input::get("table") === "history"){
+    $client_id = input::get("id");
+    $select = "SELECT reservation.id, users.lastname, reservation.nbPerson, reservation.dateResa, reservation.schedule FROM reservation INNER JOIN users ON reservation.client_id = users.id WHERE client_id = ?";
+  }else{
+    switch(input::get("table")){
+      case "users": $table = "users"; break;
+      case "reservation": $table = "reservation"; break;
+      case "entree": $table = "entree"; break;
+      case "plat": $table = "plat"; break;
+      case "dessert": $table = "dessert"; break;
+    }
+    $select = "SELECT * FROM ".$table." ";
   }
-  $client_id = input::get("id");
-  $sth = $db->getPDO()->prepare("SELECT * FROM ".$table." ".(($client_id) ? "WHERE client_id = ?" : "")." ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
+  $sth = $db->getPDO()->prepare($select."ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
   $sth->bindParam(1, $client_id);
   $sth->execute();
   $rslt = $sth->fetchAll(PDO::FETCH_NUM);
   $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => ($_POST['search']['value'] === "") ? count($rslt) : 0, "aaData" => array());
   foreach ($rslt as $key => $item) {
-    switch($table){
-      case "users":
-        $item = array_exclude_keys($item, array(2, 3));
-        $actions = array(
-          "<button class='tiny edit' ><i class='fa fa-pencil'></i></button>",
-        );
-        break;
-      case "entree":
-      case "plat":
-      case "dessert":
-        $actions = array(
-          "<input type='checkbox' ".(($item[4]) ? "checked" : "")."/>",
-        );
-        array_pop($item);
-        break;
-      default: $actions = array();
+    if((isset($client_id))){
+      switch($table){
+        case "users":
+          $item = array_exclude_keys($item, array(2, 3));
+          $actions = array(
+            "<button class='tiny edit' ><i class='fa fa-pencil'></i></button>",
+          );
+          break;
+        case "entree":
+        case "plat":
+        case "dessert":
+          $actions = array(
+            "<input type='checkbox' ".(($item[4]) ? "checked" : "")."/>",
+          );
+          array_pop($item);
+          break;
+        default: $actions = array();
+      }
+      array_push($actions, "<button class='tiny alert remove' value=".$item[0]."><i class='fa fa-trash'></i></button>");
     }
     if($_POST['search']['value'] !== ""){
       $pattern = "/\b".escape(trim($_POST['search']['value']))."/i";
@@ -55,7 +63,7 @@ function displayItems($db){
         continue;
       }
     }
-    $return['aaData'][$key] = array_merge($item, $actions, array("<button class='tiny alert remove' value=".$item[0]."><i class='fa fa-trash'></i></button>")); 
+    $return['aaData'][$key] = array_merge($item, $actions); 
   }
   $return['aaData'] = array_slice($return['aaData'], $_POST['start'], $_POST['length']);
   echo json_encode($return);
