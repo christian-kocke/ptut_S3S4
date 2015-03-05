@@ -8,7 +8,16 @@ include_once "head.php";
 $db = db::getInstance();
 $bdd = $db->getPDO();
 ?>
-<!-- Table entré -->
+
+<ul class="tabs" data-tab>
+  <li class="tab-title active"><a href="#panel1">Entrée</a></li>
+  <li class="tab-title"><a href="#panel2">Plat</a></li>
+  <li class="tab-title"><a href="#panel3">Dessert</a></li>
+
+</ul>
+<div class="tabs-content">
+  <div class="content active" id="panel1">
+   <!-- Table entré -->
 <div class="row">
 	<h2 class="subheader text-center"> Entrée </h2>
 	<div class="large-12 large-centered column">
@@ -42,8 +51,9 @@ $bdd = $db->getPDO();
 	</div>
 </div>
 <!-- Fin tables entréé -->
-
-<!-- Table plat -->
+  </div>
+  <div class="content" id="panel2">
+   <!-- Table plat -->
 <div class="row">
 	<h2 class="subheader text-center"> Plat </h2>
 	<div class="large-12 large-centered column">
@@ -78,9 +88,9 @@ $bdd = $db->getPDO();
 </div>
 
 <!-- fin table plat-->
-
-
-<!-- Table dessert -->
+  </div>
+  <div class="content" id="panel3">
+   <!-- Table dessert -->
 <div class="row">
 	<h2 class="subheader text-center"> Dessert </h2>
 	<div class="large-12 large-centered column">
@@ -115,6 +125,17 @@ $bdd = $db->getPDO();
 </div>
 
 <!-- fin table dessert-->
+  </div>
+ 
+</div>
+
+
+
+
+
+
+
+
 
 	<div class="row">
 		<div class="small-12 columns">
