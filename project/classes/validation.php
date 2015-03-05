@@ -13,34 +13,34 @@ class validation {
             foreach($rules as $rule => $rule_value) {
                 $value = trim($source[$item]);
                 if($rule === 'required' && empty($value)) {
-                    $this->addError("{$items[$item]['error']} has to be specified");
+                    $this->addError("{$items[$item]['error']} doit être spécifé");
                 } else if(!empty($value)){
                     switch($rule) {
                         case 'min' :
                             if(strlen($value) < $rule_value) {
-                                $this->addError("{$items[$item]['error']} must be a minimum of {$rule_value} characters");
+                                $this->addError("{$items[$item]['error']} doit contenir au moins {$rule_value} characters");
                             }
                         break;
                         case 'max' :
                             if(strlen($value) > $rule_value) {
-                                $this->addError("{$items[$item]['error']} can't be more then {$rule_value} characters");
+                                $this->addError("{$items[$item]['error']} ne peut contenir plus de {$rule_value} characters");
                             }
                         break;
                         case 'matches' :
                             if($value != $source[$rule_value]) {
-                                $this->addError("{$items[$rule_value]['error']} must match {$items[$item]['error']}");
+                                $this->addError("{$items[$rule_value]['error']} doit être identique avec {$items[$item]['error']}");
                             }
                         break;
                         case 'unique' :
                             $check = $this->_db->get($rule_value, array($item, '=', $value));
                             if($check->count()) {
-                                $this->addError("{$items[$item]['error']} already exists");
+                                $this->addError("{$items[$item]['error']} existe déjà");
                             }
                         break;
                         case 'numeric' :
                             if(is_numeric($value) != $rule_value) {
                                 $error = ($rule_value === true) ? "has to" : "can't";
-                                $this->addError("{$items[$item]['error']} {$error} be composed only of numbers");
+                                $this->addError("{$items[$item]['error']} {$error} doit être composé uniquement de chiffre");
                             }
                         break;
                     }

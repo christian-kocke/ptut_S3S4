@@ -151,7 +151,17 @@ h2 {
 }
 
 /* FIN DATATABLES */
-
+/* ALERTS */
+.alert-box .close{
+	padding: 0.5rem 6px 10px;
+}
+.flash{
+	line-height:0.5em;
+}
+.alert-box{
+	padding: 0.875rem 1.5rem 0rem 0.875rem;
+}
+/* FIN ALERTS */
 /* SMALL SCREENS */
 @media only screen and (max-width: 64em) {
 	.top-bar {

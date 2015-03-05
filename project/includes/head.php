@@ -69,7 +69,6 @@
 										<p> Connectez-vous et profitez des avantages clients (points fidelité). </p>
 										<div class="row">
 											<form action="" method="post" data-abide>
-
 												<!-- LOGIN -->
 												<div class="small-12 medium-12 large-12 columns">
 													<div class="row collapse prefix-radius">
@@ -274,9 +273,18 @@
 						<div id="ConnectionModal" class="reveal-modal tiny" data-reveal>
 							<h2 class="subheader text-center"> Connexion </h2>
 							<div class="row">
+								<div id="mainAlert2" data-alert class="alert-box alert hide" tabindex="0" aria-live="assertive" role="dialogalert">
+							        <p class="flash"><?php
+							        if(session::exists('login')){
+							            foreach(session::flash('login') as $error){
+							                echo $error.'</br>';
+							            }
+							        }
+							        ?></p>
+							        <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+							    </div>
 								<form action="" method="post" data-abide>
 									<div class="row">	
-
 										<!-- LOGIN -->
 										<div class="small-12 medium-12 large-12 columns">
 											<div class="row collapse prefix-radius">

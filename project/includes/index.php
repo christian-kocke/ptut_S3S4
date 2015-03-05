@@ -7,8 +7,8 @@ if(input::exists()) { // test si la variable $_POST est set
     if(token::check(input::get('token_login'))) { // verifie que le token du formulaire est equivalent au token dans la variable session de l'utilisateur
         $validation = new validation(); // nouvelle instance de validation
         $validation = $validation->check($_POST, array( // validation des champs
-            'login_username' => array('required' => true, 'error' => 'the username', 'numeric' => false), // critères de validation du champ username
-            'login_password' => array('required' => true, 'error' => 'the password') // critères de validation du champ password
+            'login_username' => array('required' => true, 'error' => "le nom d'utilisateur", 'numeric' => false), // critères de validation du champ username
+            'login_password' => array('required' => true, 'error' => 'le mot de passe') // critères de validation du champ password
             ));
         if($validation->passed()) { // si les champs sont valider
             $user = new user(); // nouvelle instance utilisateur
@@ -18,7 +18,7 @@ if(input::exists()) { // test si la variable $_POST est set
             if($login) { // si la connection à été effectuer
               redirect::to('index.php'); // redirection a la page d'accueil
           } else {
-                session::flash('login', array('connection failed')); // sinon on notifie l'utilisateur que la connection a échoué
+                session::flash('login', array('Echec de la connection')); // sinon on notifie l'utilisateur que la connection a échoué
             }
         } else {
             session::flash('login', $validation->errors()); // si la validation n'a pas réussit on affiche les erreurs
@@ -33,7 +33,7 @@ if (input::exists()) { // test si la variable $_POST est set
         $validate = new validation(); // nouvelle instance de validation
         $validation = $validate->check($_POST, array( // validation des champs
             'username' => array( // critères de validation du champ username
-                'error' => 'the username',
+                'error' => "le nom d'utilisateur",
                 'required' => true,
                 'min' => 2,
                 'max' => 20,
@@ -41,35 +41,35 @@ if (input::exists()) { // test si la variable $_POST est set
                 'numeric' => false
                 ),
             'password' => array( // critères de validation du champ password n°1
-                'error' => 'the password',
+                'error' => "le mot de passe",
                 'required' => true,
                 'min' => 6,
                 ),
             'password2' => array( // critères de validation du champ password n°2
-                'error' => 'the second password',
+                'error' => "le second mot de passe",
                 'required' => true,
                 'matches' => 'password'
                 ),
             'firstname' => array( // critères de validation du champ firstname
-                'error' => 'the firstname',
+                'error' => "le prénom",
                 'required' => true,
                 'min' => 2,
                 'max' => 50
                 ),
             'lastname' => array( // critère de validation du champ lastname
-            	'error' => 'the lastname',
+            	'error' => "le nom",
             	'required' => true,
             	'min' => 2,
                 'max' => 50
                 ),
             'email' => array(
-            	'error' => "the email address",
+            	'error' => "l'email",
             	'required' => true,
             	'min' => 4,
             	'max' => 40,
                 ),
             'phone' => array(
-            	'error' => "the phone number",
+            	'error' => "le numéro de téléphone",
             	'required' => true,
             	'min' => 10,
             	'max' => 20,
@@ -109,16 +109,6 @@ $token = token::generate(); // on génère le token pour éviter les 'cross site
 include_once "head.php";
 ?>
 <!-- Alert d'erreur login -->
-<div id="mainAlert2" data-alert class="alert-box alert flash hide" tabindex="0" aria-live="assertive" role="dialogalert">
-    <p class="flash"><?php
-        if(session::exists('login')){
-            foreach(session::flash('login') as $error){
-                echo $error.'</br>';
-            }
-        }
-        ?></p>
-        <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
-    </div>
     <div class="small-12 large-12 columns background parts">
         <div class="row">
             <h3 class="subheader text-center t1"> Bienvenue sur </h3> 
