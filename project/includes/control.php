@@ -142,6 +142,7 @@ include_once 'head.php';
 $('#table tbody').on('click', '.remove', function () {
 	var data = {
 		"action": "delete",
+		"table": "users",
 		"id": $(this).val()
 	};
 	data = $.param(data);

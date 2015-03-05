@@ -250,12 +250,12 @@
 								}
 								if($user->hasPermission("cook")){
 								?>
-								<li><a href="cook.php"><i class="fa fa-pencil"></i> gestion cuisine</a></li>
+								<li><a href="cook.php"><i class="fa fa-pencil"></i> Gestion cuisine</a></li>
 								<?php
 								}
 								if($user->hasPermission("receptionist")){
 								?>
-								<li><a href="receptionist.php"><i class="fa fa-pencil"></i> gestion reservation</a></li>
+								<li><a href="receptionist.php"><i class="fa fa-pencil"></i> Gestion reservation</a></li>
 								<?php
 								}
 								?>

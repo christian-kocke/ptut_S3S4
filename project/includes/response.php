@@ -43,6 +43,7 @@ function displayItems($db){
         );
         array_pop($item);
         break;
+      default: $actions = array();
     }
     if($_POST['search']['value'] !== ""){
       $pattern = "/\b".escape(trim($_POST['search']['value']))."/i";

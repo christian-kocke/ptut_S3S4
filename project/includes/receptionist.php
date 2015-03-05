@@ -85,7 +85,7 @@ $result = $db->get("reservation");
                 "type": "POST",
                 "dataType": "json",
                 "url": "response.php",
-                "data": { action : "display_reservation" }
+                "data": { action : "display", table : "reservation" }
             }
         });
 
@@ -101,7 +101,8 @@ $result = $db->get("reservation");
                 $input.focus();
                 $input.on("change", function(){
                     var data = {
-                        "action": "update_reservation",
+                        "action": "update",
+                        "table": "reservation",
                         "id": id,
                         "header": headers[$(cell).index()],
                         "value": $(this).val()
@@ -131,7 +132,8 @@ $result = $db->get("reservation");
 
 $('#table tbody').on('click', '.remove', function () {
     var data = {
-        "action": "delete_reservation",
+        "action": "delete",
+        "table": "reservation",
         "id": $(this).val()
     };
     data = $.param(data);
