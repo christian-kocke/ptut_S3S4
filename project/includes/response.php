@@ -34,7 +34,7 @@ function displayItems($db){
   $rslt = $sth->fetchAll(PDO::FETCH_NUM);
   $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => ($_POST['search']['value'] === "") ? count($rslt) : 0, "aaData" => array());
   foreach ($rslt as $key => $item) {
-    if((isset($client_id))){
+    if(!(isset($client_id))){
       switch($table){
         case "users":
           $item = array_exclude_keys($item, array(2, 3));

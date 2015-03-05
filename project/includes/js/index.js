@@ -96,7 +96,7 @@ $(document).ready(function() {
             $(this).parent().addClass("hide");
         }else{
             $(this).parent().removeClass("hide");
-            $('#ConnectionModal').foundation('reveal','open');
+            $(this).parents(".reveal-modal").foundation('reveal','open');
         }
     });
 });

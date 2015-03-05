@@ -333,6 +333,16 @@
 
 						<div id="SubscribtionModal" class="reveal-modal medium" data-reveal>
 							<h2 class="subheader text-center"> Inscription </h2>
+							<div id="mainAlert3" data-alert class="alert-box alert hide" tabindex="0" aria-live="assertive" role="dialogalert">
+						        <p class="flash"><?php
+						        if(session::exists('register')){
+						            foreach(session::flash('register') as $error){
+						                echo $error.'</br>';
+						            }
+						        }
+						        ?></p>
+						        <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+						    </div>
 							<div class="row">
 								<form action="" method="post" data-abide>
 									
