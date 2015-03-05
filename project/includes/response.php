@@ -20,7 +20,7 @@ function displayItems($db){
     case "reservation": $table = "reservation"; break;
     case "entree": $table = "entree"; break;
     case "plat": $table = "plat"; break;
-    case "dessert": $table = "desert"; break;
+    case "dessert": $table = "dessert"; break;
   }
   $sth = $db->getPDO()->prepare("SELECT * FROM ".$table." ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
   $sth->bindParam(":table", $table);
