@@ -10,10 +10,8 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
       case "update": update($db); break;
       case "delete": deleteUser($db); break;
       case "display_reservation": displayReservation($db); break;
-      case "update_reservation": updateReservation($db); break;
       case "delete_reservation": deleteReservation($db); break;
       case "display_entree": displayentree($db); break;
-      case "update_entree": updateentree($db); break;
       case "delete_entree": deleteentree($db); break;
       case "add_entree": addentree($db); break;
     }
@@ -47,7 +45,7 @@ function displayUsers($db){
 }
 
 function update($db){
-  echo $db->update("users", input::get('id'), array(input::get('header') => input::get('value')));
+  echo $db->update(input::get("table"), input::get('id'), array(input::get('header') => input::get('value')));
 }
 
 function deleteUser($db){
@@ -83,9 +81,6 @@ function displayReservation($db){
 }
 
 
-function updateReservation($db){
-  echo $db->update("reservation", input::get('id'), array(input::get('header') => input::get('value')));
-}
 
 function deleteReservation($db){
   echo json_encode($db->delete("reservation", array("id", "=", input::get('id'))));
@@ -125,9 +120,7 @@ function displayentree($db){
 }
 
 
-function updateentree($db){
-  echo $db->update("entree", input::get('id'), array(input::get('header') => input::get('value')));
-}
+
 
 function deleteentree($db){
   echo json_encode($db->delete("entree", array("id", "=", input::get('id'))));
