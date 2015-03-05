@@ -26,7 +26,6 @@ $result = $db->get("reservation");
                         <th>Nombre de personne</th>
                         <th>Date</th>
                         <th>Heure</th>
-                        <th>ID client</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -38,7 +37,6 @@ $result = $db->get("reservation");
                         <th>Nombre de personne</th>
                         <th>Date</th>
                         <th>Heure</th>
-                        <th>ID client</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
