@@ -259,8 +259,9 @@
 								<?php
 								}
 								?>
+								<li><a href="history.php"><i class="fa fa-pencil"></i> Historique des reservation</a></li>
 								<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil </a></li>
-								<li><a href="logout.php"><i class="fa fa-power-off"></i> Logout </a></li>
+								<li><a href="logout.php"><i class="fa fa-power-off"></i> Déconnexion </a></li>
 							</ul>
 						</li>
 						<?php
