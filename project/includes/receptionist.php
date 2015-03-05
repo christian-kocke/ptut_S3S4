@@ -72,15 +72,8 @@ $result = $db->get("reservation");
             { "name": "dateResa",   "targets": 3 },
             { "name": "schedule",   "targets": 4 }
             ],
-            "oLanguage": {
-                "sEmptyTable": "Aucune reservation enregistrer",
-                "sInfo": "_TOTAL_ reservation(s) enregistrer (de _START_ à _END_)",
-                "sLengthMenu": 'Afficher <select>'+
-                '<option value="5">5</option>'+
-                '<option value="10">10</option>'+
-                '<option value="20">20</option>'+
-                '<option value="-1">All</option>'+
-                '</select> '
+            "language": {
+                "url": "assets/lang/french.json"
             },
             "bFilter": true,
             "iDisplayLength": 5,

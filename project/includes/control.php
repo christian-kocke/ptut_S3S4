@@ -81,16 +81,9 @@ include_once 'head.php';
 			{ "name": "joined",   "targets": 6 },
 			{ "name": "user_group",   "targets": 7 }
 			],
-			"oLanguage": {
-				"sEmptyTable": "Aucun utilisateur enregistrer",
-				"sInfo": "_TOTAL_ utilisateurs enregistrer (de _START_ à _END_)",
-				"sLengthMenu": 'Afficher <select>'+
-				'<option value="5">5</option>'+
-				'<option value="10">10</option>'+
-				'<option value="20">20</option>'+
-				'<option value="-1">All</option>'+
-				'</select> '
-			},
+			"language": {
+                "url": "assets/lang/french.json"
+            },
 			"bFilter": true,
 			"iDisplayLength": 5,
 			"bLengthChange": true,
