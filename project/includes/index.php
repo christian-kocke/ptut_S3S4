@@ -109,7 +109,7 @@ $token = token::generate(); // on génère le token pour éviter les 'cross site
 include_once "head.php";
 ?>
 <!-- Alert d'erreur login -->
-<div id="mainAlert2" data-alert class="alert-box alert flash" tabindex="0" aria-live="assertive" role="dialogalert">
+<div id="mainAlert2" data-alert class="alert-box alert flash hide" tabindex="0" aria-live="assertive" role="dialogalert">
     <p class="flash"><?php
         if(session::exists('login')){
             foreach(session::flash('login') as $error){
