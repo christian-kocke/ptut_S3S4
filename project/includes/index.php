@@ -109,9 +109,6 @@ $token = token::generate(); // on génère le token pour éviter les 'cross site
 
 include_once "head.php";
 ?>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 <!-- Alert d'erreur login -->
 <div class="small-12 large-12 columns background parts">
     <div class="row">
@@ -223,8 +220,6 @@ include_once "head.php";
 <?php
 include_once 'footer.php';
 ?>
-=======
->>>>>>> Stashed changes
     <!-- Alert success -->
     <div id="mainAlert4" data-alert class="alert-box success hide large-8 medium-7 small-6 large-centered medium-centered small-centered column" tabindex="0" aria-live="assertive" role="dialogalert">
         <p class="flash"><?php
@@ -325,5 +320,4 @@ include_once 'footer.php';
     <?php
     include_once 'footer.php';
     ?>
->>>>>>> origin/master
 
