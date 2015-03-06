@@ -34,20 +34,17 @@ function displayItems($db){
   $rslt = $sth->fetchAll(PDO::FETCH_NUM);
   $return = array("draw" => $_POST['draw'], "recordsTotal" => count($rslt), "recordsFiltered" => ($_POST['search']['value'] === "") ? count($rslt) : 0, "aaData" => array());
   foreach ($rslt as $key => $item) {
+    $actions = array();
     if(!(isset($client_id))){
       switch($table){
         case "users":
           $item = array_exclude_keys($item, array(2, 3));
-          $actions = array(
-            "<button class='tiny edit' ><i class='fa fa-pencil'></i></button>",
-          );
+          array_push($actions, "<button class='tiny edit' ><i class='fa fa-pencil'></i></button>");
           break;
         case "entree":
         case "plat":
         case "dessert":
-          $actions = array(
-            "<input type='checkbox' ".(($item[4]) ? "checked" : "")."/>",
-          );
+          array_push($actions,"<input type='checkbox' ".(($item[4]) ? "checked" : "")."/>");
           array_pop($item);
           break;
         default: $actions = array();
