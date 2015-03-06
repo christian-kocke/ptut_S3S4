@@ -104,8 +104,8 @@ h2 {
 	-o-background-size: cover; /* pour Opera */
 	background-size: cover; /* version standardisée */
 	position: relative;
-	-webkit-filter: grayscale(100%); 
-	filter: grayscale(100%);
+	/*-webkit-filter: grayscale(100%); 
+	filter: grayscale(100%);*/
 	margin: 0;
 	padding: 0;
 	width: 100%;
