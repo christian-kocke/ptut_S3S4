@@ -122,7 +122,7 @@ $bdd = $db->getPDO();
 
 					</tbody>
 				</table>
-				<button class="button success tiny" id="buttonplat" type=submit name=add1 ><i class='fa fa-plus fa-lg'></i></button>
+				<button class="button success tiny" id="buttondessert" type=submit name=add1 ><i class='fa fa-plus fa-lg'></i></button>
 			</div>
 		</div>
 
