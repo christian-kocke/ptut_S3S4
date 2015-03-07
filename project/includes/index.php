@@ -114,20 +114,45 @@ include_once "head.php";
 <!-- Alert d'erreur login -->
 <div id="mainAlert4" data-alert class="alert-box success hide large-7 medium-6 small-5 large-centred medium-centered small-centered column text-center" tabindex="0" aria-live="assertive" role="dialogalert">
     <p class="flash"><?php
-        if(session::exists('home')){
-            echo session::flash('home').'</br>';
-        }
-        ?></p>
+    if(session::exists('home')){
+        echo session::flash('home').'</br>';
+    }
+    ?></p>
     <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
 </div>
-<div class="small-12 large-12 columns background parts">
-    <div class="row">
-        <h3 class="subheader text-center t1"> Bienvenue sur </h3> 
-        <h1 class="subheader text-center t2"> Le Restaurant </h1>
-    </div><!-- class row -->
-    <div class="arrowContainer">
-        <a href="#suite"><img src="assets/img/down.png" alt="downarrow"></a>
-    </div><!-- class arrowContainer -->
+
+
+<div class="small-12 large-12 columns  parts">
+  <ul class="example-orbit" data-orbit>
+    <li>
+      <div class="small-12 large-12 columns background parts">
+      </div>
+
+  </li>
+  <li class="active">
+      <div class="small-12 large-12 columns fond2 parts"></div>
+  </li>
+  <li>
+      <div class="small-12 large-12 columns fond3 parts"></div>
+  </li>
+</ul>
+<ul data-orbit
+data-options="animation:slide;
+pause_on_hover:true;
+animation_speed:500;
+navigation_arrows:true;
+bullets:false;">
+</ul>
+
+
+
+<div class="small-12 large-12 text-center columns slider">
+  <h3 class="subheader text-center t1"> Bienvenue sur </h3> 
+  <h1 class="subheader text-center t2"> Le Restaurant </h1>
+</div><!-- class row -->
+<div class="arrowContainer">
+  <a href="#suite"><img src="assets/img/down.png" alt="downarrow"></a>
+</div><!-- class arrowContainer -->
 </div><!-- class small-12 large-12 columns background parts -->
 
 
@@ -135,8 +160,8 @@ include_once "head.php";
 
 <div class="row">
     <div class="small-12 large-12 columns menu exception" data-equalizer>
-     <h1 class="subheader text-center t2"> Le Menu </h1>
-     <div class="small-12 large-4 columns">
+        <h1 id="suite" class="subheader text-center t2"> Le Menu </h1>
+       <div class="small-12 large-4 columns">
 
         <?php
         $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');

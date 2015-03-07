@@ -1,12 +1,32 @@
 
 <footer>	
 
-	<div class="small-12 medium-12 large-12 columns footer">
-	</div>
+	<!--<div class="small-12 medium-12 large-12 columns footer">
+	</div>-->
 
 	<!-- SOCIAL NETWORKS -->
 	<div class="small-12 medium-12 large-12 footerBis columns" data-equalizer>
 		
+		
+
+		<div class="small-12 medium-12 large-4 columns" data-equalizer-watch>	
+			<div class="row collapse prefix-radius">
+				<div class="small-2 medium-2 large-2 columns">
+					<span class="prefix"><i class="fa fa-envelope-o"></i></span>
+				</div><!-- class small-2 medium-2 large-2 columns -->
+				<div class="small-8 medium-8 large-8 columns">
+					<input type="text" name="email-newsletter" placeholder="Email" />
+				</div><!-- class small-8 medium-8 large-8 columns -->
+				<div class="small-2 medium-2 large-2 columns">
+					<a href="#" class="button postfix"> Go </a>
+				</div><!-- class small-2 medium-2 large-2 columns -->
+			</div><!-- class row collapse prefix-radius -->
+		</div><!-- class small-12 medium-12 large-8 columns -->
+
+		<div class="small-12 medium-12 large-4 columns t2">
+			<p class="text-center"> ©Le Restaurant 2014 </p>
+		</div><!-- class small-12 medium-12 large-12 columns -->
+
 		<div class="small-12 medium-12 large-4 columns" data-equalizer-watch>
 			<!-- FACEBOOK -->
 			<div class="small-3 columns">
@@ -40,24 +60,6 @@
 				</span></a>
 			</div><!-- class small-3 columns -->
 		</div><!-- class small-12 medium-12 large-4 footer Bis columns -->
-
-		<div class="small-12 medium-12 large-4 columns" data-equalizer-watch>	
-			<div class="row collapse prefix-radius">
-				<div class="small-2 medium-2 large-2 columns">
-					<span class="prefix"><i class="fa fa-envelope-o"></i></span>
-				</div><!-- class small-2 medium-2 large-2 columns -->
-				<div class="small-8 medium-8 large-8 columns">
-					<input type="text" name="email-newsletter" placeholder="Email" />
-				</div><!-- class small-8 medium-8 large-8 columns -->
-				<div class="small-2 medium-2 large-2 columns">
-					<a href="#" class="button postfix"> Go </a>
-				</div><!-- class small-2 medium-2 large-2 columns -->
-			</div><!-- class row collapse prefix-radius -->
-		</div><!-- class small-12 medium-12 large-8 columns -->
-
-		<div class="small-12 medium-12 large-4 columns">
-			<p class="text-center"> ©Le Restaurant 2014 </p>
-		</div><!-- class small-12 medium-12 large-12 columns -->
 
 	</div><!-- small-12 medium-12 large-12 footerBis columns -->
 	

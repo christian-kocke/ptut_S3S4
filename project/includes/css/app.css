@@ -80,6 +80,20 @@ h2 {
 	-o-background-size: cover; /* pour Opera */
 	background-size: cover; /* version standardisée */
 }
+.fond2 {
+	background: url(../assets/img/fond.jpg) no-repeat center fixed; 
+	-webkit-background-size: cover; /* pour Chrome et Safari */
+	-moz-background-size: cover; /* pour Firefox */
+	-o-background-size: cover; /* pour Opera */
+	background-size: cover; /* version standardisée */
+}
+.fond3 {
+	background: url(../assets/img/fond3.jpg) no-repeat center fixed; 
+	-webkit-background-size: cover; /* pour Chrome et Safari */
+	-moz-background-size: cover; /* pour Firefox */
+	-o-background-size: cover; /* pour Opera */
+	background-size: cover; /* version standardisée */
+}
 .chef {
 	background: url(../assets/img/fond1.jpg) no-repeat center fixed; 
 	-webkit-background-size: cover; /* pour Chrome et Safari */
@@ -137,6 +151,15 @@ h2 {
 	text-align: center;
 	padding: 1em;
 }
+
+.slider {
+	position: absolute;
+	top : 0%;
+	width: 100%;
+	text-align: center;
+
+}
+
 #back-top {
 	position: fixed;
 	bottom: 20px;
