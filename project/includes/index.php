@@ -161,59 +161,59 @@ bullets:false;">
 <div class="row">
     <div class="small-12 large-12 columns menu exception" data-equalizer>
         <h1 id="suite" class="subheader text-center t2"> Le Menu </h1>
-       <div class="small-12 large-4 columns">
+        <div class="small-12 large-4 columns">
 
-        <?php
-        $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
+            <?php
+            $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
 
-        echo '<h2>Entrée</h2></br>';
-        while ($donnees = $reponse->fetch())
-        {
-            if($donnees['disponible']==1) {
-                echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+            echo '<h2>Entrée</h2></br>';
+            while ($donnees = $reponse->fetch())
+            {
+                if($donnees['disponible']==1) {
+                    echo '<strong>' .  $donnees['nom'] . '</strong>' . '<br />' . $donnees['ingredient']   . '<h4>' . $donnees['prix']  . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+                }
             }
-        }
-        $reponse->closeCursor();
+            $reponse->closeCursor();
 
-        ?>
-    </div>
-    <div class="small-12 large-4 columns">
-        <?php
+            ?>
+        </div>
+        <div class="small-12 large-4 columns">
+            <?php
 
-        $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
+            $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
 
-        echo '<h2>Plat</h2></br>';
-        while ($donnees = $reponse->fetch())
-        {
-            if($donnees['disponible']==1) {
-                echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+            echo '<h2>Plat</h2></br>';
+            while ($donnees = $reponse->fetch())
+            {
+                if($donnees['disponible']==1) {
+                    echo '<strong>' . $donnees['nom'] . '</strong> '. '<br />'  . $donnees['ingredient']  . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*' . '<br /> <br />';
+                }
             }
-        }
 
-        $reponse->closeCursor();
+            $reponse->closeCursor();
 
-        ?>
+            ?>
+        </div>
+        <div class="small-12 large-4 columns">
+            <?php
+
+
+
+            $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
+
+            echo '<h2>Dessert</h2></br>';
+            while ($donnees = $reponse->fetch())
+            {
+                if($donnees['disponible']==1) {
+                    echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
+                }
+            }	
+
+            $reponse->closeCursor();
+
+            ?>
+        </div>
     </div>
-    <div class="small-12 large-4 columns">
-        <?php
-
-
-
-        $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
-
-        echo '<h2>Dessert</h2></br>';
-        while ($donnees = $reponse->fetch())
-        {
-            if($donnees['disponible']==1) {
-                echo '<strong>' . $donnees['nom'] . '</strong>' . '<br />'  .  $donnees['ingredient']   . '<h4>' . $donnees['prix'] . ' €' . '</h4>' . '<br/>*'. '<br /> <br />';
-            }
-        }	
-
-        $reponse->closeCursor();
-
-        ?>
-    </div>
-</div>
 
 </div><!-- class small-12 large-12 columns menu parts -->
 
@@ -234,7 +234,7 @@ bullets:false;">
             <!-- DESCRIPTION CHEF -->
             <div class="small-12 large-4 columns">
                 <div class="panel text-center" data-equalizer-watch>
-                    <h3 class="subheader text-center"> Esclave Christian </h3>
+                    <h3 class="subheader text-center"> Cusinier Christian </h3>
                     <img src="assets/img/photochef.jpg" alt="View">
                     <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
                 </div><!-- class panel text-center -->
@@ -243,7 +243,7 @@ bullets:false;">
             <!-- DESCRIPTION CHEF -->
             <div class="small-12 large-4 columns">
                 <div class="panel text-center" data-equalizer-watch>
-                    <h3 class="subheader text-center"> Esclave Noé </h3>
+                    <h3 class="subheader text-center"> Serveur Noé </h3>
                     <img src="assets/img/photochef.jpg" alt="View">
                     <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
                 </div><!-- class panel text-center -->
@@ -252,6 +252,26 @@ bullets:false;">
         </div><!-- class small-12 large-12 columns -->
     </div><!-- class row -->
 </div><!-- class small-12 large-12 columns chef parts -->
+
+<div class="small-12 large-12 columns contact parts">
+    <h1 class="subheader text-center t2"> Contact </h1>
+    <div class="row">
+        <div class="small-12 large-6 columns">
+            <div class="panel text-center" >
+                <h2 class="subheader text-center"> Nous écrire </h1>
+            <form>
+                <input type="text" name="nom" placeholder="Nom"/>
+                <input type="text" name="email" placeholder="Email"/>
+                <input type="text" name="objet" placeholder="Objet"/>
+                <textarea placeholder="Message..."></textarea>
+                <button class="button">Envoyer</button>
+            </form>
+        </div>
+        </div>
+
+    </div>    
+</div>
+
 <?php
 include_once 'footer.php';
 ?>
