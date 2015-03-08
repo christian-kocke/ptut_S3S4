@@ -156,6 +156,11 @@ h2 {
 	text-shadow: #000000 1px 1px, #000000 -1px 1px, #000000 -1px -1px, #000000 1px -1px;
 	font-family:'Dancing', sans-serif;
 }
+.t3 {
+	color : white;
+	font-family:'Roboto', sans-serif;
+	font-weight: bold;
+}
 .arrowContainer {
 	position: absolute;
 	bottom:10%;

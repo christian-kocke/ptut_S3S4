@@ -1,8 +1,6 @@
 
 <footer>	
 
-	<!--<div class="small-12 medium-12 large-12 columns footer">
-	</div>-->
 
 	<!-- SOCIAL NETWORKS -->
 	<div class="small-12 medium-12 large-12 footerBis columns" data-equalizer>

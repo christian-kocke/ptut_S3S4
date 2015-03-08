@@ -223,7 +223,7 @@ bullets:false;">
             <h1 class="subheader text-center t2"> L'équipe du restaurant </h1>
 
             <!-- DESCRIPTION CHEF -->
-            <div class="small-12 large-4 columns">
+            <div class="small-12 large-4 columns t3">
                 <div class="panel text-center" data-equalizer-watch>
                     <h3 class="subheader text-center"> Chef Yann </h3>
                     <img src="assets/img/photochef.jpg" alt="View">
@@ -232,7 +232,7 @@ bullets:false;">
             </div><!-- class small-12 large-4 columns -->
 
             <!-- DESCRIPTION CHEF -->
-            <div class="small-12 large-4 columns">
+            <div class="small-12 large-4 columns t3">
                 <div class="panel text-center" data-equalizer-watch>
                     <h3 class="subheader text-center"> Cusinier Christian </h3>
                     <img src="assets/img/photochef.jpg" alt="View">
@@ -241,7 +241,7 @@ bullets:false;">
             </div><!-- class small-12 large-4 columns -->
 
             <!-- DESCRIPTION CHEF -->
-            <div class="small-12 large-4 columns">
+            <div class="small-12 large-4 columns t3">
                 <div class="panel text-center" data-equalizer-watch>
                     <h3 class="subheader text-center"> Serveur Noé </h3>
                     <img src="assets/img/photochef.jpg" alt="View">
@@ -253,26 +253,35 @@ bullets:false;">
     </div><!-- class row -->
 </div><!-- class small-12 large-12 columns chef parts -->
 
-<div class="small-12 large-12 columns contact parts">
+<div class="small-12 large-12 columns contact parts exception">
     <h1 class="subheader text-center t2"> Contact </h1>
-    <div class="row">
+    <div class="row" data-equalizer>
         <div class="small-12 large-6 columns">
-            <div class="panel text-center" >
-                <h2 class="subheader text-center"> Nous écrire </h1>
-            <form>
+        <div class="panel text-center " data-equalizer-watch >
+            <h2 class="subheader text-center t3"> Nous écrire </h2>
+            <form class="t3">
                 <input type="text" name="nom" placeholder="Nom"/>
                 <input type="text" name="email" placeholder="Email"/>
                 <input type="text" name="objet" placeholder="Objet"/>
-                <textarea placeholder="Message..."></textarea>
+                <textarea  rows="10" placeholder="Message..."></textarea>
                 <button class="button">Envoyer</button>
             </form>
         </div>
-        </div>
-
+    </div>
+    <div class="small-12 large-6 columns">
+        <div class="panel text-center" data-equalizer-watch>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11129.88006909465!2d4.873383729635559!3d45.7818106160032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x8f808af88cda1faa!2sIUT+LYON+1+-+Site+de+Villeurbanne+Doua!5e0!3m2!1sfr!2sfr!4v1425847203418" width="400" height="300" frameborder="0" style="border:0"></iframe>
+            <h3 class="subheader text-center t3">Horraire</h3>
+            <h5 class="header t3">Déjeuner : de 12h à 15h (tous les jours)</h5>
+            <h5 class="header t3">Dîner : de 19h à 20h (tous les jours)</h5>
+            <h3 class="subheader text-center t3">Service</h3>
+            <h5 class="header t3"> Climatisé , Terrasse, Wifi</h5>
+        </div>   
+        </div>     
     </div>    
 </div>
 
-<?php
-include_once 'footer.php';
-?>
+    <?php
+    include_once 'footer.php';
+    ?>
 
