@@ -10,6 +10,8 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
       case "update": updateItem($db); break;
       case "delete": deleteItem($db); break;
       case "insert": insertItem($db); break;
+      case "email": sendEmail(); break;
+      case "confirm": confirm($db); break;
     }
   }
 }
@@ -39,7 +41,6 @@ function displayItems($db){
       switch($table){
         case "users":
           $item = array_exclude_keys($item, array(2, 3));
-          array_push($actions, "<button class='tiny edit' ><i class='fa fa-pencil'></i></button>");
           break;
         case "entree":
         case "plat":
@@ -76,4 +77,28 @@ function deleteItem($db){
 
 function insertItem($db){
   echo $db->insert(input::get("table"), array("nom" => "", "ingredient" => "", "prix" => 0, "disponible" => 0));
+}
+
+// envoie d'un email
+function sendEmail(){
+  $sent = false; // on initialie la valeur a false
+  $from = filter_var(escape(trim($_POST['email'])), FILTER_VALIDATE_EMAIL); // on valide la valeur email (test si elle est conforme au format requis)
+  $to = "yann.verneau@hotmail.fr"; // on définie l'adresse a la quelle on veut envoyer l'email
+  $subject = escape(trim($_POST['subject'])); // on valide le sujet de l'email
+  $msg = str_replace("\n", "\r\n", str_replace("\n.", "\n..", escape(trim($_POST['message'])))); // on valide le message
+  if($from){ // si l'adresse de l'expediteur est conforme
+    $headers = 'From: '. $from . "\r\n";
+    $sent = mail($to, $subject, $msg, $headers); // on envoie l'email
+  }
+  echo json_encode($sent); // on retoure le boolean $sent (si l'email a bien été envoyer ou non)
+}
+
+function confirm($db){
+  switch(input::get('type')){
+    case "delete":
+      $user = $db->get(input::get("table"), array("id", "=", input::get("id")));
+      $return = "<div class='row'><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered text-center column'><h2>Confirmation</h2><p>Etes vous sur de vouloir supprimer l'utilisateur ".$user->first()->firstname." ".$user->first()->lastname."</p></div><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered large-centered text-center column'><ul class='button-group even-2'><li><a href='#' class='button secondary cancel'>Annuler</a></li><li><a href='#' class='button confirm'>Supprimer</a></li></ul></div></div><a class='close-reveal-modal'>&#215;</a>";
+      break;
+  }
+  echo json_encode($return, 64 | 256);
 }

@@ -103,3 +103,39 @@ $(document).ready(function() {
         }
     });
 });
+/* END ALERT HANDLING */
+/* EMAIL CONTACT */
+
+$(document).ready(function() {
+    var toId;
+    $(".emailForm").submit(function() {
+        var data = {
+          "action": "email"
+        };
+        data = $(this).serialize() + "&" + $.param(data);
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "response.php",
+          data: data,
+          success: function(data) {
+            var type;
+            if(data == true){
+                $(".flash").html("Votre email a été envoyé avec succès");
+                type = "success"
+            }else{
+                $(".flash").html("Il y a eu une erreur lors de l'envoie de l'email");
+                type = "alert"
+            }
+            $("#mainAlert4").toggleClass("hide success alert", false);
+            $("#mainAlert4").toggleClass(type, true)
+            clearTimeout(toId);
+            toId = setTimeout(function() {
+                $("#mainAlert4").toggleClass("hide", true)
+            }, 3000);
+            document.getElementById("emailForm").reset();
+          }
+        });
+        return false;
+    });
+});

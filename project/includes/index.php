@@ -259,12 +259,12 @@ bullets:false;">
         <div class="small-12 large-6 columns">
         <div class="panel text-center " data-equalizer-watch >
             <h2 class="subheader text-center t3"> Nous écrire </h2>
-            <form class="t3">
-                <input type="text" name="nom" placeholder="Nom"/>
-                <input type="text" name="email" placeholder="Email"/>
-                <input type="text" name="objet" placeholder="Objet"/>
-                <textarea  rows="10" placeholder="Message..."></textarea>
-                <button class="button">Envoyer</button>
+            <form class="t3 emailForm" id="emailForm">
+                <input type="text" name="name" placeholder="Nom"/>
+                <input type="email" name="email" placeholder="Email"/>
+                <input type="text" name="subject" placeholder="Objet"/>
+                <textarea  rows="10" name="message" placeholder="Message..."></textarea>
+                <button class="button"><i class="fa fa-paper-plane"></i> Envoyer</button>
             </form>
         </div>
     </div>

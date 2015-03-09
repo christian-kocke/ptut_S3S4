@@ -26,7 +26,6 @@ include_once 'head.php';
 						<th>Email</th>
 						<th>Date enregistrement</th>
 						<th>Groupe</th>
-						<th>Mot de passe</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -41,7 +40,6 @@ include_once 'head.php';
 						<th>Email</th>
 						<th>Date enregistrement</th>
 						<th>Groupe</th>
-						<th>Mot de passe</th>
 						<th>Action</th>
 					</tr>
 				</tfoot>
@@ -51,6 +49,8 @@ include_once 'head.php';
 				</tbody>
 			</table>
 		</div>
+	</div>
+	<div id="confirmModal" class="reveal-modal small" data-reveal>
 	</div>
 	<footer>
 		<div class="row">
@@ -66,107 +66,128 @@ include_once 'head.php';
 		<script src="js/vendor/fastclick.js"></script>
 		<script src="js/foundation.min.js"></script>
 		<script>
-		$(document).foundation();
+			$(document).foundation();
 
-		var table = $("#table").DataTable({
-			"columnDefs": [
-			{ className: "dt-body-center", "targets": "_all" },
-			{ "searchable": false, "targets": [8, 9]},
-			{ "name": "id",   "targets": 0 },
-			{ "name": "username",   "targets": 1 },
-			{ "name": "firstname",   "targets": 2 },
-			{ "name": "lastname",   "targets": 3 },
-			{ "name": "phone",   "targets": 4 },
-			{ "name": "email",   "targets": 5 },
-			{ "name": "joined",   "targets": 6 },
-			{ "name": "user_group",   "targets": 7 }
-			],
-			"language": {
-                "url": "assets/lang/french.json"
-            },
-			"bFilter": true,
-			"iDisplayLength": 5,
-			"bLengthChange": true,
-			"bPaginate": true,
-			"serverSide": true,
-			"processing": true,
-			"ajax" : {
-				"type": "POST",
-				"dataType": "json",
-				"url": "response.php",
-				"data": { action : "display", "table": "users"}
-			}
-		});
+			var table = $("#table").DataTable({
+				"columnDefs": [
+				{ className: "dt-body-center", "targets": "_all" },
+				{ "searchable": false, "targets": [8]},
+				{ "name": "id",   "targets": 0 },
+				{ "name": "username",   "targets": 1 },
+				{ "name": "firstname",   "targets": 2 },
+				{ "name": "lastname",   "targets": 3 },
+				{ "name": "phone",   "targets": 4 },
+				{ "name": "email",   "targets": 5 },
+				{ "name": "joined",   "targets": 6 },
+				{ "name": "user_group",   "targets": 7 }
+				],
+				"language": {
+					"url": "assets/lang/french.json"
+				},
+				"bFilter": true,
+				"iDisplayLength": 5,
+				"bLengthChange": true,
+				"bPaginate": true,
+				"serverSide": true,
+				"processing": true,
+				"ajax" : {
+					"type": "POST",
+					"dataType": "json",
+					"url": "response.php",
+					"data": { action : "display", "table": "users"}
+				}
+			});
 
-		$('#table tbody').on( 'click', 'td', function () {
-			var id = table.row(table.cell(this).index().row).data()[0];
-			var cellData = table.cell( this ).data();
-			var cell = table.cell(this).node();
-			var headers = ["id", "username", "firstname", "lastname", "phone", "email", "user_group"];
-			if(jQuery.inArray($(cell).index(), [0, 7, 8, 9]) === -1){
-				$(cell).html("<input type='text' value='' name='test'/>");
-				$(cell).children().val(cellData);
-				var $input = $(cell).find('input');
-				$input.focus();
-				$input.on("change", function(){
-					var data = {
-						"action": "update",
-						"table": "users",
-						"id": id,
-						"header": headers[$(cell).index()],
-						"value": $(this).val()
-					};
-					data = $.param(data);
-					console.log(data);
-					$.ajax({
-						type: "POST",
-						dataType: "json",
-						url: "response.php", 
-						data: data,
-						success: function(data) {
-							if(data){
-								table.draw();
-							}else{
-								alert("error");
+			$('#table tbody').on( 'click', 'td', function () {
+				var id = table.row(table.cell(this).index().row).data()[0];
+				var cellData = table.cell( this ).data();
+				var cell = table.cell(this).node();
+				var headers = ["id", "username", "firstname", "lastname", "phone", "email", "user_group"];
+				if(jQuery.inArray($(cell).index(), [0, 6, 8]) === -1){
+					$(cell).html("<input type='text' value='' name='test'/>");
+					$(cell).children().val(cellData);
+					var $input = $(cell).find('input');
+					$input.focus();
+					$input.on("change", function(){
+						var data = {
+							"action": "update",
+							"table": "users",
+							"id": id,
+							"header": headers[$(cell).index()],
+							"value": $(this).val()
+						};
+						data = $.param(data);
+						console.log(data);
+						$.ajax({
+							type: "POST",
+							dataType: "json",
+							url: "response.php", 
+							data: data,
+							success: function(data) {
+								if(data){
+									table.draw();
+								}else{
+									alert("error");
+								}
 							}
-						}
+						});
+						return false;
 					});
-					return false;
-				});
-				$input.on("focusout", function(){
-					$(this).parent().html($(this).val());
-				});
-			}
-		});
-
+					$input.on("focusout", function(){
+						$(this).parent().html($(this).val());
+					});
+				}
+			});
+var confirm;
 $('#table tbody').on('click', '.remove', function () {
+	confirm = $.Deferred();
 	var data = {
 		"action": "delete",
 		"table": "users",
 		"id": $(this).val()
 	};
 	data = $.param(data);
-	console.log(data);
-	$.ajax({
-		type: "POST",
-		dataType: "json",
-		url: "response.php", 
-		data: data,
-		success: function(data) {
-			if(data){
-				table.draw();
-			}else{
-				alert("error");
+	confirm.done(function(){
+		$.ajax({
+			type: "POST",
+			dataType: "json",
+			url: "response.php", 
+			data: data,
+			success: function(data) {
+				if(data){
+					table.draw();
+				}else{
+					alert("error");
+				}
 			}
+		});
+		$('#confirmModal').foundation('reveal', 'close');
+	});
+	confirm.fail(function(){
+		$('#confirmModal').foundation('reveal', 'close');
+	});
+	$("#confirmModal").foundation("reveal", "open", {
+		url: "response.php",
+		type: "POST",
+		data: {action: "confirm", id: $(this).val(), table: "users", type: "delete"},
+		dataFilter: function(data){
+			return data.replace(/\"/g, "");
+		},
+		success: function(){
+			var confirm = $.Deferred();
 		}
 	});
-	return false;
+});
+$("#confirmModal").on("click", '.confirm', function(){
+	confirm.resolve();
+});
+$("#confirmModal").on("click", '.cancel', function(){
+	confirm.reject();
 });
 </script>
 </body>
 </html>	
 </footer>
-
 <a class="exit-off-canvas"></a>
 </div>
 </div>
