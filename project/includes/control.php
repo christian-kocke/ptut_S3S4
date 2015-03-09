@@ -13,7 +13,7 @@ include_once 'head.php';
 </head>
 <body>
 	<div class="row">
-		<h2 class="subheader text-center"> Gestion des utilisateurs </h2>
+		<h2 class="subheader text-center titletable"> Gestion des utilisateurs </h2>
 		<div class="large-12 large-centered column">
 			<table id="table" class="row-border hover table display" cellspacing="0" width="100%">
 				<thead>

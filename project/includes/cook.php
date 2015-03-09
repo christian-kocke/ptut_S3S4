@@ -9,8 +9,8 @@ $db = db::getInstance();
 $bdd = $db->getPDO();
 ?>
 <div class="row">
-	<div class="large-12 large-centered column">
-		<ul class="tabs" data-tab>
+	<div class="large-5 large-centered column">
+		<ul class="tabs t3" data-tab>
 			<li class="tab-title active"><a href="#panel1">Entrée</a></li>
 			<li class="tab-title"><a href="#panel2">Plat</a></li>
 			<li class="tab-title"><a href="#panel3">Dessert</a></li>
@@ -21,7 +21,7 @@ $bdd = $db->getPDO();
 	<div class="content active" id="panel1">
 		<!-- Table entré -->
 		<div class="row">
-			<h2 class="subheader text-center"> Entrée </h2>
+			<h2 class="subheader text-center titletable"> Entrée </h2>
 			<div class="large-12 large-centered column">
 				<table id="tableentree" class="row-border hover table" cellspacing="0" width="100%">
 					<thead>
@@ -57,7 +57,7 @@ $bdd = $db->getPDO();
 	<div class="content" id="panel2">
 		<!-- Table plat -->
 		<div class="row">
-			<h2 class="subheader text-center"> Plat </h2>
+			<h2 class="subheader text-center titletable"> Plat </h2>
 			<div class="large-12 large-centered column">
 				<table id="tableplat" class="row-border hover table" cellspacing="0" width="100%">
 					<thead>
@@ -94,7 +94,7 @@ $bdd = $db->getPDO();
 	<div class="content" id="panel3">
 		<!-- Table dessert -->
 		<div class="row">
-			<h2 class="subheader text-center"> Dessert </h2>
+			<h2 class="subheader text-center titletable"> Dessert </h2>
 			<div class="large-12 large-centered column">
 				<table id="tabledessert" class="row-border hover table" cellspacing="0" width="100%">
 					<thead>

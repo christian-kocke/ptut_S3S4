@@ -40,9 +40,9 @@ if(input::exists()){
 include_once 'head.php';
 ?>
 <div class="row">
-	<div class="panel">
-		<h2 class="subheader text-center"> Profil </h2>
-		<form action="" method="post">
+	<div class="panel small-8 small-centered columns">
+		<h2 class="subheader text-center t3"> Profil </h2>
+		<form action="" method="post" class="t3">
 
 			<!-- USERNAME -->
 			<div class="small-12 columns">
