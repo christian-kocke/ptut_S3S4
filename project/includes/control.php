@@ -102,9 +102,9 @@ include_once 'head.php';
 				var id = table.row(table.cell(this).index().row).data()[0];
 				var cellData = table.cell( this ).data();
 				var cell = table.cell(this).node();
-				var headers = ["id", "username", "firstname", "lastname", "phone", "email", "user_group"];
+				var headers = ["id", "username", "firstname", "lastname", "phone", "email", "joined", "user_group"];
 				if(jQuery.inArray($(cell).index(), [0, 6, 8]) === -1){
-					$(cell).html("<input type='text' value='' name='test'/>");
+					$(cell).html("<input type='text' value='' name='update'/>");
 					$(cell).children().val(cellData);
 					var $input = $(cell).find('input');
 					$input.focus();
