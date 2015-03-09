@@ -94,11 +94,24 @@ function sendEmail(){
 }
 
 function confirm($db){
+  $values = $db->get(input::get("table"), array("id", "=", input::get("id")));
   switch(input::get('type')){
     case "delete":
-      $user = $db->get(input::get("table"), array("id", "=", input::get("id")));
-      $return = "<div class='row'><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered text-center column'><h2>Confirmation</h2><p>Etes vous sur de vouloir supprimer l'utilisateur ".$user->first()->firstname." ".$user->first()->lastname."</p></div><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered large-centered text-center column'><ul class='button-group even-2'><li><a href='#' class='button secondary cancel'>Annuler</a></li><li><a href='#' class='button confirm'>Supprimer</a></li></ul></div></div><a class='close-reveal-modal'>&#215;</a>";
-      break;
+      switch(input::get("table")){
+        case "users":
+          $msg = "<p>Etes vous sur de vouloir supprimer l'utilisateur <strong>".$values->first()->firstname." ".$values->first()->lastname."</strong></p>";
+          break;
+        case "entree":
+          $msg = "<p>Etes vous sur de vouloir supprimer l'entrée <strong>".$values->first()->nom."</strong></p>";
+          break;
+        case "plat":
+          $msg = "<p>Etes vous sur de vouloir supprimer le plat <strong>".$values->first()->nom."</strong></p>";
+          break;
+        case "dessert":
+          $msg = "<p>Etes vous sur de vouloir supprimer le dessert <strong>".$values->first()->nom."</strong></p>";
+          break;
+      }
   }
+  $return = "<div class='row'><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered text-center column'><h2>Confirmation</h2>".$msg."</div><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered large-centered text-center column'><ul class='button-group even-2'><li><a href='#' class='button secondary cancel'>Annuler</a></li><li><a href='#' class='button confirm'>Supprimer</a></li></ul></div></div><a class='close-reveal-modal'>&#215;</a>";
   echo json_encode($return, 64 | 256);
 }

@@ -6,8 +6,10 @@ if(!$user->hasPermission("admin")){
 }
 include_once 'head.php';
 ?>
-<!DOCTYPE html>
-<html>
+<div id="mainAlert4" data-alert class="alert-box success hide large-7 medium-6 small-5 large-centred medium-centered small-centered column text-center" tabindex="0" aria-live="assertive" role="dialogalert">
+	<p class="flash"></p>
+	<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+</div>
 <head>
 	<title>Control Panel</title>
 </head>
@@ -67,7 +69,7 @@ include_once 'head.php';
 		<script src="js/foundation.min.js"></script>
 		<script>
 			$(document).foundation();
-
+			var toId;
 			var table = $("#table").DataTable({
 				"columnDefs": [
 				{ className: "dt-body-center", "targets": "_all" },
@@ -125,10 +127,19 @@ include_once 'head.php';
 							data: data,
 							success: function(data) {
 								if(data){
+									$(".flash").html("Modification réussite !");
+									type = "success"
 									table.draw();
 								}else{
-									alert("error");
+									$(".flash").html("Erreur lors de la modification");
+									type = "alert"
 								}
+								$("#mainAlert4").toggleClass("hide success alert", false);
+								$("#mainAlert4").toggleClass(type, true)
+								clearTimeout(toId);
+								toId = setTimeout(function() {
+									$("#mainAlert4").toggleClass("hide", true)
+								}, 2000);
 							}
 						});
 						return false;
@@ -155,10 +166,19 @@ $('#table tbody').on('click', '.remove', function () {
 			data: data,
 			success: function(data) {
 				if(data){
+					$(".flash").html("Utilisateur supprimer !");
+					type = "success"
 					table.draw();
 				}else{
-					alert("error");
+					$(".flash").html("Erreur lors de la suppresion");
+					type = "alert"
 				}
+				$("#mainAlert4").toggleClass("hide success alert", false);
+				$("#mainAlert4").toggleClass(type, true)
+				clearTimeout(toId);
+				toId = setTimeout(function() {
+					$("#mainAlert4").toggleClass("hide", true)
+				}, 2000);
 			}
 		});
 		$('#confirmModal').foundation('reveal', 'close');

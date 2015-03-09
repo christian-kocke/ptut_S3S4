@@ -23,7 +23,7 @@ $bdd = $db->getPDO();
 		<div class="row">
 			<h2 class="subheader text-center titletable"> Entrée </h2>
 			<div class="large-12 large-centered column">
-				<table id="tableentree" class="row-border hover table" cellspacing="0" width="100%">
+				<table id="tableentree" class="row-border hover table" cellspacing="0" width="100%" name="entree">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -59,7 +59,7 @@ $bdd = $db->getPDO();
 		<div class="row">
 			<h2 class="subheader text-center titletable"> Plat </h2>
 			<div class="large-12 large-centered column">
-				<table id="tableplat" class="row-border hover table" cellspacing="0" width="100%">
+				<table id="tableplat" class="row-border hover table" cellspacing="0" width="100%" name="plat">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -96,7 +96,7 @@ $bdd = $db->getPDO();
 		<div class="row">
 			<h2 class="subheader text-center titletable"> Dessert </h2>
 			<div class="large-12 large-centered column">
-				<table id="tabledessert" class="row-border hover table" cellspacing="0" width="100%">
+				<table id="tabledessert" class="row-border hover table" cellspacing="0" width="100%" name="dessert">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -130,7 +130,8 @@ $bdd = $db->getPDO();
 	</div>
 
 </div>
-
+<!-- notification alert -->
+<div id="confirmModal" class="reveal-modal small" data-reveal></div>
 <div class="row">
 	<div class="small-12 columns">
 		<p class="text-center"> ©Le Restaurant 2014 </p>
@@ -206,7 +207,7 @@ $('#tableentree tbody').on( 'click', 'td', function () {
 			}
 		});
 	}
-	if(jQuery.inArray($(cell).index(), [0,4]) === -1){
+	if(jQuery.inArray($(cell).index(), [0,4,5]) === -1){
 		$(cell).html("<input type='text' value='' name='test'/>");
 		$(cell).children().val(decodeHtml(cellData));
 		var $input = $(cell).find('input');
@@ -241,29 +242,6 @@ $('#tableentree tbody').on( 'click', 'td', function () {
 	}
 });
 
-$('#tableentree tbody').on('click', '.remove', function () {
-	var data = {
-		"action": "delete",
-		"table": "entree",
-		"id": $(this).val()
-	};
-	data = $.param(data);
-	console.log(data);
-	$.ajax({
-		type: "POST",
-		dataType: "json",
-		url: "response.php", 
-		data: data,
-		success: function(data) {
-			if(data){
-				tableentree.draw();
-			}else{
-				alert("error");
-			}
-		}
-	});
-	return false;
-});
 
 $('#buttonentree').on('click', function () {
 	var data = {
@@ -350,7 +328,7 @@ $('#buttonentree').on('click', function () {
  			}
  		});
  	}
- 	if(jQuery.inArray($(cell).index(), [0,4]) === -1){
+ 	if(jQuery.inArray($(cell).index(), [0,4,5]) === -1){
  		$(cell).html("<input type='text' value='' name='test'/>");
  		$(cell).children().val(decodeHtml(cellData));
  		var $input = $(cell).find('input');
@@ -384,30 +362,6 @@ $('#buttonentree').on('click', function () {
  		});
  	}
  });
-
-$('#tableplat tbody').on('click', '.remove', function () {
-	var data = {
-		"action": "delete",
-		"table": "plat",
-		"id": $(this).val()
-	};
-	data = $.param(data);
-	console.log(data);
-	$.ajax({
-		type: "POST",
-		dataType: "json",
-		url: "response.php", 
-		data: data,
-		success: function(data) {
-			if(data){
-				tableplat.draw();
-			}else{
-				alert("error");
-			}
-		}
-	});
-	return false;
-});
 
 $('#buttonplat').on('click', function () {
 	var data = {
@@ -495,7 +449,7 @@ $('#buttonplat').on('click', function () {
  			}
  		});
  	}
- 	if(jQuery.inArray($(cell).index(), [0,4]) === -1){
+ 	if(jQuery.inArray($(cell).index(), [0,4,5]) === -1){
  		$(cell).html("<input type='text' value='' name='test'/>");
  		$(cell).children().val(decodeHtml(cellData));
  		var $input = $(cell).find('input');
@@ -530,29 +484,6 @@ $('#buttonplat').on('click', function () {
  	}
  });
 
-$('#tabledessert tbody').on('click', '.remove', function () {
-	var data = {
-		"action": "delete",
-		"table": "dessert",
-		"id": $(this).val()
-	};
-	data = $.param(data);
-	console.log(data);
-	$.ajax({
-		type: "POST",
-		dataType: "json",
-		url: "response.php", 
-		data: data,
-		success: function(data) {
-			if(data){
-				tabledessert.draw();
-			}else{
-				alert("error");
-			}
-		}
-	});
-	return false;
-});
 
 $('#buttondessert').on('click', function () {
 	var data = {
@@ -579,7 +510,58 @@ $('#buttondessert').on('click', function () {
 
 // fin script table desert
 
-
+// confirm 
+var confirm;
+$('table tbody').on('click', '.remove', function () {
+	console.log($(this).parents("table").attr("name"));
+	confirm = $.Deferred();
+	var table = $(this).parents("table").DataTable();
+	var tableName = $(this).parents("table").attr("name");
+	var data = {
+		"action": "delete",
+		"table": tableName,
+		"id": $(this).val()
+	};
+	data = $.param(data);
+	confirm.done(function(){
+		$.ajax({
+			type: "POST",
+			dataType: "json",
+			url: "response.php", 
+			data: data,
+			success: function(data) {
+				if(data){
+					
+					table.draw();
+				}else{
+					alert("error");
+				}
+			}
+		});
+		$('#confirmModal').foundation('reveal', 'close');
+	});
+	confirm.fail(function(){
+		$('#confirmModal').foundation('reveal', 'close');
+	});
+	$("#confirmModal").foundation("reveal", "open", {
+		url: "response.php",
+		type: "POST",
+		data: {action: "confirm", id: $(this).val(), table: tableName, type: "delete"},
+		dataFilter: function(data){
+			return data.replace(/\"/g, "");
+		},
+		success: function(){
+			var confirm = $.Deferred();
+		}
+	});
+});
+$("#confirmModal").on("click", '.confirm', function(){
+	confirm.resolve();
+});
+$("#confirmModal").on("click", '.cancel', function(){
+	confirm.reject();
+});
+// fin confirm
 </script>
 </section><!-- class main-section -->
 <a class="exit-off-canvas"></a>
