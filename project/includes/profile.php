@@ -45,12 +45,12 @@ include_once 'head.php';
 		<form action="" method="post" class="t3">
 
 			<!-- USERNAME -->
-			<div class="small-12 columns">
+			<div class="small-12 columns small-centered columns">
 				<div class="row">
-					<div class="small-2 columns">
-						<label for="username" class="right inline"> Login </label>
+					<div class="small-6 columns ">
+						<label for="username" class="right inline"> Login : </label>
 					</div><!-- class small-2 columns -->
-					<div class="small-10 columns">
+					<div class="small-6 columns">
 						<input type="text" name="username" id="username" value="<?php echo escape($user->data()->username); ?>"/>
 					</div><!-- class small-10 columns -->
 				</div><!-- class row -->
@@ -59,10 +59,10 @@ include_once 'head.php';
 			<!-- FIRSTNAME -->
 			<div class="small-12 columns">
 				<div class="row">
-					<div class="small-2 columns">
+					<div class="small-6 columns">
 						<label for="firstname" class="right inline"> Prénom : </label>
 					</div><!-- class small-2 columns -->
-					<div class="small-10 columns">
+					<div class="small-6 columns">
 						<input type="text" name="firstname" id="firstname" value="<?php echo escape($user->data()->firstname); ?>"/>
 					</div><!-- class small-10 columns -->
 				</div><!-- class row -->
@@ -71,10 +71,10 @@ include_once 'head.php';
 			<!-- LASTNAME -->
 			<div class="small-12 columns">
 				<div class="row">
-					<div class="small-2 columns">
+					<div class="small-6 columns">
 						<label for="lastname" class="right inline"> Nom : </label>
 					</div><!-- class small-2 columns -->
-					<div class="small-10 columns">
+					<div class="small-6 columns">
 						<input type="text" name="lastname" id="lastname" value="<?php echo escape($user->data()->lastname); ?>"/>
 					</div><!-- class small-10 columns -->
 				</div><!-- class row -->
@@ -83,10 +83,10 @@ include_once 'head.php';
 			<!-- PHONE -->
 			<div class="small-12 columns">
 				<div class="row">
-					<div class="small-2 columns">
+					<div class="small-6 columns">
 						<label for="tel" class="right inline"> Téléphone : </label>
 					</div><!-- class small-2 columns -->
-					<div class="small-10 columns">
+					<div class="small-6 columns">
 						<input type="tel" name="tel" id="tel" value="0<?php echo escape($user->data()->phone); ?>"/>
 					</div><!-- class small-10 columns -->
 				</div><!-- class row -->
@@ -95,11 +95,47 @@ include_once 'head.php';
 			<!-- EMAIL -->
 			<div class="small-12 columns">
 				<div class="row">
-					<div class="small-2 columns">
+					<div class="small-6 columns">
 						<label for="email" class="right inline"> Email : </label>
 					</div><!-- class small-2 columns -->
-					<div class="small-10 columns">
+					<div class="small-6 columns">
 						<input type="email" name="email" id="email" value="<?php echo escape($user->data()->email); ?>"/>
+					</div><!-- class small-10 columns -->
+				</div><!-- class row -->
+			</div><!-- class small-12 columns -->
+
+			<!-- ANCIEN PASSWORD -->
+			<div class="small-12 columns">
+				<div class="row">
+					<div class="small-6 columns">
+						<label for="password" class="right inline"> Ancien mot de passe : </label>
+					</div><!-- class small-2 columns -->
+					<div class="small-6 columns">
+						<input type="password" name="password" id="password" />
+					</div><!-- class small-10 columns -->
+				</div><!-- class row -->
+			</div><!-- class small-12 columns -->
+
+			<!-- NOUVEAU PASSWORD -->
+			<div class="small-12 columns">
+				<div class="row">
+					<div class="small-6 columns">
+						<label for="newpassword" class="right inline"> Nouveau mot de passe : </label>
+					</div><!-- class small-2 columns -->
+					<div class="small-6 columns">
+						<input type="password" name="newpassword" id="newpassword" />
+					</div><!-- class small-10 columns -->
+				</div><!-- class row -->
+			</div><!-- class small-12 columns -->
+
+			<!-- RETAPE NOUVEAU PASSWORD -->
+			<div class="small-12 columns">
+				<div class="row">
+					<div class="small-6 columns">
+						<label for="renewpassword" class="right inline"> Retaper mot de passe : </label>
+					</div><!-- class small-2 columns -->
+					<div class="small-6 columns">
+						<input type="password" name="renewpassword" id="renewpassword" />
 					</div><!-- class small-10 columns -->
 				</div><!-- class row -->
 			</div><!-- class small-12 columns -->
