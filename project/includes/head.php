@@ -2,7 +2,7 @@
 <html id="top">
 <head>
 	<meta charset="utf-8">
-	<meta name = "viewport" content = "width = device-width, initial-scale = 0.4, user-scalable = yes">
+	<meta name = "viewport" content = "width = device-width, initial-scale = 1, user-scalable = yes">
 	<link rel="stylesheet" href="css/foundation-datepicker.css">
 	<!-- INCLUDE FOUNDATION CSS -->
 	<link rel="stylesheet" href="css/foundation.css">
