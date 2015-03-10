@@ -12,6 +12,7 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
       case "insert": insertItem($db); break;
       case "email": sendEmail(); break;
       case "confirm": confirm($db); break;
+      case "changePassword": changePassword($db); break;
     }
   }
 }
@@ -114,4 +115,29 @@ function confirm($db){
   }
   $return = "<div class='row'><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered text-center column'><h2>Confirmation</h2>".$msg."</div><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered large-centered text-center column'><ul class='button-group even-2'><li><a href='#' class='button secondary cancel'>Annuler</a></li><li><a href='#' class='button confirm'>Supprimer</a></li></ul></div></div><a class='close-reveal-modal'>&#215;</a>";
   echo json_encode($return, 64 | 256);
+}
+
+function changePassword($db){
+  $user = $db->get(input::get("table"), array("id", "=", input::get("id")));
+  if(count($user) === 1){
+    if($user->first()->password == hash::generate(input::get("old"), $user->first()->salt)){
+      $validate = new validation();
+      $validation = $validate->check($_POST, array( // validation des champs
+        'new' => array('required' => true, 'error' => "le nouveau mot de passe", "min" => 8, "max" => 100)
+      ));
+      if($validation->passed()) { 
+        $salt = hash::salt(32);
+        $password = hash::generate(input::get("new"), $salt);
+        $rslt = $db->update(input::get("table"), input::get('id'), array("password" => $password, "salt" => $salt));
+        echo json_encode(array(true, " "));
+        return 0;
+      }
+      echo json_encode(array(false, $validation->errors()));
+      return 0;
+    }
+    echo json_encode(array(false, array("Le mot de passe est incorrect")));
+    return 0;
+  }
+  echo json_encode(array(false, array("Echec de la modification")));
+  return 0;
 }

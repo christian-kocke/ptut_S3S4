@@ -72,9 +72,9 @@
 <script src="js/vendor/fastclick.js"></script>
 <script src="js/foundation.min.js"></script>
 <script>
-$(document).foundation();
-$(document).foundation({
-	offcanvas : {
+	$(document).foundation();
+	$(document).foundation({
+		offcanvas : {
 					    // Sets method in which offcanvas opens.
 					    // [ move | overlap_single | overlap ]
 					    open_method: 'move', 
