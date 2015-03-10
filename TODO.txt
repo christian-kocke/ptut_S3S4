@@ -1,4 +1,3 @@
-confirmartion et erreur (datatables)
 ajout  modal cook
 faire toute la resa
 profil + update

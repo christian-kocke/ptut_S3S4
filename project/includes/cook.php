@@ -8,6 +8,11 @@ include_once "head.php";
 $db = db::getInstance();
 $bdd = $db->getPDO();
 ?>
+<div id="mainAlert4" data-alert class="alert-box success hide large-7 medium-6 small-5 large-centred medium-centered small-centered column text-center" tabindex="0" aria-live="assertive" role="dialogalert">
+	<p class="flash"></p>
+	<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+</div>
+
 <div class="row">
 	<div class="large-5 large-centered column">
 		<ul class="tabs t3" data-tab>
@@ -146,7 +151,7 @@ $bdd = $db->getPDO();
 <script src="js/foundation.min.js"></script>
 <script>
 $(document).foundation();
-
+var toId;
 // Script pour table entrée
 var tableentree = $("#tableentree").DataTable({
 	"columnDefs": [
@@ -200,10 +205,19 @@ $('#tableentree tbody').on( 'click', 'td', function () {
 			data: data,
 			success: function(data) {
 				if(data){
+					$(".flash").html("Modification réussite !");
+					type = "success"
 					tableentree.draw();
 				}else{
-					alert("error");
+					$(".flash").html("Erreur lors de la modification");
+					type = "alert"
 				}
+				$("#mainAlert4").toggleClass("hide success alert", false);
+				$("#mainAlert4").toggleClass(type, true)
+				clearTimeout(toId);
+				toId = setTimeout(function() {
+					$("#mainAlert4").toggleClass("hide", true)
+				}, 2000);
 			}
 		});
 	}
@@ -228,10 +242,19 @@ $('#tableentree tbody').on( 'click', 'td', function () {
 				data: data,
 				success: function(data) {
 					if(data){
+						$(".flash").html("Modification réussite !");
+						type = "success"
 						tableentree.draw();
 					}else{
-						alert("error");
+						$(".flash").html("Erreur lors de la modification");
+						type = "alert"
 					}
+					$("#mainAlert4").toggleClass("hide success alert", false);
+					$("#mainAlert4").toggleClass(type, true)
+					clearTimeout(toId);
+					toId = setTimeout(function() {
+						$("#mainAlert4").toggleClass("hide", true)
+					}, 2000);
 				}
 			});
 			return false;
@@ -257,10 +280,19 @@ $('#buttonentree').on('click', function () {
 		data: data,
 		success: function(data) {
 			if(data){
+				$(".flash").html("Insertion réussite !");
+				type = "success"
 				tableentree.draw();
 			}else{
-				alert("error");
+				$(".flash").html("Erreur lors de l'insertion");
+				type = "alert"
 			}
+			$("#mainAlert4").toggleClass("hide success alert", false);
+			$("#mainAlert4").toggleClass(type, true)
+			clearTimeout(toId);
+			toId = setTimeout(function() {
+				$("#mainAlert4").toggleClass("hide", true)
+			}, 2000);
 		}
 	});
 	return false;
@@ -321,10 +353,19 @@ $('#buttonentree').on('click', function () {
  			data: data,
  			success: function(data) {
  				if(data){
- 					tableplat.draw();
- 				}else{
- 					alert("error");
- 				}
+ 					$(".flash").html("Modification réussite !");
+						type = "success"
+						tableplat.draw();
+					}else{
+						$(".flash").html("Erreur lors de la modification");
+						type = "alert"
+					}
+					$("#mainAlert4").toggleClass("hide success alert", false);
+					$("#mainAlert4").toggleClass(type, true)
+					clearTimeout(toId);
+					toId = setTimeout(function() {
+						$("#mainAlert4").toggleClass("hide", true)
+					}, 2000);
  			}
  		});
  	}
@@ -349,10 +390,19 @@ $('#buttonentree').on('click', function () {
  				data: data,
  				success: function(data) {
  					if(data){
- 						tableplat.draw();
- 					}else{
- 						alert("error");
- 					}
+ 						$(".flash").html("Modification réussite !");
+						type = "success"
+						tableplat.draw();
+					}else{
+						$(".flash").html("Erreur lors de la modification");
+						type = "alert"
+					}
+					$("#mainAlert4").toggleClass("hide success alert", false);
+					$("#mainAlert4").toggleClass(type, true)
+					clearTimeout(toId);
+					toId = setTimeout(function() {
+						$("#mainAlert4").toggleClass("hide", true)
+					}, 2000);
  				}
  			});
  			return false;
@@ -377,10 +427,19 @@ $('#buttonplat').on('click', function () {
 		data: data,
 		success: function(data) {
 			if(data){
-				tableplat.draw();
-			}else{
-				alert("error");
-			}
+				$(".flash").html("Insertion réussite !");
+						type = "success"
+						tableplat.draw();
+					}else{
+						$(".flash").html("Erreur lors de l'insertion");
+						type = "alert"
+					}
+					$("#mainAlert4").toggleClass("hide success alert", false);
+					$("#mainAlert4").toggleClass(type, true)
+					clearTimeout(toId);
+					toId = setTimeout(function() {
+						$("#mainAlert4").toggleClass("hide", true)
+					}, 2000);
 		}
 	});
 	return false;
@@ -442,10 +501,19 @@ $('#buttonplat').on('click', function () {
  			data: data,
  			success: function(data) {
  				if(data){
- 					tabledessert.draw();
- 				}else{
- 					alert("error");
- 				}
+ 					$(".flash").html("Modification réussite !");
+						type = "success"
+						tabledessert.draw();
+					}else{
+						$(".flash").html("Erreur lors de la modification");
+						type = "alert"
+					}
+					$("#mainAlert4").toggleClass("hide success alert", false);
+					$("#mainAlert4").toggleClass(type, true)
+					clearTimeout(toId);
+					toId = setTimeout(function() {
+						$("#mainAlert4").toggleClass("hide", true)
+					}, 2000);
  			}
  		});
  	}
@@ -470,10 +538,19 @@ $('#buttonplat').on('click', function () {
  				data: data,
  				success: function(data) {
  					if(data){
- 						tabledessert.draw();
- 					}else{
- 						alert("error");
- 					}
+ 						$(".flash").html("Modification réussite !");
+						type = "success"
+						tabledessert.draw();
+					}else{
+						$(".flash").html("Erreur lors de la modification");
+						type = "alert"
+					}
+					$("#mainAlert4").toggleClass("hide success alert", false);
+					$("#mainAlert4").toggleClass(type, true)
+					clearTimeout(toId);
+					toId = setTimeout(function() {
+						$("#mainAlert4").toggleClass("hide", true)
+					}, 2000);
  				}
  			});
  			return false;
@@ -499,10 +576,19 @@ $('#buttondessert').on('click', function () {
 		data: data,
 		success: function(data) {
 			if(data){
-				tabledessert.draw();
-			}else{
-				alert("error");
-			}
+				$(".flash").html("Insertion réussite !");
+						type = "success"
+						tabledessert.draw();
+					}else{
+						$(".flash").html("Erreur lors de l'insertion");
+						type = "alert"
+					}
+					$("#mainAlert4").toggleClass("hide success alert", false);
+					$("#mainAlert4").toggleClass(type, true)
+					clearTimeout(toId);
+					toId = setTimeout(function() {
+						$("#mainAlert4").toggleClass("hide", true)
+					}, 2000);
 		}
 	});
 	return false;
@@ -531,11 +617,19 @@ $('table tbody').on('click', '.remove', function () {
 			data: data,
 			success: function(data) {
 				if(data){
-					
+					$(".flash").html("Supression réussite !");
+				type = "success"
 					table.draw();
 				}else{
-					alert("error");
+					$(".flash").html("Erreur lors de la supression");
+					type = "alert"
 				}
+				$("#mainAlert4").toggleClass("hide success alert", false);
+				$("#mainAlert4").toggleClass(type, true)
+				clearTimeout(toId);
+				toId = setTimeout(function() {
+					$("#mainAlert4").toggleClass("hide", true)
+				}, 2000);
 			}
 		});
 		$('#confirmModal').foundation('reveal', 'close');

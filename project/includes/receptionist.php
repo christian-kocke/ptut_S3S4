@@ -11,6 +11,10 @@ $result = $db->get("reservation");
 ?>
 
 <html>
+<div id="mainAlert4" data-alert class="alert-box success hide large-7 medium-6 small-5 large-centred medium-centered small-centered column text-center" tabindex="0" aria-live="assertive" role="dialogalert">
+    <p class="flash"></p>
+    <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+</div>
 <head>
 	<title>Chef de salles</title>
 </head>
@@ -62,7 +66,7 @@ $result = $db->get("reservation");
         <script src="js/foundation.min.js"></script>
         <script>
         $(document).foundation();
-
+        var toId;
         var table = $("#table").DataTable({
             "columnDefs": [
             { className: "dt-body-center", "targets": "_all" },
@@ -116,10 +120,19 @@ $result = $db->get("reservation");
                         data: data,
                         success: function(data) {
                             if(data){
+                                $(".flash").html("Modification réussite !");
+                                type = "success"
                                 table.draw();
                             }else{
-                                alert("error");
+                                $(".flash").html("Erreur lors de la modification");
+                                type = "alert"
                             }
+                            $("#mainAlert4").toggleClass("hide success alert", false);
+                                $("#mainAlert4").toggleClass(type, true)
+                                clearTimeout(toId);
+                                toId = setTimeout(function() {
+                                    $("#mainAlert4").toggleClass("hide", true)
+                                }, 2000);
                         }
                     });
                     return false;
@@ -145,10 +158,19 @@ $('#table tbody').on('click', '.remove', function () {
         data: data,
         success: function(data) {
             if(data){
+                $(".flash").html("Reservation supprimer !");
+                    type = "success"
                 table.draw();
             }else{
-                alert("error");
+                $(".flash").html("Erreur lors de la supression");
+                type = "alert"
             }
+            $("#mainAlert4").toggleClass("hide success alert", false);
+                $("#mainAlert4").toggleClass(type, true)
+                clearTimeout(toId);
+                toId = setTimeout(function() {
+                    $("#mainAlert4").toggleClass("hide", true)
+                }, 2000);
         }
     });
     return false;
