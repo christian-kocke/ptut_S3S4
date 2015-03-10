@@ -257,16 +257,16 @@ include_once "head.php";
                     <button class="button"><i class="fa fa-paper-plane"></i> Envoyer</button>
                 </form>
             </div>
-            <div class="small-12 large-6 columns">
-                <div class="panel text-center" data-equalizer-watch>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11129.88006909465!2d4.873383729635559!3d45.7818106160032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x8f808af88cda1faa!2sIUT+LYON+1+-+Site+de+Villeurbanne+Doua!5e0!3m2!1sfr!2sfr!4v1425847203418" width="400" height="300" frameborder="0" style="border:0"></iframe>
-                    <h3 class="subheader text-center t3">Horraire</h3>
-                    <h5 class="header t3">Déjeuner : de 12h à 15h (tous les jours)</h5>
-                    <h5 class="header t3">Dîner : de 19h à 20h (tous les jours)</h5>
-                    <h3 class="subheader text-center t3">Service</h3>
-                    <h5 class="header t3"> Climatisé , Terrasse, Wifi</h5>
-                </div>   
-            </div>     
+        </div>
+        <div class="small-12 large-6 columns">
+            <div class="panel text-center" data-equalizer-watch>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11129.88006909465!2d4.873383729635559!3d45.7818106160032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x8f808af88cda1faa!2sIUT+LYON+1+-+Site+de+Villeurbanne+Doua!5e0!3m2!1sfr!2sfr!4v1425847203418" width="400" height="300" frameborder="0" style="border:0"></iframe>
+                <h3 class="subheader text-center t3">Horraire</h3>
+                <h5 class="header t3">Déjeuner : de 12h à 15h (tous les jours)</h5>
+                <h5 class="header t3">Dîner : de 19h à 20h (tous les jours)</h5>
+                <h3 class="subheader text-center t3">Service</h3>
+                <h5 class="header t3"> Climatisé , Terrasse, Wifi</h5>
+            </div>       
         </div>    
     </div>
 
