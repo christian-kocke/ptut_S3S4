@@ -46,8 +46,8 @@ include_once 'head.php';
 
 <div class="row t3">
 	<ul class="tabs vertical" data-tab>
-		<li class="tab-title "><a href="#panel2">Information du profil</a></li>
-		<li class="tab-title active"><a href="#panel1">Changer son mot de passe</a></li>
+		<li class="tab-title active"><a href="#panel2">Information du profil</a></li>
+		<li class="tab-title "><a href="#panel1">Changer son mot de passe</a></li>
 	</ul>
 
 
