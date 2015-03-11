@@ -7,38 +7,9 @@ if(!$user->isLoggedIn()){
 	redirect::to('index.php');
 }
 
-if(input::exists()){
-	if(token::check(input::get('token'))){
-		$validate = new validation();
-		$validation = $validate->check('$_POST', array(
-			'name' => array(
-				'error' => 'new name',
-				'required' => true,
-				'max' => 50
-				)
-			));
-
-		if($validation->passed()){
-			try{
-				$user->update(array(
-					'name' => input::get('name')
-					));
-				session::flash('home', 'Your name has been updated successfuly');
-				redirect::to('index.php');
-
-			}catch(Exception $e){
-				die($e->getMessage());
-			}
-			
-		}else{
-			foreach ($validation->errors() as $error) {
-				echo $error, '</br>';
-			}
-		}
-	}
-}
 include_once 'head.php';
 ?>
+<div class="loading hide"></div>
 <div id="mainAlert4" data-alert class="alert-box success hide large-7 medium-6 small-5 large-centred medium-centered small-centered column text-center" tabindex="0" aria-live="assertive" role="dialogalert">
 	<p class="flash"></p>
 	<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
@@ -55,55 +26,54 @@ include_once 'head.php';
 	<div class="tabs-content">
 		<div class="content " id="panel1">
 			<div class="row">
-			<div class="small-6 small-centered column panel">
-				<h2 class="subheader text-center t3"> Mot de passe </h2>
-				<form action="" method="post" class="passwordForm t3" id="passwordForm">
-					<!-- ANCIEN PASSWORD -->
-					<div class="small-12 columns">
-						<div class="row">
-							<div class="small-6 columns">
-								<label for="password" class="right inline"> Ancien mot de passe : </label>
-							</div><!-- class small-2 columns -->
-							<div class="small-6 columns">
-								<input type="password" name="password" id="password" />
-							</div><!-- class small-10 columns -->
-						</div><!-- class row -->
-					</div><!-- class small-12 columns -->
+				<div class="small-6 small-centered column panel">
+					<h2 class="subheader text-center t3"> Mot de passe </h2>
+					<form action="" method="post" class="passwordForm t3" id="passwordForm">
+						<!-- ANCIEN PASSWORD -->
+						<div class="small-12 columns">
+							<div class="row">
+								<div class="small-6 columns">
+									<label for="password" class="right inline"> Ancien mot de passe : </label>
+								</div><!-- class small-2 columns -->
+								<div class="small-6 columns">
+									<input type="password" name="password" id="password" />
+								</div><!-- class small-10 columns -->
+							</div><!-- class row -->
+						</div><!-- class small-12 columns -->
 
-					<!-- NOUVEAU PASSWORD -->
-					<div class="small-12 columns">
-						<div class="row">
-							<div class="small-6 columns">
-								<label for="newpassword" class="right inline"> Nouveau mot de passe : </label>
-							</div><!-- class small-2 columns -->
-							<div class="small-6 columns">
-								<input type="password" name="newpassword" id="newpassword" />
-							</div><!-- class small-10 columns -->
-						</div><!-- class row -->
-					</div><!-- class small-12 columns -->
+						<!-- NOUVEAU PASSWORD -->
+						<div class="small-12 columns">
+							<div class="row">
+								<div class="small-6 columns">
+									<label for="newpassword" class="right inline"> Nouveau mot de passe : </label>
+								</div><!-- class small-2 columns -->
+								<div class="small-6 columns">
+									<input type="password" name="newpassword" id="newpassword" />
+								</div><!-- class small-10 columns -->
+							</div><!-- class row -->
+						</div><!-- class small-12 columns -->
 
-					<!-- RETAPE NOUVEAU PASSWORD -->
-					<div class="small-12 columns">
-						<div class="row">
-							<div class="small-6 columns">
-								<label for="renewpassword" class="right inline"> Retaper mot de passe : </label>
-							</div><!-- class small-2 columns -->
-							<div class="small-6 columns">
-								<input type="password" name="renewpassword" id="renewpassword" />
-							</div><!-- class small-10 columns -->
-						</div><!-- class row -->
-					</div><!-- class small-12 columns -->
+						<!-- RETAPE NOUVEAU PASSWORD -->
+						<div class="small-12 columns">
+							<div class="row">
+								<div class="small-6 columns">
+									<label for="renewpassword" class="right inline"> Retaper mot de passe : </label>
+								</div><!-- class small-2 columns -->
+								<div class="small-6 columns">
+									<input type="password" name="renewpassword" id="renewpassword" />
+								</div><!-- class small-10 columns -->
+							</div><!-- class row -->
+						</div><!-- class small-12 columns -->
 
-					<!-- UPDATE -->
-					<div class="row">
-						<div class="small-12 columns text-center">
-							<input type="hidden" name="token" value="<?php echo token::generate(); ?>"/>
-							<button class="button radius" type="submit" value="<?php echo $user->data()->id; ?>" > Update </button>
-						</div><!-- class small-12 columns text-center -->
-					</div><!-- class row -->
-				</form>
+						<!-- UPDATE -->
+						<div class="row">
+							<div class="small-12 columns text-center">
+								<button class="button radius" type="submit" value="<?php echo $user->data()->id; ?>" > Update </button>
+							</div><!-- class small-12 columns text-center -->
+						</div><!-- class row -->
+					</form>
+				</div>
 			</div>
-		</div>
 		</div>
 
 
@@ -111,7 +81,7 @@ include_once 'head.php';
 			<div class="row">
 				<div class="small-6 small-centered columns panel">
 					<h2 class="subheader text-center t3"> Profil </h2>
-					<form action="" method="post" class="t3">
+					<form action="" method="post" class="t3 infoForm">
 						<!-- USERNAME -->
 						<div class="small-12 columns">
 							<div class="row">
@@ -119,7 +89,7 @@ include_once 'head.php';
 									<label for="username" class="right inline"> Login : </label>
 								</div><!-- class small-2 columns -->
 								<div class="small-8 columns">
-									<input type="text" name="username" id="username" value="<?php echo escape($user->data()->username); ?>"/>
+									<input type="text" name="username" id="username" value=<?php echo escape($user->data()->username); ?> />
 								</div><!-- class small-10 columns -->
 							</div><!-- class row -->
 						</div><!-- class small-12 columns -->
@@ -175,8 +145,7 @@ include_once 'head.php';
 						<!-- UPDATE -->
 						<div class="row">
 							<div class="small-12 columns text-center">
-								<input type="hidden" name="token" value="<?php echo token::generate(); ?>"/>
-								<button class="button radius" type="submit" value="<?php echo $user->data()->id; ?>"> Update </button>
+								<button class="button radius" type="submit" value="<?php echo $user->data()->id; ?>" > Update </button>
 							</div><!-- class small-12 columns text-center -->
 						</div><!-- class row -->
 
@@ -262,9 +231,9 @@ include_once 'head.php';
 <script src="js/vendor/fastclick.js"></script>
 <script src="js/foundation.min.js"></script>
 <script>
-$(document).foundation();
-$(document).foundation({
-	offcanvas : {
+	$(document).foundation();
+	$(document).foundation({
+		offcanvas : {
 		    // Sets method in which offcanvas opens.
 		    // [ move | overlap_single | overlap ]
 		    open_method: 'move', 
@@ -273,46 +242,111 @@ $(document).foundation({
 		    close_on_click : true
 		}
 	});
-var toId;
-$(".passwordForm").on("submit", function(){
-	if($(".passwordForm :input[name=newpassword]").val() === $(".passwordForm :input[name=renewpassword]").val()){
-		var data = {
-			"action": "changePassword",
-			"table": "users",
-			"id": $(".passwordForm :button[type=submit]").val(),
-			"old": $(".passwordForm :input[name=password]").val(),
-			"new": $(".passwordForm :input[name=newpassword]").val()
-		};
-		data = $.param(data);
-		$.ajax({
-			type: "POST",
-			dataType: "json",
-			url: "response.php", 
-			data: data,
-			success: function(data) {
-				console.log("ok");
-				if(data[0]){
-					$(".flash").html("Le mot de passe a été modifier !");
-					type = "success"
-					document.getElementById("passwordForm").reset();
-				}else{
-					$(".flash").html("");
-					for(i = 0; i < data[1].length; i++){
-						$(".flash").append(data[1][i]+"</br>");
+	var toId;
+	var token;
+	$(".passwordForm").on("submit", function(){
+		var jqxhr = generateToken();
+		jqxhr.done(function(){
+			$.post("response.php", {action: "tokenCheck", token: token}, function(data){
+				if(data){
+					if($(".passwordForm :input[name=newpassword]").val() === $(".passwordForm :input[name=renewpassword]").val()){
+						var data = {
+							"action": "changePassword",
+							"table": "users",
+							"id": $(".passwordForm :button[type=submit]").val(),
+							"old": $(".passwordForm :input[name=password]").val(),
+							"new": $(".passwordForm :input[name=newpassword]").val()
+						};
+						data = $.param(data);
+						$.ajax({
+							type: "POST",
+							dataType: "json",
+							url: "response.php", 
+							data: data,
+							success: function(data) {
+								if(data[0]){
+									$(".flash").html("Le mot de passe a été modifier !");
+									type = "success"
+									document.getElementById("passwordForm").reset();
+								}else{
+									$(".flash").html("");
+									for(i = 0; i < data[1].length; i++){
+										$(".flash").append(data[1][i]+"</br>");
+									}
+									type = "alert"
+								}
+								$("#mainAlert4").toggleClass("hide success alert", false);
+								$("#mainAlert4").toggleClass(type, true)
+								clearTimeout(toId);
+								toId = setTimeout(function() {
+									$("#mainAlert4").toggleClass("hide", true)
+								}, 2000);
+							}
+						});
 					}
-					type = "alert"
 				}
-				$("#mainAlert4").toggleClass("hide success alert", false);
-				$("#mainAlert4").toggleClass(type, true)
-				clearTimeout(toId);
-				toId = setTimeout(function() {
-					$("#mainAlert4").toggleClass("hide", true)
-				}, 2000);
-			}
+			});
 		});
-	}
 	return false;
+	});
+
+$(".infoForm").on("submit", function(){
+	var jqxhr = generateToken();
+	jqxhr.done(function(){
+		$.post("response.php", {action: "tokenCheck", token: token}, function(data){
+			if(data){
+				var $fields = $(".infoForm input");
+				var isValid;
+				$fields.each(function() {
+					if (!$.trim($(this).val())) {
+						isValid = false;
+					}
+				});
+				if(isValid != false){
+					var data = {
+						"action": "changeInfo",
+						"table": "users",
+						"id": $(".infoForm :button[type=submit]").val()
+					};
+					data = $(".infoForm").serialize() + "&" + $.param(data);
+					$.post("response.php", data, function(data){
+						if(data[0]){
+							$(".flash").html("Vos informations on été modifier !");
+							type = "success"
+						}else{
+							$(".flash").html("");
+							for(i = 0; i < data[1].length; i++){
+								$(".flash").append(data[1][i]+"</br>");
+							}
+							type = "alert";
+						}
+						$("#mainAlert4").toggleClass("hide success alert", false);
+						$("#mainAlert4").toggleClass(type, true)
+						clearTimeout(toId);
+						toId = setTimeout(function() {
+							$("#mainAlert4").toggleClass("hide", true)
+						}, 2000);
+					}, "json");
+				}
+			}
+		}, "json");
 });
+return false;
+});
+
+function generateToken(){
+	return $.post("response.php", {action: "tokenGenerate"}, function(data){setToken(data);}, "json");
+}
+function setToken(data){
+	token = data;
+}
+
+$( document ).ajaxSend(function(){
+	$(".loading").toggleClass("hide");
+})
+$( document ).ajaxComplete(function(){
+	$(".loading").toggleClass("hide");
+})
 </script>
 </section><!-- class main-section -->
 <a class="exit-off-canvas"></a>

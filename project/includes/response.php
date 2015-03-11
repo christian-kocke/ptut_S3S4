@@ -13,6 +13,9 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
       case "email": sendEmail(); break;
       case "confirm": confirm($db); break;
       case "changePassword": changePassword($db); break;
+      case "changeInfo": changeInfo($db); break;
+      case "tokenCheck": tokenCheck(); break;
+      case "tokenGenerate": tokenGenerate(); break;
     }
   }
 }
@@ -41,14 +44,14 @@ function displayItems($db){
     if(!(isset($client_id))){
       switch($table){
         case "users":
-          $item = array_exclude_keys($item, array(2, 3));
-          break;
+        $item = array_exclude_keys($item, array(2, 3));
+        break;
         case "entree":
         case "plat":
         case "dessert":
-          array_push($actions,"<input type='checkbox' ".(($item[4]) ? "checked" : "")."/>");
-          array_pop($item);
-          break;
+        array_push($actions,"<input type='checkbox' ".(($item[4]) ? "checked" : "")."/>");
+        array_pop($item);
+        break;
         default: $actions = array();
       }
       array_push($actions, "<button class='tiny alert remove' value=".$item[0]."><i class='fa fa-trash'></i></button>");
@@ -88,7 +91,7 @@ function sendEmail(){
   $subject = escape(trim($_POST['subject'])); // on valide le sujet de l'email
   $msg = str_replace("\n", "\r\n", str_replace("\n.", "\n..", escape(trim($_POST['message'])))); // on valide le message
   if($from){ // si l'adresse de l'expediteur est conforme
-    $headers = 'From: '. $from . "\r\n";
+  $headers = 'From: '. $from . "\r\n";
     $sent = mail($to, $subject, $msg, $headers); // on envoie l'email
   }
   echo json_encode($sent); // on retoure le boolean $sent (si l'email a bien été envoyer ou non)
@@ -98,20 +101,20 @@ function confirm($db){
   $values = $db->get(input::get("table"), array("id", "=", input::get("id")));
   switch(input::get('type')){
     case "delete":
-      switch(input::get("table")){
-        case "users":
-          $msg = "<p>Etes vous sur de vouloir supprimer l'utilisateur <strong>".$values->first()->firstname." ".$values->first()->lastname."</strong></p>";
-          break;
-        case "entree":
-          $msg = "<p>Etes vous sur de vouloir supprimer l'entrée <strong>".$values->first()->nom."</strong></p>";
-          break;
-        case "plat":
-          $msg = "<p>Etes vous sur de vouloir supprimer le plat <strong>".$values->first()->nom."</strong></p>";
-          break;
-        case "dessert":
-          $msg = "<p>Etes vous sur de vouloir supprimer le dessert <strong>".$values->first()->nom."</strong></p>";
-          break;
-      }
+    switch(input::get("table")){
+      case "users":
+      $msg = "<p>Etes vous sur de vouloir supprimer l'utilisateur <strong>".$values->first()->firstname." ".$values->first()->lastname."</strong></p>";
+      break;
+      case "entree":
+      $msg = "<p>Etes vous sur de vouloir supprimer l'entrée <strong>".$values->first()->nom."</strong></p>";
+      break;
+      case "plat":
+      $msg = "<p>Etes vous sur de vouloir supprimer le plat <strong>".$values->first()->nom."</strong></p>";
+      break;
+      case "dessert":
+      $msg = "<p>Etes vous sur de vouloir supprimer le dessert <strong>".$values->first()->nom."</strong></p>";
+      break;
+    }
   }
   $return = "<div class='row'><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered text-center column'><h2>Confirmation</h2>".$msg."</div><div class='large-12 medium-12 small-12 small-centered medium-centered large-centered large-centered text-center column'><ul class='button-group even-2'><li><a href='#' class='button secondary cancel'>Annuler</a></li><li><a href='#' class='button confirm'>Supprimer</a></li></ul></div></div><a class='close-reveal-modal'>&#215;</a>";
   echo json_encode($return, 64 | 256);
@@ -124,12 +127,12 @@ function changePassword($db){
       $validate = new validation();
       $validation = $validate->check($_POST, array( // validation des champs
         'new' => array('required' => true, 'error' => "le nouveau mot de passe", "min" => 8, "max" => 100)
-      ));
+        ));
       if($validation->passed()) { 
         $salt = hash::salt(32);
         $password = hash::generate(input::get("new"), $salt);
         $rslt = $db->update(input::get("table"), input::get('id'), array("password" => $password, "salt" => $salt));
-        echo json_encode(array(true, " "));
+        echo json_encode(array($rslt, "Echec de la modification !"));
         return 0;
       }
       echo json_encode(array(false, $validation->errors()));
@@ -139,5 +142,61 @@ function changePassword($db){
     return 0;
   }
   echo json_encode(array(false, array("Echec de la modification")));
+}
+
+function changeInfo($db){
+  $user = $db->get(input::get("table"), array("id", "=", input::get("id")));
+  if(count($user) === 1){
+    $validate = new validation();
+    $validation = $validate->check('$_POST', array(
+      'username' => array(
+        'error' => 'Le pseudo',
+        'required' => true,
+        'max' => 50
+        ),
+      'firstname' => array(
+        'error' => 'Le prénom',
+        'required' => true,
+        'max' => 50
+        ),
+      'lastname' => array(
+        'error' => 'Le nom',
+        'required' => true,
+        'max' => 50
+        ),
+      'tel' => array(
+        'error' => 'Le numéro de téléphone',
+        'required' => true,
+        'max' => 50
+        ),
+      'email' => array(
+        'error' => "l'adresse email",
+        'required' => true,
+        'max' => 50
+        )
+      ));
+    if($validation->passed()){
+      $rslt = $db->update(input::get("table"), input::get('id'), array(
+        "username" => input::get('username'),
+        "firstname" => input::get('firstname'),
+        "lastname" => input::get('lastname'),
+        "phone" => input::get('tel'),
+        "email" => input::get('email')
+        ));
+      echo json_encode(array($rslt, "Echec de la modification !"));
+      return 0;
+    }
+    echo json_encode(array(false, $validation->errors()));
+    return 0;
+  }
+  echo json_encode(array(false, array("Echec de la modification")));
   return 0;
+}
+
+function tokenCheck(){
+  echo token::check(input::get("token"));
+}
+
+function tokenGenerate(){
+  echo json_encode(token::generate());
 }
