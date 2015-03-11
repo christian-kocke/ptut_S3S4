@@ -43,16 +43,21 @@ include_once 'head.php';
 	<p class="flash"></p>
 	<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
 </div>
-<div class="row">
+
+<div class="row t3">
 	<ul class="tabs vertical" data-tab>
-		<li class="tab-title active"><a href="#panel11">Information du profil</a></li>
-		<li class="tab-title"><a href="#panel21">Changer sont mot de passe</a></li>
+		<li class="tab-title "><a href="#panel2">Information du profil</a></li>
+		<li class="tab-title active"><a href="#panel1">Changer son mot de passe</a></li>
 	</ul>
+
+
+
 	<div class="tabs-content">
-		<div class="content active" id="panel11">
-			<div class="row"></div>
-			<div class="small-8 small-centered column panel">
-				<form action="" method="post" class="passwordForm" id="passwordForm">
+		<div class="content " id="panel1">
+			<div class="row">
+			<div class="small-6 small-centered column panel">
+				<h2 class="subheader text-center t3"> Mot de passe </h2>
+				<form action="" method="post" class="passwordForm t3" id="passwordForm">
 					<!-- ANCIEN PASSWORD -->
 					<div class="small-12 columns">
 						<div class="row">
@@ -99,18 +104,21 @@ include_once 'head.php';
 				</form>
 			</div>
 		</div>
-		<div class="content" id="panel21">
+		</div>
+
+
+		<div class="content active" id="panel2">
 			<div class="row">
-				<div class="panel small-8 columns">
+				<div class="small-6 small-centered columns panel">
 					<h2 class="subheader text-center t3"> Profil </h2>
 					<form action="" method="post" class="t3">
 						<!-- USERNAME -->
-						<div class="small-12 columns small-centered columns">
+						<div class="small-12 columns">
 							<div class="row">
-								<div class="small-6 columns ">
+								<div class="small-4 columns ">
 									<label for="username" class="right inline"> Login : </label>
 								</div><!-- class small-2 columns -->
-								<div class="small-6 columns">
+								<div class="small-8 columns">
 									<input type="text" name="username" id="username" value="<?php echo escape($user->data()->username); ?>"/>
 								</div><!-- class small-10 columns -->
 							</div><!-- class row -->
@@ -119,10 +127,10 @@ include_once 'head.php';
 						<!-- FIRSTNAME -->
 						<div class="small-12 columns">
 							<div class="row">
-								<div class="small-6 columns">
+								<div class="small-4 columns">
 									<label for="firstname" class="right inline"> Prénom : </label>
 								</div><!-- class small-2 columns -->
-								<div class="small-6 columns">
+								<div class="small-8 columns">
 									<input type="text" name="firstname" id="firstname" value="<?php echo escape($user->data()->firstname); ?>"/>
 								</div><!-- class small-10 columns -->
 							</div><!-- class row -->
@@ -131,10 +139,10 @@ include_once 'head.php';
 						<!-- LASTNAME -->
 						<div class="small-12 columns">
 							<div class="row">
-								<div class="small-6 columns">
+								<div class="small-4 columns">
 									<label for="lastname" class="right inline"> Nom : </label>
 								</div><!-- class small-2 columns -->
-								<div class="small-6 columns">
+								<div class="small-8 columns">
 									<input type="text" name="lastname" id="lastname" value="<?php echo escape($user->data()->lastname); ?>"/>
 								</div><!-- class small-10 columns -->
 							</div><!-- class row -->
@@ -143,10 +151,10 @@ include_once 'head.php';
 						<!-- PHONE -->
 						<div class="small-12 columns">
 							<div class="row">
-								<div class="small-6 columns">
+								<div class="small-4 columns">
 									<label for="tel" class="right inline"> Téléphone : </label>
 								</div><!-- class small-2 columns -->
-								<div class="small-6 columns">
+								<div class="small-8 columns">
 									<input type="tel" name="tel" id="tel" value="0<?php echo escape($user->data()->phone); ?>"/>
 								</div><!-- class small-10 columns -->
 							</div><!-- class row -->
@@ -155,10 +163,10 @@ include_once 'head.php';
 						<!-- EMAIL -->
 						<div class="small-12 columns">
 							<div class="row">
-								<div class="small-6 columns">
+								<div class="small-4 columns">
 									<label for="email" class="right inline"> Email : </label>
 								</div><!-- class small-2 columns -->
-								<div class="small-6 columns">
+								<div class="small-8 columns">
 									<input type="email" name="email" id="email" value="<?php echo escape($user->data()->email); ?>"/>
 								</div><!-- class small-10 columns -->
 							</div><!-- class row -->
@@ -177,7 +185,8 @@ include_once 'head.php';
 			</div>
 		</div><!-- class tab content -->
 	</div>
-</div><!-- class row -->
+</div>
+
 <!-- FOOTER -->
 
 <footer>	
@@ -253,9 +262,9 @@ include_once 'head.php';
 <script src="js/vendor/fastclick.js"></script>
 <script src="js/foundation.min.js"></script>
 <script>
-	$(document).foundation();
-	$(document).foundation({
-		offcanvas : {
+$(document).foundation();
+$(document).foundation({
+	offcanvas : {
 		    // Sets method in which offcanvas opens.
 		    // [ move | overlap_single | overlap ]
 		    open_method: 'move', 
@@ -264,46 +273,46 @@ include_once 'head.php';
 		    close_on_click : true
 		}
 	});
-	var toId;
-	$(".passwordForm").on("submit", function(){
-		if($(".passwordForm :input[name=newpassword]").val() === $(".passwordForm :input[name=renewpassword]").val()){
-			var data = {
-				"action": "changePassword",
-				"table": "users",
-				"id": $(".passwordForm :button[type=submit]").val(),
-				"old": $(".passwordForm :input[name=password]").val(),
-				"new": $(".passwordForm :input[name=newpassword]").val()
-			};
-			data = $.param(data);
-			$.ajax({
-				type: "POST",
-				dataType: "json",
-				url: "response.php", 
-				data: data,
-				success: function(data) {
-					console.log("ok");
-					if(data[0]){
-						$(".flash").html("Le mot de passe a été modifier !");
-						type = "success"
-						document.getElementById("passwordForm").reset();
-					}else{
-						$(".flash").html("");
-						for(i = 0; i < data[1].length; i++){
-							$(".flash").append(data[1][i]+"</br>");
-						}
-						type = "alert"
+var toId;
+$(".passwordForm").on("submit", function(){
+	if($(".passwordForm :input[name=newpassword]").val() === $(".passwordForm :input[name=renewpassword]").val()){
+		var data = {
+			"action": "changePassword",
+			"table": "users",
+			"id": $(".passwordForm :button[type=submit]").val(),
+			"old": $(".passwordForm :input[name=password]").val(),
+			"new": $(".passwordForm :input[name=newpassword]").val()
+		};
+		data = $.param(data);
+		$.ajax({
+			type: "POST",
+			dataType: "json",
+			url: "response.php", 
+			data: data,
+			success: function(data) {
+				console.log("ok");
+				if(data[0]){
+					$(".flash").html("Le mot de passe a été modifier !");
+					type = "success"
+					document.getElementById("passwordForm").reset();
+				}else{
+					$(".flash").html("");
+					for(i = 0; i < data[1].length; i++){
+						$(".flash").append(data[1][i]+"</br>");
 					}
-					$("#mainAlert4").toggleClass("hide success alert", false);
-					$("#mainAlert4").toggleClass(type, true)
-					clearTimeout(toId);
-					toId = setTimeout(function() {
-						$("#mainAlert4").toggleClass("hide", true)
-					}, 2000);
+					type = "alert"
 				}
-			});
-		}
-		return false;
-	});
+				$("#mainAlert4").toggleClass("hide success alert", false);
+				$("#mainAlert4").toggleClass(type, true)
+				clearTimeout(toId);
+				toId = setTimeout(function() {
+					$("#mainAlert4").toggleClass("hide", true)
+				}, 2000);
+			}
+		});
+	}
+	return false;
+});
 </script>
 </section><!-- class main-section -->
 <a class="exit-off-canvas"></a>
