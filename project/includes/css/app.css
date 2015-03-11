@@ -27,6 +27,12 @@
 
 /* FIN DES FONTS */
 
+body{
+	background-color: rgb(51,51,51);
+}
+.inner-wrap{
+	background-color: white;
+}
 /* HEADER */
 
 .top-bar .name h1 a {
