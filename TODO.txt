@@ -1,4 +1,4 @@
 ajout  modal cook
 faire toute la resa
-profil + update
+ajout confirmation et notification reservation
 footer
