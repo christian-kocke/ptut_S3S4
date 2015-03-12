@@ -1,4 +1,5 @@
 ajout  modal cook
+completer validations formulaire
 faire toute la resa
 ajout confirmation et notification reservation
 footer
