@@ -205,11 +205,29 @@ function tokenGenerate(){
 function reservation($db){
   switch (input::get("type")) {
     case 'date':
-      $query = "SELECT dateResa FROM reservation GROUP BY dateResa HAVING COUNT(dateResa) < ((SELECT COUNT(id) FROM creneaux) * (SELECT COUNT(id) FROM tables))";
+      $sth = $db->getPDO()->prepare("SELECT dateResa FROM reservation GROUP BY dateResa HAVING COUNT(dateResa) < ((SELECT COUNT(id) FROM creneaux) * (SELECT COUNT(id) FROM tables)) AND dateResa >= (SELECT NOW())");
+      $sth->execute();
+      $rslt = $sth->fetchAll(PDO::FETCH_NUM);
+      foreach ($rslt as $key => $value) {
+        $rslt[$key] = explode("-", $value[0]);
+      }
+      array_walk_recursive($rslt, "parseInt");
+      for($i = 0;$i < count($rslt);$i++){
+        $rslt[$i][1]--;
+      }
+      error_log(print_r($rslt, true));
+      echo json_encode($rslt);
       break;
-      
-    default:
-      # code...
+    case "hours":
+      $date = DateTime::createFromFormat('j/m/Y', input::get("date"), new DateTimeZone('Europe/Paris'));
+      $d = $date->format('Y-m-d');
+      error_log($d);
+      $sth = $db->getPDO()->prepare("SELECT beginning FROM creneaux WHERE id NOT IN (SELECT id_creneaux FROM RESERVATION WHERE dateResa = ? GROUP BY id_creneaux HAVING COUNT(id_creneaux) < (SELECT COUNT(id) FROM tables)");
+      $sth->bindParam(1, $d);
+      $sth->execute();
+      $rslt = $sth->fetchAll(PDO::FETCH_NUM);
+      error_log(print_r($rslt, true));
+      echo "test";
       break;
   }
 }

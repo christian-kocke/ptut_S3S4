@@ -89,17 +89,33 @@
 					}
 				});
 	// Pickadate
-     var $input = $( '.datepicker' ).pickadate({
-            formatSubmit: 'dd/mm/yyyy',
-            // min: [2015, 7, 14],
-            container: '#container',
-            // editable: true,
-            closeOnSelect: false,
-            closeOnClear: false,
-        });
+	var $input = $('.datepicker').pickadate({
+		formatSubmit: 'dd/mm/yyyy',
+		format: 'dd/mm/yyyy',
+		min: true,
+		max: +60,
+		monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+		weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+		today: 'aujourd\'hui',
+		clear: 'effacer',
+	});
 
-        var picker = $input.pickadate("picker");
-
+	// Use the picker object directly.
+	var picker = $input.pickadate('picker')
+	picker.on({
+		open: function(){
+			$.post("response.php", {action: "reservation", type: "date"}, function(data){
+				picker.set('disable', data);
+			}, "json");
+			
+		},
+		render: function(){
+			$.post("response.php", {action: "reservation", type: "hours", date: this.get()}, function(data){
+				console.log(data);
+			}, "json");
+		}
+	});
+	
 </script>
 </section><!-- class main-section -->
 <a class="exit-off-canvas"></a>

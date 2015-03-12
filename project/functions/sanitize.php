@@ -45,3 +45,9 @@ function utf8_encode_walk(&$item){
         htmlspecialchars_decode($item);
     }
 }
+
+function parseInt(&$item){
+    if(is_string($item)){
+        $item = (int) $item;
+    }
+}

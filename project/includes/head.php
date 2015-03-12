@@ -127,8 +127,10 @@
 					<!-- RESERVATION MODAL -->
 					<div id="ResaModal" class="reveal-modal small" data-reveal>
 						<div class="row">
+							<h2 class="subheader text-center"> Reservation </h2>
+							<button class="button datepicker">Choisiser votre date ici</button>
 							<form id="ResaForm" action="" method="post" data-abide>
-								<h2 class="subheader text-center"> Reservation </h2>
+								
 								<!-- PICKADATE -->
     							
 								<div class="none">
