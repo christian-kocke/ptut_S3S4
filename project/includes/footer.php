@@ -68,9 +68,14 @@
 	<a href="#top" class="button info"><i class="fa fa-arrow-up fa-2x"></i></a>
 </div><!-- class small-2 columns -->
 
+<script src="js/pickadate.js-3.5.5/lib/picker.js"></script>
+<script src="js/pickadate.js-3.5.5/lib/picker.date.js"></script>
+<script src="js/pickadate.js-3.5.5/lib/legacy.js"></script>
+<script src="js/pickadate.js-3.5.5/lib/picker.time.js"></script>
 <script src="js/index.js"></script>
 <script src="js/vendor/fastclick.js"></script>
 <script src="js/foundation.min.js"></script>
+
 <script>
 	$(document).foundation();
 	$(document).foundation({
@@ -83,6 +88,22 @@
 					    close_on_click : true
 					}
 				});
+	// Pickadate
+     var $input = $( '.datepicker' ).pickadate({
+            formatSubmit: 'dd/mm/yyyy',
+            // min: [2015, 7, 14],
+            container: '#container',
+            // editable: true,
+            closeOnSelect: false,
+            closeOnClear: false,
+        });
+
+        var picker = $input.pickadate("picker");
+        $('#ResaModal').on("open", function() {
+        	console.log("zizi");
+    		picker.open();
+		});
+
 </script>
 </section><!-- class main-section -->
 <a class="exit-off-canvas"></a>

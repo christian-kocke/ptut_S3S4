@@ -1,6 +1,10 @@
 $(document).ready(function(){ 
 	// Datepicker
-	$('.fdatepicker').fdatepicker();
+	$('.fdatepicker').fdatepicker({
+        language: 'fr',
+        format: "dd/mm/yyyy",
+        weekStart: "1"
+    });
 
 	// smooth scroll function
 	$('a[href^="#"]').on('click',function(e) {

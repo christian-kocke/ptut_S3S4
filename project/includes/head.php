@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="css/foundation-datepicker.css">
 	<!-- INCLUDE FOUNDATION CSS -->
 	<link rel="stylesheet" href="css/foundation.css">
+	<!-- INCLUDE PICKADATE CSS -->
+	<link rel="stylesheet" href="js/pickadate.js-3.5.5/lib/themes/default.css">
+	<link rel="stylesheet" href="js/pickadate.js-3.5.5/lib/themes/default.date.css">
 	<!-- INCLUDE CUSTOM CSS -->
 	<link rel="stylesheet" href="css/app.css">
 	<!-- INCLUDE FONT AWESOME CSS -->
@@ -39,7 +42,7 @@
 					<?php
 					if($user->isLoggedIn()){
 						?>
-						<li><a href="#" data-reveal-id="ResaModal"> Réservez </a></li>
+						<li><a href="#" class="datepicker" data-reveal-id="ResaModal"> Réservez </a></li>
 						<?php
 					} else {
 						?>
@@ -48,14 +51,14 @@
 
 						<!-- RESERVATION WITH A CLIENT ACCOUNT OR NOT ? (MODAL) -->
 						<div id="TypeResaModal" class="reveal-modal medium" data-reveal>
-
+							
 							<!-- DIRECT RESERVATION -->
 							<div class="row">
 								<div class="small-12 medium-12 large-12 columns">
 									<div class="panel text-center">
 										<h3 class="subheader"> Réservation directe </h3>
 										<p> Réservez sans avoir de compte client si vous êtes pressé. </p>
-										<button class="button radius" data-reveal-id="ResaModal"> Réservez </button>
+										<button class="button radius datepicker" data-reveal-id="ResaModal"> Réservez </button>
 									</div><!-- class panel -->
 								</div><!-- class small-12 medium-12 large-12 columns -->
 							</div><!-- class row -->
@@ -127,89 +130,92 @@
 						<div class="row">
 							<form id="ResaForm" action="" method="post" data-abide>
 								<h2 class="subheader text-center"> Reservation </h2>
+								<!-- PICKADATE -->
+    							<div id="container" style="position:relative"></div>
+								<div class="none">
+									<!-- RESERVATION NAME -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-user"></i></span>
+											</div><!-- small-2 columns -->
+											<div class="small-10 columns">
+												<input type="text" name="customer_name" placeholder="Nom de la réservation" required pattern="alpha">
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
 
-								<!-- RESERVATION NAME -->
-								<div class="row">
-									<div class="row collapse prefix-radius">
-										<div class="small-2 columns">
-											<span class="prefix"><i class="fa fa-user"></i></span>
-										</div><!-- small-2 columns -->
-										<div class="small-10 columns">
-											<input type="text" name="customer_name" placeholder="Nom de la réservation" required pattern="alpha">
-										</div><!-- class small-10 columns -->
-									</div><!-- class row collapse prefix-radius -->
-								</div><!-- class row -->
+									<!-- RESERVATION DATE -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-calendar"></i></span>
+											</div><!-- class small-2 columns -->
+											<div class="small-10 columns">
+												<input class="fdatepicker" name="dor" type="text" placeholder="Date de la réservation" required />
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
 
-								<!-- RESERVATION DATE -->
-								<div class="row">
-									<div class="row collapse prefix-radius">
-										<div class="small-2 columns">
-											<span class="prefix"><i class="fa fa-calendar"></i></span>
-										</div><!-- class small-2 columns -->
-										<div class="small-10 columns">
-											<input class="fdatepicker" name="dor" data-date-format="dd/mm/yyyy" type="text" placeholder="Date de la réservation" required />
-										</div><!-- class small-10 columns -->
-									</div><!-- class row collapse prefix-radius -->
-								</div><!-- class row -->
+									<!-- SCHEDULE -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-clock-o"></i></span>
+											</div><!-- small-2 columns -->
+											<div class="small-10 columns">
+												<select id="time" name="schedule"></select>
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
 
-								<!-- SCHEDULE -->
-								<div class="row">
-									<div class="row collapse prefix-radius">
-										<div class="small-2 columns">
-											<span class="prefix"><i class="fa fa-clock-o"></i></span>
-										</div><!-- small-2 columns -->
-										<div class="small-10 columns">
-											<select id="time" name="schedule"></select>
-										</div><!-- class small-10 columns -->
-									</div><!-- class row collapse prefix-radius -->
-								</div><!-- class row -->
+									<!-- NB CUSTOMERS -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-users"></i></span>
+											</div><!-- small-2 columns -->
+											<div class="small-10 columns">
+												<select name="nbpeople">
+													<option value="1" selected> 1 Personne </option>
+													<option value="2"> 2 Personnes </option>
+													<option value="3"> 3 Personnes </option>
+													<option value="4"> 4 Personnes </option>
+													<option value="5"> 5 Personnes </option>
+													<option value="6"> 6 Personnes </option>
+													<option value="7"> 7 Personnes </option>
+													<option value="8"> 8 Personnes </option>
+													<option value="9"> 9 Personnes </option>
+													<option value="10"> 10 Personnes </option>
+													<option value="11"> 11 Personnes </option>
+													<option value="12"> 12 Personnes </option>
+													<option value="13"> 13 Personnes </option>
+													<option value="14"> 14 Personnes </option>
+													<option value="15"> 15 Personnes </option>
+												</select>
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
 
-								<!-- NB CUSTOMERS -->
-								<div class="row">
-									<div class="row collapse prefix-radius">
-										<div class="small-2 columns">
-											<span class="prefix"><i class="fa fa-users"></i></span>
-										</div><!-- small-2 columns -->
-										<div class="small-10 columns">
-											<select name="nbpeople">
-												<option value="1" selected> 1 Personne </option>
-												<option value="2"> 2 Personnes </option>
-												<option value="3"> 3 Personnes </option>
-												<option value="4"> 4 Personnes </option>
-												<option value="5"> 5 Personnes </option>
-												<option value="6"> 6 Personnes </option>
-												<option value="7"> 7 Personnes </option>
-												<option value="8"> 8 Personnes </option>
-												<option value="9"> 9 Personnes </option>
-												<option value="10"> 10 Personnes </option>
-												<option value="11"> 11 Personnes </option>
-												<option value="12"> 12 Personnes </option>
-												<option value="13"> 13 Personnes </option>
-												<option value="14"> 14 Personnes </option>
-												<option value="15"> 15 Personnes </option>
-											</select>
-										</div><!-- class small-10 columns -->
-									</div><!-- class row collapse prefix-radius -->
-								</div><!-- class row -->
+									<!-- MENU -->
+									<div class="row">
+										<div class="row collapse prefix-radius">
+											<div class="small-2 columns">
+												<span class="prefix"><i class="fa fa-cutlery"></i></span>
+											</div><!-- small-2 columns -->
+											<div class="small-10 columns">
+												<a href="#" id="MenuDisplay"><input type="text" placeholder="Cliquez ici ..."></a>
+											</div><!-- class small-10 columns -->
+										</div><!-- class row collapse prefix-radius -->
+									</div><!-- class row -->
 
-								<!-- MENU -->
-								<div class="row">
-									<div class="row collapse prefix-radius">
-										<div class="small-2 columns">
-											<span class="prefix"><i class="fa fa-cutlery"></i></span>
-										</div><!-- small-2 columns -->
-										<div class="small-10 columns">
-											<a href="#" id="MenuDisplay"><input type="text" placeholder="Cliquez ici ..."></a>
-										</div><!-- class small-10 columns -->
-									</div><!-- class row collapse prefix-radius -->
-								</div><!-- class row -->
-
-								<!-- SUBMIT -->
-								<div class="row">
-									<div class="large-12 columns text-center">
-										<button class="button radius"> Chercher une table </button>
-									</div><!-- class large-12 columns text-center -->
-								</div><!-- class row -->
+									<!-- SUBMIT -->
+									<div class="row">
+										<div class="large-12 columns text-center">
+											<button class="button radius"> Chercher une table </button>
+										</div><!-- class large-12 columns text-center -->
+									</div><!-- class row -->
+								</div><!-- class none -->
 							</form>
 
 							<!-- MODAL MENU -->
@@ -243,19 +249,19 @@
 							<ul class="dropdown">
 								<?php
 								if($user->hasPermission("admin")){
-								?>
-								<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
-								<?php
+									?>
+									<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
+									<?php
 								}
 								if($user->hasPermission("cook")){
-								?>
-								<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
-								<?php
+									?>
+									<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
+									<?php
 								}
 								if($user->hasPermission("receptionist")){
-								?>
-								<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
-								<?php
+									?>
+									<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
+									<?php
 								}
 								?>
 								<li><a href="history.php"><i class="fa fa-history"></i> Historique des reservations</a></li>
@@ -274,15 +280,15 @@
 							<h2 class="subheader text-center"> Connexion </h2>
 							<div class="row">
 								<div id="mainAlert2" data-alert class="alert-box alert hide" tabindex="0" aria-live="assertive" role="dialogalert">
-							        <p class="flash"><?php
-							        if(session::exists('login')){
-							            foreach(session::flash('login') as $error){
-							                echo $error.'</br>';
-							            }
-							        }
-							        ?></p>
-							        <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
-							    </div>
+									<p class="flash"><?php
+									if(session::exists('login')){
+										foreach(session::flash('login') as $error){
+											echo $error.'</br>';
+										}
+									}
+									?></p>
+									<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+								</div>
 								<form action="" method="post" data-abide>
 									<div class="row">	
 										<!-- LOGIN -->
@@ -334,15 +340,15 @@
 						<div id="SubscribtionModal" class="reveal-modal medium" data-reveal>
 							<h2 class="subheader text-center"> Inscription </h2>
 							<div id="mainAlert3" data-alert class="alert-box alert hide" tabindex="0" aria-live="assertive" role="dialogalert">
-						        <p class="flash"><?php
-						        if(session::exists('register')){
-						            foreach(session::flash('register') as $error){
-						                echo $error.'</br>';
-						            }
-						        }
-						        ?></p>
-						        <button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
-						    </div>
+								<p class="flash"><?php
+								if(session::exists('register')){
+									foreach(session::flash('register') as $error){
+										echo $error.'</br>';
+									}
+								}
+								?></p>
+								<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+							</div>
 							<div class="row">
 								<form action="" method="post" data-abide>
 									
@@ -392,7 +398,7 @@
 													<span class="prefix"><i class="fa fa-calendar"></i></span>
 												</div><!-- class small-2 columns -->
 												<div class="small-10 columns">
-													<input class="fdatepicker" name="dob" data-date-format="dd/mm/yyyy" type="text" placeholder="Date de naissance" required />
+													<input class="fdatepicker" name="dob" type="text" placeholder="Date de naissance" required />
 												</div><!-- class small-10 columns -->
 											</div><!-- class row collapse prefix-radius -->
 										</div><!-- class small-6 columns -->
@@ -479,19 +485,19 @@
 							<ul class="dropdown">
 								<?php
 								if($user->hasPermission("admin")){
-								?>
-								<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
-								<?php
+									?>
+									<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
+									<?php
 								}
 								if($user->hasPermission("cook")){
-								?>
-								<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
-								<?php
+									?>
+									<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
+									<?php
 								}
 								if($user->hasPermission("receptionist")){
-								?>
-								<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
-								<?php
+									?>
+									<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
+									<?php
 								}
 								?>
 								<li><a href="history.php"><i class="fa fa-history"></i> Historique des reservations</a></li>
