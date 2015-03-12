@@ -42,7 +42,7 @@
 					<?php
 					if($user->isLoggedIn()){
 						?>
-						<li><a href="#" class="datepicker" data-reveal-id="ResaModal"> Réservez </a></li>
+						<li><a href="#" data-reveal-id="ResaModal"> Réservez </a></li>
 						<?php
 					} else {
 						?>
@@ -58,7 +58,7 @@
 									<div class="panel text-center">
 										<h3 class="subheader"> Réservation directe </h3>
 										<p> Réservez sans avoir de compte client si vous êtes pressé. </p>
-										<button class="button radius datepicker" data-reveal-id="ResaModal"> Réservez </button>
+										<button class="button radius" data-reveal-id="ResaModal"> Réservez </button>
 									</div><!-- class panel -->
 								</div><!-- class small-12 medium-12 large-12 columns -->
 							</div><!-- class row -->
@@ -124,14 +124,13 @@
 						<?php
 					}
 					?>
-
 					<!-- RESERVATION MODAL -->
 					<div id="ResaModal" class="reveal-modal small" data-reveal>
 						<div class="row">
 							<form id="ResaForm" action="" method="post" data-abide>
 								<h2 class="subheader text-center"> Reservation </h2>
 								<!-- PICKADATE -->
-    							<div id="container" style="position:relative"></div>
+    							
 								<div class="none">
 									<!-- RESERVATION NAME -->
 									<div class="row">

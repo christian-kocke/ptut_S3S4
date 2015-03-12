@@ -99,10 +99,6 @@
         });
 
         var picker = $input.pickadate("picker");
-        $('#ResaModal').on("open", function() {
-        	console.log("zizi");
-    		picker.open();
-		});
 
 </script>
 </section><!-- class main-section -->

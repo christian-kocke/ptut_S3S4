@@ -63,6 +63,8 @@ $("#MenuHide").click(function() {
     $("#ResaForm").slideDown("slow");
     $("#MenuModal").slideUp("slow");
 });
+
+
 /* END RESERVATION MODAL */
 
 /* BACK TO THE TOP BUTTON */

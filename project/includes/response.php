@@ -16,6 +16,7 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
       case "changeInfo": changeInfo($db); break;
       case "tokenCheck": tokenCheck(); break;
       case "tokenGenerate": tokenGenerate(); break;
+      case "reservation": reservation($db); break;
     }
   }
 }
@@ -199,4 +200,16 @@ function tokenCheck(){
 
 function tokenGenerate(){
   echo json_encode(token::generate());
+}
+
+function reservation($db){
+  switch (input::get("type")) {
+    case 'date':
+      $query = "SELECT dateResa FROM reservation GROUP BY dateResa HAVING COUNT(dateResa) < ((SELECT COUNT(id) FROM creneaux) * (SELECT COUNT(id) FROM tables))";
+      break;
+      
+    default:
+      # code...
+      break;
+  }
 }
