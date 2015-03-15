@@ -247,6 +247,12 @@ h2 {
 	z-index: 2;
 }
 /* FIN ALERTS */
+
+/* RESERVATION STEPS */
+.step2, .step3, .step4{
+	display: none;
+}
+/* END RESERVATION STEPS */
 /* SMALL SCREENS */
 
 

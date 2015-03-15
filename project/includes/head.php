@@ -125,15 +125,41 @@
 					}
 					?>
 					<!-- RESERVATION MODAL -->
-					<div id="ResaModal" class="reveal-modal small" data-reveal>
+					<div id="ResaModal" class="reveal-modal medium" data-reveal>
 						<div class="row">
 							<h2 class="subheader text-center"> Reservation </h2>
-							<button class="button datepicker">Choisiser votre date ici</button>
-							<form id="ResaForm" action="" method="post" data-abide>
-								
-								<!-- PICKADATE -->
-    							
-								<div class="none">
+							<ul class="tabs small-10 small-centered column text-center" data-tab>
+								<li class="tab-title active"><a href="#panel1">Date</a></li>
+								<li class="tab-title"><a href="#panel2">Créneaux</a></li>
+								<li class="tab-title"><a href="#panel3">Personnes</a></li>
+								<li class="tab-title"><a href="#panel4">Validation</a></li>
+							</ul>
+							<div class="tabs-content">
+								<div class="content active" id="panel1">
+									<div class="row">
+										<!-- PICKADATE -->
+										<div class="small-8 small-centered text-center column">
+											<button class="button datepicker">Choisiser votre date ici</button>
+										</div>
+									</div>
+								</div>
+								<div class="content" id="panel2">
+									<div class="row">
+										<div class="small-8 small-centered text-center column">
+											<button class="button timepicker">time</button>
+										</div>
+									</div>
+								</div>
+								<div class="content" id="panel3">
+									<p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+								</div>
+								<div class="content" id="panel4">
+									<p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+								</div>
+							</div>
+							
+							<div class="row step4"> <!-- row validation form -->
+								<form id="ResaForm" action="" method="post" data-abide>
 									<!-- RESERVATION NAME -->
 									<div class="row">
 										<div class="row collapse prefix-radius">
@@ -216,8 +242,8 @@
 											<button class="button radius"> Chercher une table </button>
 										</div><!-- class large-12 columns text-center -->
 									</div><!-- class row -->
-								</div><!-- class none -->
-							</form>
+								</form>
+							</div> <!-- row step4 -->
 
 							<!-- MODAL MENU -->
 							<div id="MenuModal" class="text-center">
@@ -282,242 +308,242 @@
 							<div class="row">
 								<div id="mainAlert2" data-alert class="alert-box alert hide" tabindex="0" aria-live="assertive" role="dialogalert">
 									<p class="flash"><?php
-									if(session::exists('login')){
-										foreach(session::flash('login') as $error){
-											echo $error.'</br>';
+										if(session::exists('login')){
+											foreach(session::flash('login') as $error){
+												echo $error.'</br>';
+											}
 										}
-									}
-									?></p>
-									<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
-								</div>
-								<form action="" method="post" data-abide>
-									<div class="row">	
-										<!-- LOGIN -->
-										<div class="small-12 medium-12 large-12 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 medium-2 large-2 columns">
-													<span class="prefix"><i class="fa fa-user"></i></span>
-												</div><!-- class small-2 medium-2 large-2 columns -->
-												<div class="small-10 medium-10 large-10 columns">
-													<input type="text" name="login_username" placeholder="Login" required pattern="alpha"/>
+										?></p>
+										<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+									</div>
+									<form action="" method="post" data-abide>
+										<div class="row">	
+											<!-- LOGIN -->
+											<div class="small-12 medium-12 large-12 columns">
+												<div class="row collapse prefix-radius">
+													<div class="small-2 medium-2 large-2 columns">
+														<span class="prefix"><i class="fa fa-user"></i></span>
+													</div><!-- class small-2 medium-2 large-2 columns -->
+													<div class="small-10 medium-10 large-10 columns">
+														<input type="text" name="login_username" placeholder="Login" required pattern="alpha"/>
+														<small class="error"> Uniquement des lettres minuscules/majuscules. </small>
+													</div><!-- class small-10 medium-10 large-10 columns -->
+												</div><!-- class row collapse prefix-radius -->
+											</div><!-- class small-12 medium-12 large-12 columns -->
+
+											<!-- PASSWORD -->
+											<div class="small-12 medium-12 large-12 columns">
+												<div class="row collapse prefix-radius">
+													<div class="small-2 medium-2 large-2 columns">
+														<span class="prefix"><i class="fa fa-lock"></i></span>
+													</div><!-- class small-2 medium-2 large-2 columns -->
+													<div class="small-10 medium-10 large-10 columns">
+														<input type="password" name="login_password" placeholder="Password" />
+													</div><!-- class small-10 medium-10 large-10 columns -->
+												</div><!-- class row collapse prefix-radius -->
+												<div class="small-12 medium-12 large-12 columns text-center">
+													<input type="checkbox" name="remember" id="remember">
+													<label for="remember"> Rester connecté </label>
+												</div><!-- class small-12 medium-12 large-12 columns center -->
+												<div class="small-12 medium-12 large-12 columns text-center">	
+													<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
+													<button class="button"> Se connecter </button>
+												</div><!-- class small-12 medium-12 large-12 columns center -->
+											</div><!-- class small-12 medium-12 large-12 columns -->
+
+										</div><!-- class row -->
+									</form>
+								</div><!-- class row  -->
+								<a class="close-reveal-modal">&#215;</a>
+							</div><!-- class reveal-modal small of ConnectionModal -->
+
+							<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+							<!-- ////////////////////////////////////////////  SUBSCRIBTION PART  ////////////////////////////////////////////////////////////////////// -->
+
+							<li><a href="#" data-reveal-id="SubscribtionModal"> S'inscrire </a></li>
+
+							<div id="SubscribtionModal" class="reveal-modal medium" data-reveal>
+								<h2 class="subheader text-center"> Inscription </h2>
+								<div id="mainAlert3" data-alert class="alert-box alert hide" tabindex="0" aria-live="assertive" role="dialogalert">
+									<p class="flash"><?php
+										if(session::exists('register')){
+											foreach(session::flash('register') as $error){
+												echo $error.'</br>';
+											}
+										}
+										?></p>
+										<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+									</div>
+									<div class="row">
+										<form action="" method="post" data-abide>
+
+											<!-- LAST & FIRST NAME -->
+											<div class="row">
+												<div class="small-6 columns">
+													<input type="text" name="lastname" placeholder="Nom" required pattern="alpha"/>
 													<small class="error"> Uniquement des lettres minuscules/majuscules. </small>
-												</div><!-- class small-10 medium-10 large-10 columns -->
-											</div><!-- class row collapse prefix-radius -->
-										</div><!-- class small-12 medium-12 large-12 columns -->
+												</div><!-- class small-6 columns -->
+												<div class="small-6 columns">
+													<input type="text" name="firstname" placeholder="Prénom" required pattern="alpha"/>
+													<small class="error"> Uniquement des lettres minuscules/majuscules. </small>
+												</div><!-- class small-6 columns -->
+											</div><!-- class row -->
 
-										<!-- PASSWORD -->
-										<div class="small-12 medium-12 large-12 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 medium-2 large-2 columns">
-													<span class="prefix"><i class="fa fa-lock"></i></span>
-												</div><!-- class small-2 medium-2 large-2 columns -->
-												<div class="small-10 medium-10 large-10 columns">
-													<input type="password" name="login_password" placeholder="Password" />
-												</div><!-- class small-10 medium-10 large-10 columns -->
-											</div><!-- class row collapse prefix-radius -->
-											<div class="small-12 medium-12 large-12 columns text-center">
-												<input type="checkbox" name="remember" id="remember">
-												<label for="remember"> Rester connecté </label>
-											</div><!-- class small-12 medium-12 large-12 columns center -->
-											<div class="small-12 medium-12 large-12 columns text-center">	
-												<input type="hidden" name="token_login" value="<?php echo $token ?>"/>
-												<button class="button"> Se connecter </button>
-											</div><!-- class small-12 medium-12 large-12 columns center -->
-										</div><!-- class small-12 medium-12 large-12 columns -->
+											<!-- LOGIN & EMAIL -->
+											<div class="row">
+												<div class="small-6 columns">
+													<div class="row collapse prefix-radius">
+														<div class="small-2 columns">
+															<span class="prefix"><i class="fa fa-user"></i></span>
+														</div><!-- class small-2 columns -->
+														<div class="small-10 columns">
+															<input type="text" name="username" placeholder="Pseudo" required pattern="alpha_numeric"/>
+															<small class="error"> Uniquement des lettres minuscules/majuscules ou des chiffres (6 caractères min). </small>
+														</div><!-- class small-2 columns -->
+													</div><!-- class row collapse prefix-radius -->
+												</div><!-- class small-6 columns -->
+												<div class="small-6 columns">
+													<div class="row collapse prefix-radius">
+														<div class="small-2 columns">
+															<span class="prefix"><i class="fa fa-envelope-o"></i></span>
+														</div><!-- class small-2 columns -->
+														<div class="small-10 columns email-field">
+															<input type="email" name="email" placeholder="Email" required />
+															<small class="error"> Votre email doit être de la forme: exemple@exemple.com </small>
+														</div><!-- class small-10 columns email-field -->
+													</div><!-- class row collapse prefix-radius -->
+												</div><!-- class small-6 columns -->
+											</div><!-- class row -->
 
-									</div><!-- class row -->
-								</form>
-							</div><!-- class row  -->
-							<a class="close-reveal-modal">&#215;</a>
-						</div><!-- class reveal-modal small of ConnectionModal -->
+											<!-- DATE OF BIRTH & PHONE NUMBER -->
+											<div class="row">
+												<div class="small-6 columns">
+													<div class="row collapse prefix-radius">
+														<div class="small-2 columns">
+															<span class="prefix"><i class="fa fa-calendar"></i></span>
+														</div><!-- class small-2 columns -->
+														<div class="small-10 columns">
+															<input class="fdatepicker" name="dob" type="text" placeholder="Date de naissance" required />
+														</div><!-- class small-10 columns -->
+													</div><!-- class row collapse prefix-radius -->
+												</div><!-- class small-6 columns -->
+												<div class="small-6 columns">
+													<div class="row collapse prefix-radius">
+														<div class="small-2 columns">
+															<span class="prefix"><i class="fa fa-mobile fa-lg"></i></span>
+														</div><!-- class small-2 columns -->
+														<div class="small-10 columns">
+															<input type="text" name="phone" placeholder="Téléphone" required pattern="number" />
+															<small class="error"> Votre numéro n'est pas conforme ! </small>
+														</div><!-- class small-10 columns -->
+													</div><!-- class row collapse prefix-radius -->
+												</div><!-- class small-6 columns -->
+											</div><!-- class row -->
 
-						<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-						
+											<!-- PASSWORD & CONFIRMATION -->
+											<div class="row">
+												<div class="small-6 columns">
+													<div class="row collapse prefix-radius">
+														<div class="small-2 columns">
+															<span class="prefix"><i class="fa fa-lock"></i></span>
+														</div><!-- class small-2 columns -->
+														<div class="small-10 columns password-field">
+															<input type="password" name="password" id="password" placeholder="Mot de passe" required pattern="alpha_numeric" />
+															<small class="error"> Votre mot de passe doit contenir uniquement des chiffres et des lettres (minuscules ou majuscules). </small>
+														</div><!-- class small-10 columns -->
+													</div><!-- class row collapse prefix-radius -->
+												</div><!-- small-6 columns -->
+												<div class="small-6 columns">
+													<div class="row collapse prefix-radius">
+														<div class="small-2 columns">
+															<span class="prefix"><i class="fa fa-check"></i></span>
+														</div><!-- class small-2 columns -->
+														<div class="small-10 columns password-confirmation-field">
+															<input type="password" name="password2" placeholder="Confirmation" required pattern="alpha_numeric" data-equalto="password" />
+															<small class="error"> Votre mot de passe n'est pas identique. </small>
+														</div><!-- class small-10 columns -->
+													</div><!-- class row collapse prefix-radius -->
+												</div><!-- class small-6 columns -->
+											</div><!-- class row -->
 
-						<!-- ////////////////////////////////////////////  SUBSCRIBTION PART  ////////////////////////////////////////////////////////////////////// -->
-						
-						<li><a href="#" data-reveal-id="SubscribtionModal"> S'inscrire </a></li>
+											<!-- SUBMIT -->
+											<div class="row">
+												<div class="small-12 columns text-center">
+													<input type="hidden" name="token_register" value="<?php echo $token ?>"/>
+													<button class="button radius"> Valider </button>
+												</div><!-- class small-12 columns text-center -->
+											</div><!-- class row -->
 
-						<div id="SubscribtionModal" class="reveal-modal medium" data-reveal>
-							<h2 class="subheader text-center"> Inscription </h2>
-							<div id="mainAlert3" data-alert class="alert-box alert hide" tabindex="0" aria-live="assertive" role="dialogalert">
-								<p class="flash"><?php
-								if(session::exists('register')){
-									foreach(session::flash('register') as $error){
-										echo $error.'</br>';
-									}
-								}
-								?></p>
-								<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
-							</div>
-							<div class="row">
-								<form action="" method="post" data-abide>
-									
-									<!-- LAST & FIRST NAME -->
-									<div class="row">
-										<div class="small-6 columns">
-											<input type="text" name="lastname" placeholder="Nom" required pattern="alpha"/>
-											<small class="error"> Uniquement des lettres minuscules/majuscules. </small>
-										</div><!-- class small-6 columns -->
-										<div class="small-6 columns">
-											<input type="text" name="firstname" placeholder="Prénom" required pattern="alpha"/>
-											<small class="error"> Uniquement des lettres minuscules/majuscules. </small>
-										</div><!-- class small-6 columns -->
-									</div><!-- class row -->
-
-									<!-- LOGIN & EMAIL -->
-									<div class="row">
-										<div class="small-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-user"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns">
-													<input type="text" name="username" placeholder="Pseudo" required pattern="alpha_numeric"/>
-													<small class="error"> Uniquement des lettres minuscules/majuscules ou des chiffres (6 caractères min). </small>
-												</div><!-- class small-2 columns -->
-											</div><!-- class row collapse prefix-radius -->
-										</div><!-- class small-6 columns -->
-										<div class="small-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-envelope-o"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns email-field">
-													<input type="email" name="email" placeholder="Email" required />
-													<small class="error"> Votre email doit être de la forme: exemple@exemple.com </small>
-												</div><!-- class small-10 columns email-field -->
-											</div><!-- class row collapse prefix-radius -->
-										</div><!-- class small-6 columns -->
-									</div><!-- class row -->
-
-									<!-- DATE OF BIRTH & PHONE NUMBER -->
-									<div class="row">
-										<div class="small-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-calendar"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns">
-													<input class="fdatepicker" name="dob" type="text" placeholder="Date de naissance" required />
-												</div><!-- class small-10 columns -->
-											</div><!-- class row collapse prefix-radius -->
-										</div><!-- class small-6 columns -->
-										<div class="small-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-mobile fa-lg"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns">
-													<input type="text" name="phone" placeholder="Téléphone" required pattern="number" />
-													<small class="error"> Votre numéro n'est pas conforme ! </small>
-												</div><!-- class small-10 columns -->
-											</div><!-- class row collapse prefix-radius -->
-										</div><!-- class small-6 columns -->
-									</div><!-- class row -->
-
-									<!-- PASSWORD & CONFIRMATION -->
-									<div class="row">
-										<div class="small-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-lock"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns password-field">
-													<input type="password" name="password" id="password" placeholder="Mot de passe" required pattern="alpha_numeric" />
-													<small class="error"> Votre mot de passe doit contenir uniquement des chiffres et des lettres (minuscules ou majuscules). </small>
-												</div><!-- class small-10 columns -->
-											</div><!-- class row collapse prefix-radius -->
-										</div><!-- small-6 columns -->
-										<div class="small-6 columns">
-											<div class="row collapse prefix-radius">
-												<div class="small-2 columns">
-													<span class="prefix"><i class="fa fa-check"></i></span>
-												</div><!-- class small-2 columns -->
-												<div class="small-10 columns password-confirmation-field">
-													<input type="password" name="password2" placeholder="Confirmation" required pattern="alpha_numeric" data-equalto="password" />
-													<small class="error"> Votre mot de passe n'est pas identique. </small>
-												</div><!-- class small-10 columns -->
-											</div><!-- class row collapse prefix-radius -->
-										</div><!-- class small-6 columns -->
-									</div><!-- class row -->
-
-									<!-- SUBMIT -->
-									<div class="row">
-										<div class="small-12 columns text-center">
-											<input type="hidden" name="token_register" value="<?php echo $token ?>"/>
-											<button class="button radius"> Valider </button>
-										</div><!-- class small-12 columns text-center -->
-									</div><!-- class row -->
-
-								</form>
-							</div> <!-- class row -->
-							<a class="close-reveal-modal">&#215;</a>
-						</div><!-- class reveal-modal medium of SubscribtionModal -->
-						<?php
-					}
-					?>
-				</ul><!-- class right -->
-			</section><!-- class top-bar-section -->
-		</nav><!-- class top-bar -->
-	</header>
-
-	<!-- NAVBAR FOR SMALL DEVICES -->
-	<div class="off-canvas-wrap" data-offcanvas>
-		<div class="inner-wrap">
-			<nav class="tab-bar">
-				
-				<section class="left tab-bar-section">
-					<h1 class="title left"><a href="index.php"> Le Restaurant </h1>
-				</section><!-- class left tab-bar-section -->
-
-				<section class="right-small">
-					<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
-				</section><!-- class right-small -->
-
-			</nav><!-- class tab-bar -->    
-			<aside class="right-off-canvas-menu">
-				<ul class="off-canvas-list">
-					<?php
-					if($user->isLoggedIn()){
-						?>
-						<li class="has-dropdown">
-							<a href="#"><?php echo $user->data()->firstname ?> <i class="fa fa-user"></i></a>
-							<ul class="dropdown">
+										</form>
+									</div> <!-- class row -->
+									<a class="close-reveal-modal">&#215;</a>
+								</div><!-- class reveal-modal medium of SubscribtionModal -->
 								<?php
-								if($user->hasPermission("admin")){
-									?>
-									<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
-									<?php
-								}
-								if($user->hasPermission("cook")){
-									?>
-									<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
-									<?php
-								}
-								if($user->hasPermission("receptionist")){
-									?>
-									<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
-									<?php
-								}
-								?>
-								<li><a href="history.php"><i class="fa fa-history"></i> Historique des reservations</a></li>
-								<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil </a></li>
-								<li><a href="logout.php"><i class="fa fa-power-off"></i> Déconnexion </a></li>
-							</ul>
-						</li><!-- class has-dropdown -->
-						<?php
-					}else{
-						?>
-						<li><a href="#" data-reveal-id="TypeResaModal"> Réservez </a></li>
-						
-						<li><a href="#" data-reveal-id="ConnectionModal"> Se connecter </a></li>
+							}
+							?>
+						</ul><!-- class right -->
+					</section><!-- class top-bar-section -->
+				</nav><!-- class top-bar -->
+			</header>
 
-						<li><a href="#" data-reveal-id="SubscribtionModal"> S'inscrire </a></li>
-						<?php
-					}
-					?>
-				</ul><!-- class off-canvas-list -->
-			</aside><!-- class right-off-canvas-menu -->
-			<section class="main-section">
-				<!-- content goes here -->
+			<!-- NAVBAR FOR SMALL DEVICES -->
+			<div class="off-canvas-wrap" data-offcanvas>
+				<div class="inner-wrap">
+					<nav class="tab-bar">
+
+						<section class="left tab-bar-section">
+							<h1 class="title left"><a href="index.php"> Le Restaurant </h1>
+						</section><!-- class left tab-bar-section -->
+
+						<section class="right-small">
+							<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+						</section><!-- class right-small -->
+
+					</nav><!-- class tab-bar -->    
+					<aside class="right-off-canvas-menu">
+						<ul class="off-canvas-list">
+							<?php
+							if($user->isLoggedIn()){
+								?>
+								<li class="has-dropdown">
+									<a href="#"><?php echo $user->data()->firstname ?> <i class="fa fa-user"></i></a>
+									<ul class="dropdown">
+										<?php
+										if($user->hasPermission("admin")){
+											?>
+											<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
+											<?php
+										}
+										if($user->hasPermission("cook")){
+											?>
+											<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
+											<?php
+										}
+										if($user->hasPermission("receptionist")){
+											?>
+											<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
+											<?php
+										}
+										?>
+										<li><a href="history.php"><i class="fa fa-history"></i> Historique des reservations</a></li>
+										<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil </a></li>
+										<li><a href="logout.php"><i class="fa fa-power-off"></i> Déconnexion </a></li>
+									</ul>
+								</li><!-- class has-dropdown -->
+								<?php
+							}else{
+								?>
+								<li><a href="#" data-reveal-id="TypeResaModal"> Réservez </a></li>
+
+								<li><a href="#" data-reveal-id="ConnectionModal"> Se connecter </a></li>
+
+								<li><a href="#" data-reveal-id="SubscribtionModal"> S'inscrire </a></li>
+								<?php
+							}
+							?>
+						</ul><!-- class off-canvas-list -->
+					</aside><!-- class right-off-canvas-menu -->
+					<section class="main-section">
+						<!-- content goes here -->

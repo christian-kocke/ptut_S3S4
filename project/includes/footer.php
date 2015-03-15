@@ -72,6 +72,7 @@
 <script src="js/pickadate.js-3.5.5/lib/picker.date.js"></script>
 <script src="js/pickadate.js-3.5.5/lib/legacy.js"></script>
 <script src="js/pickadate.js-3.5.5/lib/picker.time.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script src="js/index.js"></script>
 <script src="js/vendor/fastclick.js"></script>
 <script src="js/foundation.min.js"></script>
@@ -102,18 +103,24 @@
 
 	// Use the picker object directly.
 	var picker = $input.pickadate('picker')
+	var timepicker
 	picker.on({
 		open: function(){
 			$.post("response.php", {action: "reservation", type: "date"}, function(data){
 				picker.set('disable', data);
 			}, "json");
 			
-		},
-		render: function(){
-			$.post("response.php", {action: "reservation", type: "hours", date: this.get()}, function(data){
-				console.log(data);
-			}, "json");
 		}
+	});
+
+	$(".datepicker").on("change", function(){
+		$.post("response.php", {action: "reservation", type: "hours", date: picker.get()}, function(data){
+			$("#panel1").removeClass("active");
+			$("a[href='#panel1']").parent(".tab-title").removeClass("active");
+			$("a[href='#panel1']").html("Date</br>"+picker.get());
+			$("#panel2").addClass("active");
+			$("a[href='#panel2']").parent(".tab-title").addClass("active");
+		}, "json");
 	});
 	
 </script>

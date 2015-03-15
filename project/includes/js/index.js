@@ -7,7 +7,7 @@ $(document).ready(function(){
     });
 
 	// smooth scroll function
-	$('a[href^="#"]').on('click',function(e) {
+	$('a[href="#suite"]').on('click',function(e) {
 		e.preventDefault();
 		
 		var target = this.hash,
