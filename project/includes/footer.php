@@ -102,8 +102,15 @@
 	});
 
 	// Use the picker object directly.
-	var picker = $input.pickadate('picker')
-	var timepicker
+	var picker = $input.pickadate('picker');
+	
+	// Pickatime
+	var $inputTime = $('.timepicker').pickatime({
+		interval: 30,
+		clear: 'Effacer',
+		formatLabel: "H : i"
+	});
+
 	picker.on({
 		open: function(){
 			$.post("response.php", {action: "reservation", type: "date"}, function(data){
@@ -120,8 +127,41 @@
 			$("a[href='#panel1']").html("Date</br>"+picker.get());
 			$("#panel2").addClass("active");
 			$("a[href='#panel2']").parent(".tab-title").addClass("active");
+			$(".time-display").html("");
+			console.log(data);
+			for(i = 0; i < data.length; i++){
+				console.log(data[i][0]);
+				$(".time-display").append("<button class='time button' value="+data[i][0]+">"+data[i][1]+"</button>");
+			}
 		}, "json");
 	});
+
+	$("a[href=#panel1]").on("click", function(){
+		$("#panel1").trigger("active");
+	});
+
+	$(document).on('open.fndtn.reveal', '#ResaModal', function () {
+		picker.open();
+	});
+
+	$("#panel1").on("active", function(){
+		picker.open();
+	});
+
+	$(".time-display").on("click", '.time', function(){
+		$("#panel2").removeClass("active");
+		$("a[href='#panel2']").parent(".tab-title").removeClass("active");
+		$("a[href='#panel2']").html("Créneaux</br>"+$(this).html());
+		$("#panel3").addClass("active");
+		$("a[href='#panel3']").parent(".tab-title").addClass("active");
+		$.post("response.php", {action: "reservation", type: "seats", date: picker.get(), time: $(this).val()}, function(data){
+			$(".seat-display").html("");
+			for(i = 1; i <= data && i <= 9; i++){
+				$(".seat-display").append("<button class='seat button' value="+i+">"+i+" <i class='fa fa-user' ></i></button>");
+			}
+		}, "json");
+	});
+	
 	
 </script>
 </section><!-- class main-section -->

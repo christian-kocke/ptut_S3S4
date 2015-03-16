@@ -205,7 +205,7 @@ function tokenGenerate(){
 function reservation($db){
   switch (input::get("type")) {
     case "date":
-      $sth = $db->getPDO()->prepare("SELECT dateResa FROM reservation GROUP BY dateResa HAVING COUNT(dateResa) < ((SELECT COUNT(id) FROM creneaux) * (SELECT COUNT(id) FROM tables)) AND dateResa >= (SELECT NOW())");
+      $sth = $db->getPDO()->prepare("SELECT dateResa FROM reservation GROUP BY dateResa HAVING COUNT(dateResa) = ((SELECT COUNT(id) FROM creneaux) * (SELECT COUNT(id) FROM tables)) AND dateResa >= (SELECT NOW())");
       $sth->execute();
       $rslt = $sth->fetchAll(PDO::FETCH_NUM);
       foreach ($rslt as $key => $value) {
@@ -215,19 +215,34 @@ function reservation($db){
       for($i = 0;$i < count($rslt);$i++){
         $rslt[$i][1]--;
       }
-      error_log(print_r($rslt, true));
       echo json_encode($rslt);
       break;
     case "hours":
       $date = DateTime::createFromFormat('j/m/Y', (string) input::get("date"), new DateTimeZone('Europe/Paris'));
       $d = $date->format('Y-m-d');
-      error_log($d);
       $sth = $db->getPDO()->prepare("SELECT id, beginning FROM creneaux WHERE id NOT IN (SELECT id_creneaux FROM reservation WHERE dateResa = :date GROUP BY id_creneaux HAVING COUNT(id_creneaux) = (SELECT COUNT(id) FROM tables))");
       $sth->bindParam(":date", $d, PDO::PARAM_STR);
       $sth->execute();
       $rslt = $sth->fetchAll(PDO::FETCH_NUM);
-      error_log(print_r($rslt, true));
+      foreach ($rslt as $key => $value) {
+        $rslt[$key] = array_merge($rslt[$key], explode(":", $value[1], -1));
+      }
       echo json_encode($rslt);
+      break;
+    case "seats":
+      $t = input::get("time");
+      $date = DateTime::createFromFormat('j/m/Y', (string) input::get("date"), new DateTimeZone('Europe/Paris'));
+      $d = $date->format('Y-m-d');
+      $sth = $db->getPDO()->prepare("SELECT seats FROM tables WHERE id NOT IN (SELECT id_table FROM reservation WHERE dateResa = :date AND id_creneaux = :time)");
+      $sth->bindParam(":date", $d, PDO::PARAM_STR);
+      $sth->bindParam(":time", $t);
+      $sth->execute();
+      $rslt = $sth->fetchAll(PDO::FETCH_NUM);
+      $total = 0;
+      foreach($rslt as $key => $value){
+        $total += $value[0];
+      }
+      echo $total;
       break;
   }
 }

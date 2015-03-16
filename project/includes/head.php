@@ -6,9 +6,10 @@
 	<link rel="stylesheet" href="css/foundation-datepicker.css">
 	<!-- INCLUDE FOUNDATION CSS -->
 	<link rel="stylesheet" href="css/foundation.css">
-	<!-- INCLUDE PICKADATE CSS -->
+	<!-- INCLUDE PICKADATE & PICKATIME CSS -->
 	<link rel="stylesheet" href="js/pickadate.js-3.5.5/lib/themes/default.css">
 	<link rel="stylesheet" href="js/pickadate.js-3.5.5/lib/themes/default.date.css">
+	<link rel="stylesheet" href="js/pickadate.js-3.5.5/lib/themes/default.time.css">
 	<!-- INCLUDE CUSTOM CSS -->
 	<link rel="stylesheet" href="css/app.css">
 	<!-- INCLUDE FONT AWESOME CSS -->
@@ -139,19 +140,21 @@
 									<div class="row">
 										<!-- PICKADATE -->
 										<div class="small-8 small-centered text-center column">
-											<button class="button datepicker">Choisiser votre date ici</button>
+											<input type="hidden" class="datepicker hide"/>
 										</div>
 									</div>
 								</div>
 								<div class="content" id="panel2">
 									<div class="row">
-										<div class="small-8 small-centered text-center column">
-											<button class="button timepicker">time</button>
+										<div class="small-8 small-centered text-center column time-display">
+											
 										</div>
 									</div>
 								</div>
 								<div class="content" id="panel3">
-									<p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+									<div class="small-8 small-centered text-center column seat-display">
+										
+									</div>
 								</div>
 								<div class="content" id="panel4">
 									<p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
