@@ -215,7 +215,7 @@ include_once "head.php";
             <!-- DESCRIPTION CHEF -->
             <div class="small-12 large-4 columns t3">
                 <div class="panel text-center" data-equalizer-watch>
-                    <h3 class="subheader text-center"> Chef Yann </h3>
+                    <h3 class="subheader text-center"> Chef </h3>
                     <img src="assets/img/photochef.jpg" alt="View">
                     <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
                 </div><!-- class panel text-center -->
@@ -224,7 +224,7 @@ include_once "head.php";
             <!-- DESCRIPTION CHEF -->
             <div class="small-12 large-4 columns t3">
                 <div class="panel text-center" data-equalizer-watch>
-                    <h3 class="subheader text-center"> Cusinier Christian </h3>
+                    <h3 class="subheader text-center"> Cusinier </h3>
                     <img src="assets/img/photochef.jpg" alt="View">
                     <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
                 </div><!-- class panel text-center -->
@@ -233,7 +233,7 @@ include_once "head.php";
             <!-- DESCRIPTION CHEF -->
             <div class="small-12 large-4 columns t3">
                 <div class="panel text-center" data-equalizer-watch>
-                    <h3 class="subheader text-center"> Serveur Noé </h3>
+                    <h3 class="subheader text-center"> Serveur </h3>
                     <img src="assets/img/photochef.jpg" alt="View">
                     <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
                 </div><!-- class panel text-center -->
