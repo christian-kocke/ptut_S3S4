@@ -111,6 +111,8 @@ $token = token::generate(); // on génère le token pour éviter les 'cross site
 
 include_once "head.php";
 ?>
+<!-- Loading gif -->
+<div class="loading hide"></div>
 <!-- Alert d'erreur login -->
 <div id="mainAlert4" data-alert class="alert-box success hide large-7 medium-6 small-5 large-centred medium-centered small-centered column text-center" tabindex="0" aria-live="assertive" role="dialogalert">
     <p class="flash"><?php

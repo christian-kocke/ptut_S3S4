@@ -305,6 +305,7 @@ function reservation($db){
           "phone" => $phone
         ));
       }
+      if($insert) session::flash('home', "Votre reservation à été enregistrer");
       echo $insert;
       break;
   }

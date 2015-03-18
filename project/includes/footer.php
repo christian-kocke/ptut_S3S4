@@ -169,20 +169,38 @@
 		$("a[href='#panel14']").parent(".tab-title").addClass("active");
 		seats = $(this).val();
 	});
-	
+	var toId;
 	$("#ResaForm").on("submit", function(){
-		var data = {action: "reservation", type: "validation", date: picker.get(), time: time, seats: seats, client_id: <?php echo ($user->isLoggedIn()) ? $user->data()->id : "undefined"; ?>}
-		data = $(this).serialize() + "&" + $.param(data);
-		console.log(data);
-        $.ajax({
-          type: "POST",
-          dataType: "json",
-          url: "response.php",
-          data: data,
-          success: function(data) {
-          	if(data) alert("ok");
-          }
-        });
+		if($("#ResaForm input[name=conditions]").is(":checked")){
+			var data = {action: "reservation", type: "validation", date: picker.get(), time: time, seats: seats, client_id: <?php echo ($user->isLoggedIn()) ? $user->data()->id : "undefined"; ?>}
+			data = $(this).serialize() + "&" + $.param(data);
+			console.log(data);
+	        $.ajax({
+	          type: "POST",
+	          dataType: "json",
+	          url: "response.php",
+	          data: data,
+	          success: function(data) {
+	          	if(data){
+	          		$(".flash").html("Votre reservation à été enregistrer !");
+           			type = "success"
+           			location.reload();
+	          	}else{
+	          		$(".flash").html("Il y à eu une erreur lors de la reservation !");
+           			type = "alert"
+	          	}
+	          }
+	        });
+	    }else{
+	    	$(".flash").html("Vous devez accepter les conditions d'utilisations !");
+           	type = "alert"
+	    }
+	    $("#mainAlert4").toggleClass("hide success alert", false);
+        $("#mainAlert4").toggleClass(type, true)
+        clearTimeout(toId);
+        toId = setTimeout(function() {
+            $("#mainAlert4").toggleClass("hide", true)
+        }, 3000);
     	return false;
 	});
 	

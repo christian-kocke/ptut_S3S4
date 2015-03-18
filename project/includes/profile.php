@@ -342,10 +342,10 @@ function setToken(data){
 }
 
 $( document ).ajaxSend(function(){
-	$(".loading").toggleClass("hide");
+	$(".loading").addClass("hide");
 })
 $( document ).ajaxComplete(function(){
-	$(".loading").toggleClass("hide");
+	$(".loading").removeClass("hide");
 })
 </script>
 </section><!-- class main-section -->

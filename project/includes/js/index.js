@@ -16,8 +16,8 @@ $(document).ready(function(){
 		$('html, body').stop().animate({
             'scrollTop': $target.offset().top
         }, 900, 'swing', function () {
-           window.location.hash = target;
-       });
+         window.location.hash = target;
+     });
 	});					
 });  
 
@@ -85,9 +85,9 @@ $(document).ready(function() {
     $(".emailForm").submit(function() {
         var data = {
           "action": "email"
-        };
-        data = $(this).serialize() + "&" + $.param(data);
-        $.ajax({
+      };
+      data = $(this).serialize() + "&" + $.param(data);
+      $.ajax({
           type: "POST",
           dataType: "json",
           url: "response.php",
@@ -108,8 +108,15 @@ $(document).ready(function() {
                 $("#mainAlert4").toggleClass("hide", true)
             }, 3000);
             document.getElementById("emailForm").reset();
-          }
-        });
-        return false;
+        }
+    });
+      return false;
+  });
+
+    $(document).ajaxSend(function(){
+        $(".loading").removeClass("hide");
+    });
+    $(document).ajaxComplete(function(){
+        $(".loading").addClass("hide");
     });
 });
