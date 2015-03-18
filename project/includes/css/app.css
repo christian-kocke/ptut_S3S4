@@ -252,8 +252,8 @@ h2 {
 .step2, .step3, .step4{
 	display: none;
 }
-.button{
-	margin: 0 0.5 1.25rem;
+.tab-title a{
+	height: 82px;
 }
 /* END RESERVATION STEPS */
 /* SMALL SCREENS */

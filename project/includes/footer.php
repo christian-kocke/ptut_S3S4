@@ -119,49 +119,72 @@
 			
 		}
 	});
-
+	var step;
 	$(".datepicker").on("change", function(){
 		$.post("response.php", {action: "reservation", type: "hours", date: picker.get()}, function(data){
-			$("#panel1").removeClass("active");
-			$("a[href='#panel1']").parent(".tab-title").removeClass("active");
-			$("a[href='#panel1']").html("Date</br>"+picker.get());
-			$("#panel2").addClass("active");
-			$("a[href='#panel2']").parent(".tab-title").addClass("active");
+			$("#panel11").removeClass("active");
+			$("a[href='#panel11']").parent(".tab-title").removeClass("active");
+			$("a[href='#panel11']").html("<i class='fa fa-calendar'></i> Date</br>"+picker.get());
+			$("#panel12").addClass("active");
+			$("a[href='#panel12']").parent(".tab-title").addClass("active");
 			$(".time-display").html("");
-			console.log(data);
 			for(i = 0; i < data.length; i++){
-				console.log(data[i][0]);
-				$(".time-display").append("<button class='time button' value="+data[i][0]+">"+data[i][1]+"</button>");
+				$(".time-display").append("<button class='time button' value="+data[i][0]+">"+data[i][2]+"H"+data[i][3]+"</button> ");
 			}
 		}, "json");
 	});
 
-	$("a[href=#panel1]").on("click", function(){
-		$("#panel1").trigger("active");
+	$("a[href=#panel11]").on("click", function(){
+		$("#panel11").trigger("active");
 	});
 
 	$(document).on('open.fndtn.reveal', '#ResaModal', function () {
 		picker.open();
 	});
 
-	$("#panel1").on("active", function(){
+	$("#panel11").on("active", function(){
 		picker.open();
 	});
-
+	var time;
 	$(".time-display").on("click", '.time', function(){
-		$("#panel2").removeClass("active");
-		$("a[href='#panel2']").parent(".tab-title").removeClass("active");
-		$("a[href='#panel2']").html("Créneaux</br>"+$(this).html());
-		$("#panel3").addClass("active");
-		$("a[href='#panel3']").parent(".tab-title").addClass("active");
+		$("#panel12").removeClass("active");
+		$("a[href='#panel12']").parent(".tab-title").removeClass("active");
+		$("a[href='#panel12']").html("<i class='fa fa-clock-o'></i> Créneaux</br>"+$(this).html());
+		$("#panel13").addClass("active");
+		$("a[href='#panel13']").parent(".tab-title").addClass("active");
+		time = $(this).val();
 		$.post("response.php", {action: "reservation", type: "seats", date: picker.get(), time: $(this).val()}, function(data){
 			$(".seat-display").html("");
-			for(i = 1; i <= data && i <= 9; i++){
-				$(".seat-display").append("<button class='seat button' value="+i+">"+i+" <i class='fa fa-user' ></i></button>");
+			for(i = 1; i <= data && i <= 8; i++){
+				$(".seat-display").append("<button class='seat button' value="+i+">"+i+" <i class='fa fa-user' ></i></button> ");
 			}
 		}, "json");
 	});
+	var seats;
+	$(".seat-display").on("click", '.seat', function(){
+		$("#panel13").removeClass("active");
+		$("a[href='#panel13']").parent(".tab-title").removeClass("active");
+		$("a[href='#panel13']").html("<i class='fa fa-users'></i> Personnes</br>"+$(this).val());
+		$("#panel14").addClass("active");
+		$("a[href='#panel14']").parent(".tab-title").addClass("active");
+		seats = $(this).val();
+	});
 	
+	$("#ResaForm").on("submit", function(){
+		var data = {action: "reservation", type: "validation", date: picker.get(), time: time, seats: seats, client_id: <?php echo ($user->isLoggedIn()) ? $user->data()->id : "undefined"; ?>}
+		data = $(this).serialize() + "&" + $.param(data);
+		console.log(data);
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "response.php",
+          data: data,
+          success: function(data) {
+          	if(data) alert("ok");
+          }
+        });
+    	return false;
+	});
 	
 </script>
 </section><!-- class main-section -->

@@ -22,19 +22,29 @@ if (is_ajax()) { // on teste si la requete est de l'ajax
 }
 
 function displayItems($db){
-  if(input::get("table") === "history"){
-    $client_id = input::get("id");
-    $select = "SELECT reservation.id, users.lastname, reservation.nbPerson, reservation.dateResa, reservation.schedule FROM reservation INNER JOIN users ON reservation.client_id = users.id WHERE client_id = ?";
-  }else{
-    switch(input::get("table")){
-      case "users": $table = "users"; break;
-      case "reservation": $table = "reservation"; break;
-      case "entree": $table = "entree"; break;
-      case "plat": $table = "plat"; break;
-      case "dessert": $table = "dessert"; break;
-    }
-    $select = "SELECT * FROM ".$table." ";
+  switch(input::get("table")){
+    case "users": 
+      $table = "users"; 
+      break;
+    case "reservation": 
+      $select = "SELECT reservation.id, reservation.name, reservation.nbPerson, reservation.dateResa, creneaux.beginning FROM reservation INNER JOIN creneaux ON reservation.id_creneaux = creneaux.id ";
+      break;
+    case "entree": 
+      $table = "entree"; 
+      break;
+    case "plat": 
+      $table = "plat"; 
+      break;
+    case "dessert": 
+      $table = "dessert"; 
+      break;
+    case "history":
+      $client_id = input::get("id");
+      $select = "SELECT reservation.id, reservation.name, reservation.nbPerson, reservation.dateResa, reservation.id_creneaux FROM reservation WHERE client_id = ?";
+      break;
   }
+  if(isset($table)) $select = "SELECT * FROM ".$table." ";
+  error_log($select);
   $sth = $db->getPDO()->prepare($select."ORDER BY ".$_POST['columns'][$_POST['order'][0]['column']]['name']." ".$_POST['order'][0]['dir']."");
   $sth->bindParam(1, $client_id);
   $sth->execute();
@@ -243,6 +253,59 @@ function reservation($db){
         $total += $value[0];
       }
       echo $total;
+      break;
+    case "validation":
+      $date = DateTime::createFromFormat('j/m/Y', (string) input::get("date"), new DateTimeZone('Europe/Paris'));
+      $d = $date->format('Y-m-d');
+      $t = input::get("time");
+      if(input::get("client_id") !== "undefined"){
+        $user = new user();
+        $user->find(input::get("client_id"));
+        $client_id = $user->data()->id;
+        $name = $user->data()->lastname;
+        $email = $user->data()->email;
+        $phone = $user->data()->phone;
+      }else{
+        $client_id = null;
+        $name = input::get("name");
+        $email = input::get("email");
+        $phone = input::get("phone");
+      }
+      $seats = input::get("seats");
+      $tables = array();
+      $sth = $db->getPDO()->prepare("SELECT * FROM tables WHERE id NOT IN (:list) AND id NOT IN (SELECT id_table FROM reservation WHERE dateResa = :date AND id_creneaux = :time) HAVING MIN(seats) AND seats >= :seats");
+      while($seats > 0){
+        $sth->bindParam(":seats", $seats);
+        $list = implode(",", $tables);
+        $sth->bindParam(":list", $list);
+        $sth->bindParam(":date", $d, PDO::PARAM_STR);
+        $sth->bindParam(":time", $t);
+        $sth->execute();
+        $rslt = $sth->fetchAll(PDO::FETCH_NUM);
+        if($rslt == null && $seats > 0){
+          $seats++;
+        }else{
+          foreach ($rslt as $key => $value) {
+            $tables[] = $value[0];
+            $seats -= $value[1];
+          }
+        }
+      }
+      error_log(print_r($tables, true));
+      $insert = true;
+      for($i = 0; $i < count($tables) && $insert == true; $i++){
+        $insert = $db->insert("reservation", array(
+          "client_id" => $client_id,
+          "id_table" => $tables[$i],
+          "nbPerson" => input::get("seats"),
+          "dateResa" => $d,
+          "id_creneaux" => input::get("time"),
+          "name" => $name,
+          "email" => $email,
+          "phone" => $phone
+        ));
+      }
+      echo $insert;
       break;
   }
 }

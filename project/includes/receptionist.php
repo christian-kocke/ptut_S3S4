@@ -71,10 +71,10 @@ $result = $db->get("reservation");
             "columnDefs": [
             { className: "dt-body-center", "targets": "_all" },
             { "name": "id",   "targets": 0 },
-            { "name": "client_id",   "targets": 1 },
+            { "name": "name",   "targets": 1 },
             { "name": "nbPerson",   "targets": 2 },
             { "name": "dateResa",   "targets": 3 },
-            { "name": "schedule",   "targets": 4 }
+            { "name": "id_creneaux",   "targets": 4 }
             ],
             "language": {
                 "url": "assets/lang/french.json"
