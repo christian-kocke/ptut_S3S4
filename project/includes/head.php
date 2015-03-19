@@ -474,6 +474,7 @@
 											<li><a href="logout.php"><i class="fa fa-power-off"></i> Déconnexion </a></li>
 										</ul>
 									</li><!-- class has-dropdown -->
+									<li><a href="#" data-reveal-id="ResaModal"> Réserver </a></li>
 									<?php
 								}else{
 									?>
