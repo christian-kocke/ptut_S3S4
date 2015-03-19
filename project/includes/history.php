@@ -11,26 +11,26 @@ $bdd = $db->getPDO();
 
 <!-- Table historique -->
 <div class="row">
-	<h2 class="subheader text-center titletable"> Historique des reservations </h2>
+	<h2 class="subheader text-center titletable"> Historique des réservations </h2>
 	<div class="large-12 large-centered column">
 		<table id="tablehistorique" class="row-border hover table" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Nom de la réservation</th>
-					<th>Nombre de personne</th>
-					<th>Date</th>
-					<th>Heure</th>
+					<th> ID </th>
+					<th> Nom de la réservation </th>
+					<th> Nombre de personnes </th>
+					<th> Date </th>
+					<th> Heure </th>
 				</tr>
 			</thead>
 
 			<tfoot>
 				<tr>
-					<th>ID</th>
-					<th>Nom de la réservation</th>
-					<th>Nombre de personne</th>
-					<th>Date</th>
-					<th>Heure</th>
+					<th> ID </th>
+					<th> Nom de la réservation </th>
+					<th> Nombre de personnes </th>
+					<th> Date </th>
+					<th> Heure </th>
 				</tr>
 			</tfoot>
 			<tbody>

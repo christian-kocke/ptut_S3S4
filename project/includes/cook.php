@@ -16,9 +16,9 @@ $bdd = $db->getPDO();
 <div class="row">
 	<div class="large-5 large-centered column">
 		<ul class="tabs t3" data-tab>
-			<li class="tab-title active"><a href="#panel1">Entrée</a></li>
-			<li class="tab-title"><a href="#panel2">Plat</a></li>
-			<li class="tab-title"><a href="#panel3">Dessert</a></li>
+			<li class="tab-title active"><a href="#panel1"> Entrées </a></li>
+			<li class="tab-title"><a href="#panel2"> Plats </a></li>
+			<li class="tab-title"><a href="#panel3"> Desserts </a></li>
 		</ul>
 	</div>
 </div>	
@@ -26,7 +26,7 @@ $bdd = $db->getPDO();
 	<div class="content active" id="panel1">
 		<!-- Table entré -->
 		<div class="row">
-			<h2 class="subheader text-center titletable"> Entrée </h2>
+			<h2 class="subheader text-center titletable"> Entrées </h2>
 			<div class="large-12 large-centered column">
 				<table id="tableentree" class="row-border hover table" cellspacing="0" width="100%" name="entree">
 					<thead>
@@ -62,7 +62,7 @@ $bdd = $db->getPDO();
 	<div class="content" id="panel2">
 		<!-- Table plat -->
 		<div class="row">
-			<h2 class="subheader text-center titletable"> Plat </h2>
+			<h2 class="subheader text-center titletable"> Plats </h2>
 			<div class="large-12 large-centered column">
 				<table id="tableplat" class="row-border hover table" cellspacing="0" width="100%" name="plat">
 					<thead>
@@ -99,7 +99,7 @@ $bdd = $db->getPDO();
 	<div class="content" id="panel3">
 		<!-- Table dessert -->
 		<div class="row">
-			<h2 class="subheader text-center titletable"> Dessert </h2>
+			<h2 class="subheader text-center titletable"> Desserts </h2>
 			<div class="large-12 large-centered column">
 				<table id="tabledessert" class="row-border hover table" cellspacing="0" width="100%" name="dessert">
 					<thead>
@@ -205,7 +205,7 @@ $('#tableentree tbody').on( 'click', 'td', function () {
 			data: data,
 			success: function(data) {
 				if(data){
-					$(".flash").html("Modification réussite !");
+					$(".flash").html("Modification réussie !");
 					type = "success"
 					tableentree.draw();
 				}else{
@@ -242,7 +242,7 @@ $('#tableentree tbody').on( 'click', 'td', function () {
 				data: data,
 				success: function(data) {
 					if(data){
-						$(".flash").html("Modification réussite !");
+						$(".flash").html("Modification réussie !");
 						type = "success"
 						tableentree.draw();
 					}else{
@@ -280,7 +280,7 @@ $('#buttonentree').on('click', function () {
 		data: data,
 		success: function(data) {
 			if(data){
-				$(".flash").html("Insertion réussite !");
+				$(".flash").html("Insertion réussie !");
 				type = "success"
 				tableentree.draw();
 			}else{
@@ -353,7 +353,7 @@ $('#buttonentree').on('click', function () {
  			data: data,
  			success: function(data) {
  				if(data){
- 					$(".flash").html("Modification réussite !");
+ 					$(".flash").html("Modification réussie !");
 						type = "success"
 						tableplat.draw();
 					}else{
@@ -390,7 +390,7 @@ $('#buttonentree').on('click', function () {
  				data: data,
  				success: function(data) {
  					if(data){
- 						$(".flash").html("Modification réussite !");
+ 						$(".flash").html("Modification réussie !");
 						type = "success"
 						tableplat.draw();
 					}else{
@@ -427,7 +427,7 @@ $('#buttonplat').on('click', function () {
 		data: data,
 		success: function(data) {
 			if(data){
-				$(".flash").html("Insertion réussite !");
+				$(".flash").html("Insertion réussie !");
 						type = "success"
 						tableplat.draw();
 					}else{
@@ -501,7 +501,7 @@ $('#buttonplat').on('click', function () {
  			data: data,
  			success: function(data) {
  				if(data){
- 					$(".flash").html("Modification réussite !");
+ 					$(".flash").html("Modification réussie !");
 						type = "success"
 						tabledessert.draw();
 					}else{
@@ -538,7 +538,7 @@ $('#buttonplat').on('click', function () {
  				data: data,
  				success: function(data) {
  					if(data){
- 						$(".flash").html("Modification réussite !");
+ 						$(".flash").html("Modification réussie !");
 						type = "success"
 						tabledessert.draw();
 					}else{
@@ -576,7 +576,7 @@ $('#buttondessert').on('click', function () {
 		data: data,
 		success: function(data) {
 			if(data){
-				$(".flash").html("Insertion réussite !");
+				$(".flash").html("Insertion réussie !");
 						type = "success"
 						tabledessert.draw();
 					}else{
@@ -617,7 +617,7 @@ $('table tbody').on('click', '.remove', function () {
 			data: data,
 			success: function(data) {
 				if(data){
-					$(".flash").html("Supression réussite !");
+					$(".flash").html("Supression réussie !");
 				type = "success"
 					table.draw();
 				}else{

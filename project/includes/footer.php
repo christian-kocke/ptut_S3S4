@@ -1,12 +1,9 @@
 
 <footer>	
 
-
 	<!-- SOCIAL NETWORKS -->
 	<div class="small-12 medium-12 large-12 footerBis columns" data-equalizer>
 		
-		
-
 		<div class="small-12 medium-12 large-4 columns" data-equalizer-watch>	
 			<div class="row collapse prefix-radius">
 				<div class="small-2 medium-2 large-2 columns">
@@ -149,7 +146,7 @@
 	$(".time-display").on("click", '.time', function(){
 		$("#panel12").removeClass("active");
 		$("a[href='#panel12']").parent(".tab-title").removeClass("active");
-		$("a[href='#panel12']").html("<i class='fa fa-clock-o'></i> Créneaux</br>"+$(this).html());
+		$("a[href='#panel12']").html("<i class='fa fa-clock-o'></i> Créneaux </br>"+$(this).html());
 		$("#panel13").addClass("active");
 		$("a[href='#panel13']").parent(".tab-title").addClass("active");
 		time = $(this).val();
@@ -164,7 +161,7 @@
 	$(".seat-display").on("click", '.seat', function(){
 		$("#panel13").removeClass("active");
 		$("a[href='#panel13']").parent(".tab-title").removeClass("active");
-		$("a[href='#panel13']").html("<i class='fa fa-users'></i> Personnes</br>"+$(this).val());
+		$("a[href='#panel13']").html("<i class='fa fa-users'></i> Personnes </br>"+$(this).val());
 		$("#panel14").addClass("active");
 		$("a[href='#panel14']").parent(".tab-title").addClass("active");
 		seats = $(this).val();
@@ -182,17 +179,17 @@
 	          data: data,
 	          success: function(data) {
 	          	if(data){
-	          		$(".flash").html("Votre reservation à été enregistrer !");
+	          		$(".flash").html("Votre réservation a été enregistrée !");
            			type = "success"
            			location.reload();
 	          	}else{
-	          		$(".flash").html("Il y à eu une erreur lors de la reservation !");
+	          		$(".flash").html("Il y a eu une erreur lors de la réservation !");
            			type = "alert"
 	          	}
 	          }
 	        });
 	    }else{
-	    	$(".flash").html("Vous devez accepter les conditions d'utilisations !");
+	    	$(".flash").html("Vous devez accepter les conditions d'utilisation !");
            	type = "alert"
 	    }
 	    $("#mainAlert4").toggleClass("hide success alert", false);

@@ -19,7 +19,7 @@ if(input::exists()) { // test si la variable $_POST est set
                 session::flash('home', "Bienvenue ".$user->data()->username);
                 redirect::to('index.php'); // redirection a la page d'accueil
             } else {
-                session::flash('login', array('Echec de la connection')); // sinon on notifie l'utilisateur que la connection a échoué
+                session::flash('login', array('Echec de la connexion')); // sinon on notifie l'utilisateur que la connection a échoué
             }
         } else {
             session::flash('login', $validation->errors()); // si la validation n'a pas réussit on affiche les erreurs
@@ -95,7 +95,7 @@ if (input::exists()) { // test si la variable $_POST est set
                     'joined' => date('Y-m-d H:i:s'), // date de la création de l'utilisateur
                     'user_group' => 1 // sont groupe (admin, user, etc ...)
                     ));
-                session::flash('home', 'Inscription réussite, Bienvenue sur Le Restaurant !'); // on affiche le message pour signaler a l'utilisateur qu'il a bien été enregistrer
+                session::flash('home', 'Inscription réussie, bienvenue sur Le Restaurant !'); // on affiche le message pour signaler a l'utilisateur qu'il a bien été enregistrer
                 redirect::to('index.php'); // on le redirige a la page d'accueil
 
             } catch(Exception $e) { 
@@ -158,7 +158,7 @@ include_once "head.php";
             <?php
             $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM entree ');
 
-            echo '<h2>Entrée</h2></br>';
+            echo '<h2>Entrées</h2></br>';
             while ($donnees = $reponse->fetch())
             {
                 if($donnees['disponible']==1) {
@@ -174,7 +174,7 @@ include_once "head.php";
 
             $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM plat ');
 
-            echo '<h2>Plat</h2></br>';
+            echo '<h2>Plats</h2></br>';
             while ($donnees = $reponse->fetch())
             {
                 if($donnees['disponible']==1) {
@@ -193,7 +193,7 @@ include_once "head.php";
 
             $reponse = $bdd->query('SELECT nom, ingredient, prix, disponible FROM dessert ');
 
-            echo '<h2>Dessert</h2></br>';
+            echo '<h2>Desserts</h2></br>';
             while ($donnees = $reponse->fetch())
             {
                 if($donnees['disponible']==1) {
@@ -226,7 +226,7 @@ include_once "head.php";
             <!-- DESCRIPTION CHEF -->
             <div class="small-12 large-4 columns t3">
                 <div class="panel text-center" data-equalizer-watch>
-                    <h3 class="subheader text-center"> Cusinier </h3>
+                    <h3 class="subheader text-center"> Cuisinier </h3>
                     <img src="assets/img/photochef.jpg" alt="View">
                     <p> Me patriam ipsi) atque publicam credite dimicatione cum cum Caesare reducit rem reconciliat quodam rursum universis existimatis subire Caesare et impendentibus maximis subire et restituit pristinus dimicatione olim ipsi) et amor meus perennis dimicatione coegit esse subvenire me me facitis.</p>
                 </div><!-- class panel text-center -->
@@ -246,7 +246,7 @@ include_once "head.php";
 </div><!-- class small-12 large-12 columns chef parts -->
 
 <div class="small-12 large-12 columns contact parts exception">
-    <h1 class="subheader text-center t2"> Contact </h1>
+    <h1 class="subheader text-center t2"> Contacts </h1>
     <div class="row" data-equalizer>
         <div class="small-12 large-6 columns">
             <div class="panel text-center " data-equalizer-watch >
@@ -256,18 +256,18 @@ include_once "head.php";
                     <input type="email" name="email" placeholder="Email"/>
                     <input type="text" name="subject" placeholder="Objet"/>
                     <textarea  rows="10" name="message" placeholder="Message..."></textarea>
-                    <button class="button"><i class="fa fa-paper-plane"></i> Envoyer</button>
+                    <button class="button"><i class="fa fa-paper-plane"></i> Envoyer </button>
                 </form>
             </div>
         </div>
         <div class="small-12 large-6 columns">
             <div class="panel text-center" data-equalizer-watch>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11129.88006909465!2d4.873383729635559!3d45.7818106160032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x8f808af88cda1faa!2sIUT+LYON+1+-+Site+de+Villeurbanne+Doua!5e0!3m2!1sfr!2sfr!4v1425847203418" width="400" height="300" frameborder="0" style="border:0"></iframe>
-                <h3 class="subheader text-center t3">Horraire</h3>
-                <h5 class="header t3">Déjeuner : de 12h à 15h (tous les jours)</h5>
-                <h5 class="header t3">Dîner : de 19h à 20h (tous les jours)</h5>
-                <h3 class="subheader text-center t3">Service</h3>
-                <h5 class="header t3"> Climatisé , Terrasse, Wifi</h5>
+                <h3 class="subheader text-center t3"> Horaires </h3>
+                <h5 class="header t3"> Déjeuner : de 12h à 15h (tous les jours) </h5>
+                <h5 class="header t3"> Dîner : de 19h à 21h (tous les jours) </h5>
+                <h3 class="subheader text-center t3"> Services </h3>
+                <h5 class="header t3"> Climatisé , Terrasse, Wifi </h5>
             </div>       
         </div>    
     </div>

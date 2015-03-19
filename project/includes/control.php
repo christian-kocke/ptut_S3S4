@@ -11,7 +11,7 @@ include_once 'head.php';
 	<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
 </div>
 <head>
-	<title>Control Panel</title>
+	<title> Control Panel </title>
 </head>
 <body>
 	<div class="row">
@@ -20,16 +20,16 @@ include_once 'head.php';
 			<table id="table" class="row-border hover table display" cellspacing="0" width="100%">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Pseudo</th>
-						<th>Prénom</th>
-						<th>Nom</th>
-						<th>Téléphone</th>
-						<th>Email</th>
-						<th>Date enregistrement</th>
-						<th>Groupe</th>
-						<th>Action</th>
-					</tr>
+						<th> ID </th>
+						<th> Pseudo </th>
+						<th> Prénom </th>
+						<th> Nom </th>
+						<th> Téléphone </th>
+						<th> Email </th>
+						<th> Date d'enregistrement </th>
+						<th> Groupe </th>
+						<th> Action </th>
+					</tr> 
 				</thead>
 
 				<tfoot>
@@ -40,7 +40,7 @@ include_once 'head.php';
 						<th>Nom</th>
 						<th>Téléphone</th>
 						<th>Email</th>
-						<th>Date enregistrement</th>
+						<th>Date d'enregistrement</th>
 						<th>Groupe</th>
 						<th>Action</th>
 					</tr>
@@ -127,7 +127,7 @@ include_once 'head.php';
 							data: data,
 							success: function(data) {
 								if(data){
-									$(".flash").html("Modification réussite !");
+									$(".flash").html("Modification réussie !");
 									type = "success"
 									table.draw();
 								}else{
@@ -166,7 +166,7 @@ $('#table tbody').on('click', '.remove', function () {
 			data: data,
 			success: function(data) {
 				if(data){
-					$(".flash").html("Utilisateur supprimer !");
+					$(".flash").html("Utilisateur supprimé !");
 					type = "success"
 					table.draw();
 				}else{

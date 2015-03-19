@@ -25,23 +25,23 @@ $result = $db->get("reservation");
             <table id="table" class="row-border hover table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nom de la réservation</th>
-                        <th>Nombre de personne</th>
-                        <th>Date</th>
-                        <th>Heure</th>
-                        <th>Action</th>
+                        <th> ID </th>
+                        <th> Nom de la réservation </th>
+                        <th> Nombre de personnes </th>
+                        <th> Date </th>
+                        <th> Heure </th>
+                        <th> Action </th>
                     </tr>
                 </thead>
 
                 <tfoot>
                     <tr>
-                        <th>ID</th>
-                        <th>Nom de la réservation</th>
-                        <th>Nombre de personne</th>
-                        <th>Date</th>
-                        <th>Heure</th>
-                        <th>Action</th>
+                        <th> ID </th>
+                        <th> Nom de la réservation </th>
+                        <th> Nombre de personnes </th>
+                        <th> Date </th>
+                        <th> Heure </th>
+                        <th> Action </th>
                     </tr>
                 </tfoot>
 
@@ -120,7 +120,7 @@ $result = $db->get("reservation");
                         data: data,
                         success: function(data) {
                             if(data){
-                                $(".flash").html("Modification réussite !");
+                                $(".flash").html("Modification réussie !");
                                 type = "success"
                                 table.draw();
                             }else{
@@ -158,7 +158,7 @@ $('#table tbody').on('click', '.remove', function () {
         data: data,
         success: function(data) {
             if(data){
-                $(".flash").html("Reservation supprimer !");
+                $(".flash").html("Reservation supprimée !");
                     type = "success"
                 table.draw();
             }else{

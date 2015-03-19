@@ -17,8 +17,8 @@ include_once 'head.php';
 
 <div class="row t3">
 	<ul class="tabs vertical" data-tab>
-		<li class="tab-title active"><a href="#panel2">Information du profil</a></li>
-		<li class="tab-title "><a href="#panel1">Changer son mot de passe</a></li>
+		<li class="tab-title active"><a href="#panel2"> Informations du profil </a></li>
+		<li class="tab-title "><a href="#panel1"> Changer son mot de passe </a></li>
 	</ul>
 
 
@@ -57,7 +57,7 @@ include_once 'head.php';
 						<div class="small-12 columns">
 							<div class="row">
 								<div class="small-6 columns">
-									<label for="renewpassword" class="right inline"> Retaper mot de passe : </label>
+									<label for="renewpassword" class="right inline"> Retaper le mot de passe : </label>
 								</div><!-- class small-2 columns -->
 								<div class="small-6 columns">
 									<input type="password" name="renewpassword" id="renewpassword" />
@@ -265,7 +265,7 @@ include_once 'head.php';
 							data: data,
 							success: function(data) {
 								if(data[0]){
-									$(".flash").html("Le mot de passe a été modifier !");
+									$(".flash").html("Le mot de passe a été modifié !");
 									type = "success"
 									document.getElementById("passwordForm").reset();
 								}else{
@@ -311,7 +311,7 @@ $(".infoForm").on("submit", function(){
 					data = $(".infoForm").serialize() + "&" + $.param(data);
 					$.post("response.php", data, function(data){
 						if(data[0]){
-							$(".flash").html("Vos informations on été modifier !");
+							$(".flash").html("Vos informations on été modifiés !");
 							type = "success"
 						}else{
 							$(".flash").html("");

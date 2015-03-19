@@ -114,16 +114,16 @@ function confirm($db){
     case "delete":
     switch(input::get("table")){
       case "users":
-      $msg = "<p>Etes vous sur de vouloir supprimer l'utilisateur <strong>".$values->first()->firstname." ".$values->first()->lastname."</strong></p>";
+      $msg = "<p>Etes-vous sur de vouloir supprimer l'utilisateur <strong>".$values->first()->firstname." ".$values->first()->lastname."</strong></p>";
       break;
       case "entree":
-      $msg = "<p>Etes vous sur de vouloir supprimer l'entrée <strong>".$values->first()->nom."</strong></p>";
+      $msg = "<p>Etes-vous sur de vouloir supprimer l'entrée <strong>".$values->first()->nom."</strong></p>";
       break;
       case "plat":
-      $msg = "<p>Etes vous sur de vouloir supprimer le plat <strong>".$values->first()->nom."</strong></p>";
+      $msg = "<p>Etes-vous sur de vouloir supprimer le plat <strong>".$values->first()->nom."</strong></p>";
       break;
       case "dessert":
-      $msg = "<p>Etes vous sur de vouloir supprimer le dessert <strong>".$values->first()->nom."</strong></p>";
+      $msg = "<p>Etes-vous sur de vouloir supprimer le dessert <strong>".$values->first()->nom."</strong></p>";
       break;
     }
   }
@@ -305,7 +305,7 @@ function reservation($db){
           "phone" => $phone
         ));
       }
-      if($insert) session::flash('home', "Votre reservation à été enregistrer");
+      if($insert) session::flash('home', "Votre reservation a été enregistrée");
       echo $insert;
       break;
   }

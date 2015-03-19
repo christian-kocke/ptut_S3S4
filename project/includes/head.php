@@ -26,7 +26,7 @@
 	<!-- INCLUDE DATATABLES JS -->
 	<script type="text/javascript" charset="utf8" src="assets/DataTables-1.10.4/media/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" charset="utf8" src="js/foundation-datepicker.js"></script>
-	<title>Le Restaurant</title>
+	<title> Le Restaurant </title>
 </head>
 <body>
 	<header>
@@ -43,12 +43,12 @@
 					<?php
 					if($user->isLoggedIn()){
 						?>
-						<li><a href="#" data-reveal-id="ResaModal"> Réservez </a></li>
+						<li><a href="#" data-reveal-id="ResaModal"> Réserver </a></li>
 						<?php
 					} else {
 						?>
 
-						<li><a href="#" data-reveal-id="TypeResaModal"> Réservez </a></li>
+						<li><a href="#" data-reveal-id="TypeResaModal"> Réserver </a></li>
 
 						<!-- RESERVATION WITH A CLIENT ACCOUNT OR NOT ? (MODAL) -->
 						<div id="TypeResaModal" class="reveal-modal medium" data-reveal>
@@ -59,7 +59,7 @@
 									<div class="panel text-center">
 										<h3 class="subheader"> Réservation directe </h3>
 										<p> Réservez sans avoir de compte client si vous êtes pressé. </p>
-										<button class="button radius" data-reveal-id="ResaModal"> Réservez </button>
+										<button class="button radius" data-reveal-id="ResaModal"> Réserver </button>
 									</div><!-- class panel -->
 								</div><!-- class small-12 medium-12 large-12 columns -->
 							</div><!-- class row -->
@@ -70,7 +70,7 @@
 								<div class="small-12 medium-12 large-6 columns">
 									<div class="panel text-center persoHeight" data-equalizer-watch>
 										<h3 class="subheader"> Connexion </h3>
-										<p> Connectez-vous et profitez des avantages clients (points fidelité). </p>
+										<p> Connectez-vous et profitez des avantages client (points de fidelité). </p>
 										<div class="row">
 											<form action="" method="post" data-abide>
 												<!-- LOGIN -->
@@ -112,8 +112,8 @@
 								<div class="small-12 medium-12 large-6 columns">
 									<div class="panel text-center persoHeight" data-equalizer-watch>
 										<h3 class="subheader"> Inscription </h3>
-										<p> Inscrivez-vous et cumulez des points de fidelités afin d'obtenir des réductions sur vos prochaines réservations. </p>
-										<p> Vous aurez accès à un récapitulatif des anciennes réservations effectuées. </p>
+										<p> Inscrivez-vous et cumulez des points de fidelité afin d'obtenir des réductions sur vos prochaines réservations. </p>
+										<p> Vous aurez accès à un récapitulatif de vos anciennes réservations. </p>
 										<button class="button radius" data-reveal-id="SubscribtionModal"> S'inscrire </button>
 									</div><!-- class panel text-center -->
 								</div><!-- class small-12 medium-12 large-6 columns -->
@@ -128,12 +128,12 @@
 					<!-- RESERVATION MODAL -->
 					<div id="ResaModal" class="reveal-modal medium" data-reveal>
 						<div class="row">
-							<h2 class="subheader text-center"> Reservation </h2>
+							<h2 class="subheader text-center"> Réservation </h2>
 							<ul class="tabs small-11 small-centered column text-center" data-tab>
-								<li class="tab-title active"><a href="#panel11"><i class="fa fa-calendar"></i> Date</a></li>
-								<li class="tab-title"><a href="#panel12"><i class="fa fa-clock-o"></i> Créneaux</a></li>
-								<li class="tab-title"><a href="#panel13"><i class="fa fa-users"></i> Personnes</a></li>
-								<li class="tab-title"><a href="#panel14">Validation</a></li>
+								<li class="tab-title active"><a href="#panel11"><i class="fa fa-calendar"></i> Date </a></li>
+								<li class="tab-title"><a href="#panel12"><i class="fa fa-clock-o"></i> Créneaux </a></li>
+								<li class="tab-title"><a href="#panel13"><i class="fa fa-users"></i> Personnes </a></li>
+								<li class="tab-title"><a href="#panel14"> Validation </a></li>
 							</ul>
 							<div class="tabs-content">
 								<div class="content active" id="panel11">
@@ -192,10 +192,10 @@
 											<div class="row">
 												<div class="large-12 columns text-center">
 													<input type="checkbox" name="conditions" id="conditions">
-													<label for="conditions">J'accepte les conditions d'utilisation de "Le Restaurant"</label>
+													<label for="conditions"> J'accepte les conditions d'utilisation de "Le Restaurant" </label>
 												</div><!-- class large-12 columns text-center -->
 												<div class="large-12 columns text-center">
-													<button class="button radius">Reserver</button>
+													<button class="button radius"> Réserver </button>
 												</div><!-- class large-12 columns text-center -->
 											</div><!-- class row --></div>
 										</form>
@@ -219,21 +219,21 @@
 									<?php
 									if($user->hasPermission("admin")){
 										?>
-										<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
+										<li><a href="control.php"><i class="fa fa-users"></i> Gestion des utilisateurs </a></li>
 										<?php
 									}
 									if($user->hasPermission("cook")){
 										?>
-										<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
+										<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu </a></li>
 										<?php
 									}
 									if($user->hasPermission("receptionist")){
 										?>
-										<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
+										<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des réservations </a></li>
 										<?php
 									}
 									?>
-									<li><a href="history.php"><i class="fa fa-history"></i> Historique des reservations</a></li>
+									<li><a href="history.php"><i class="fa fa-history"></i> Historique des reservations </a></li>
 									<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil </a></li>
 									<li><a href="logout.php"><i class="fa fa-power-off"></i> Déconnexion </a></li>
 								</ul>
@@ -455,21 +455,21 @@
 											<?php
 											if($user->hasPermission("admin")){
 												?>
-												<li><a href="control.php"><i class="fa fa-users"></i> Gestion utilisateurs</a></li>
+												<li><a href="control.php"><i class="fa fa-users"></i> Gestion des utilisateurs </a></li>
 												<?php
 											}
 											if($user->hasPermission("cook")){
 												?>
-												<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu</a></li>
+												<li><a href="cook.php"><i class="fa fa-cutlery"></i> Gestion du menu </a></li>
 												<?php
 											}
 											if($user->hasPermission("receptionist")){
 												?>
-												<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des reservation</a></li>
+												<li><a href="receptionist.php"><i class="fa fa-laptop"></i> Gestion des réservations </a></li>
 												<?php
 											}
 											?>
-											<li><a href="history.php"><i class="fa fa-history"></i> Historique des reservations</a></li>
+											<li><a href="history.php"><i class="fa fa-history"></i> Historique des réservations</a></li>
 											<li><a href="profile.php"><i class="fa fa-pencil"></i> Profil </a></li>
 											<li><a href="logout.php"><i class="fa fa-power-off"></i> Déconnexion </a></li>
 										</ul>
@@ -477,7 +477,7 @@
 									<?php
 								}else{
 									?>
-									<li><a href="#" data-reveal-id="TypeResaModal"> Réservez </a></li>
+									<li><a href="#" data-reveal-id="TypeResaModal"> Réserver </a></li>
 
 									<li><a href="#" data-reveal-id="ConnectionModal"> Se connecter </a></li>
 
