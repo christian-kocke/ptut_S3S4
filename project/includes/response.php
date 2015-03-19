@@ -40,7 +40,7 @@ function displayItems($db){
       break;
     case "history":
       $client_id = input::get("id");
-      $select = "SELECT reservation.id, reservation.name, reservation.nbPerson, reservation.dateResa, reservation.id_creneaux FROM reservation WHERE client_id = ?";
+      $select = "SELECT reservation.id, reservation.name, reservation.nbPerson, reservation.dateResa, creneaux.beginning FROM reservation INNER JOIN creneaux ON reservation.id_creneaux = creneaux.id WHERE reservation.client_id = ?";
       break;
   }
   if(isset($table)) $select = "SELECT * FROM ".$table." ";
