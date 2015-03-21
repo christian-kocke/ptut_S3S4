@@ -274,7 +274,7 @@ function reservation($db){
       $seats = input::get("seats");
       $tables = array();
       $sth = $db->getPDO()->prepare("SELECT * FROM tables WHERE id NOT IN (:list) AND id NOT IN (SELECT id_table FROM reservation WHERE dateResa = :date AND id_creneaux = :time) HAVING MIN(seats) AND seats >= :seats");
-      while($seats > 0){
+      while($seats > 0 && $seats < 9){
         $sth->bindParam(":seats", $seats);
         $list = implode(",", $tables);
         $sth->bindParam(":list", $list);
@@ -292,7 +292,7 @@ function reservation($db){
         }
       }
       error_log(print_r($tables, true));
-      $insert = true;
+      $insert = false;
       for($i = 0; $i < count($tables) && $insert == true; $i++){
         $insert = $db->insert("reservation", array(
           "client_id" => $client_id,
