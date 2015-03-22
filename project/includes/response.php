@@ -213,6 +213,7 @@ function tokenGenerate(){
 }
 
 function reservation($db){
+  $count_table = 0;
   switch (input::get("type")) {
     case "date":
       $sth = $db->getPDO()->prepare("SELECT dateResa FROM reservation GROUP BY dateResa HAVING COUNT(dateResa) = ((SELECT COUNT(id) FROM creneaux) * (SELECT COUNT(id) FROM tables)) AND dateResa >= (SELECT NOW())");
@@ -266,7 +267,7 @@ function reservation($db){
         $email = $user->data()->email;
         $phone = $user->data()->phone;
       }else{
-        $client_id = null;
+        $client_id = NULL;
         $name = input::get("name");
         $email = input::get("email");
         $phone = input::get("phone");
@@ -291,9 +292,10 @@ function reservation($db){
           }
         }
       }
+      $insert = NULL;
       error_log(print_r($tables, true));
-      $insert = false;
-      for($i = 0; $i < count($tables) && $insert == true; $i++){
+      for($i = 0; $i < count($tables); $i++){
+        error_log("ok");
         $insert = $db->insert("reservation", array(
           "client_id" => $client_id,
           "id_table" => $tables[$i],

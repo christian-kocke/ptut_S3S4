@@ -161,39 +161,44 @@
 	});
 	var toId;
 	$("#ResaForm").on("submit", function(){
+		var type;
 		if($("#ResaForm input[name=conditions]").is(":checked")){
 			var data = {action: "reservation", type: "validation", date: picker.get(), time: time, seats: seats, client_id: <?php echo ($user->isLoggedIn()) ? $user->data()->id : "undefined"; ?>}
 			data = $(this).serialize() + "&" + $.param(data);
 			console.log(data);
-	        $.ajax({
-	          type: "POST",
-	          dataType: "json",
-	          url: "response.php",
-	          data: data,
-	          success: function(data) {
-	          	if(data){
-	          		$(".flash").html("Votre réservation a été enregistrée !");
-           			type = "success"
-           			location.reload();
-	          	}else{
-	          		$(".flash").html("Il y a eu une erreur lors de la réservation !");
-           			type = "alert"
-	          	}
-	          }
-	        });
-	    }else{
-	    	$(".flash").html("Vous devez accepter les conditions d'utilisation !");
-           	type = "alert"
-	    }
-	    $("#mainAlert4").toggleClass("hide success alert", false);
-        $("#mainAlert4").toggleClass(type, true)
-        clearTimeout(toId);
-        toId = setTimeout(function() {
-            $("#mainAlert4").toggleClass("hide", true)
-        }, 3000);
-    	return false;
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				url: "response.php",
+				data: data,
+				success: function(data) {
+					if(data){
+						location.reload();
+					}else{
+						$(".flash").html("Il y a eu une erreur lors de la réservation !");
+						type = "alert"
+						$("#mainAlert4").toggleClass("hide success alert", false);
+						$("#mainAlert4").toggleClass(type, true)
+						clearTimeout(toId);
+						toId = setTimeout(function() {
+							$("#mainAlert4").toggleClass("hide", true)
+						}, 3000);
+					}
+				}
+			});
+		}else{
+			$(".flash").html("Vous devez accepter les conditions d'utilisation !");
+			type = "alert"
+			$("#mainAlert4").toggleClass("hide success alert", false);
+			$("#mainAlert4").toggleClass(type, true)
+			clearTimeout(toId);
+			toId = setTimeout(function() {
+				$("#mainAlert4").toggleClass("hide", true)
+			}, 3000);
+		}
+		return false;
 	});
-	
+
 </script>
 </section><!-- class main-section -->
 <a class="exit-off-canvas"></a>

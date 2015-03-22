@@ -162,7 +162,9 @@
 													</div><!-- small-2 columns -->
 													<div class="small-10 columns">
 														<input type="text" name="name" placeholder="Nom" value="<?php echo ($user->isLoggedIn()) ? $user->data()->lastname : ""; ?>" required pattern="alpha" <?php echo ($user->isLoggedIn()) ? "disabled" : ""; ?> >
+
 														<small class="error"> Le nom doit contenir uniquement de minuscules/majuscules. </small>
+
 													</div><!-- class small-10 columns -->
 												</div><!-- class row collapse prefix-radius -->
 											</div><!-- class row -->
@@ -173,8 +175,10 @@
 														<span class="prefix"><i class="fa fa-envelope-o"></i></span>
 													</div><!-- small-2 columns -->
 													<div class="small-10 columns">
+
 														<input type="text" name="email" placeholder="Email" value="<?php echo ($user->isLoggedIn()) ? $user->data()->email : ""; ?>" required pattern="email" <?php echo ($user->isLoggedIn()) ? "disabled" : ""; ?> >
 														<small class="error"> L'email doit être valide (exemple@exemple.fr). </small>
+
 													</div><!-- class small-10 columns -->
 												</div><!-- class row collapse prefix-radius -->
 											</div><!-- class row -->
@@ -185,8 +189,10 @@
 														<span class="prefix"><i class="fa fa-phone"></i></span>
 													</div><!-- small-2 columns -->
 													<div class="small-10 columns">
+
 														<input type="text" name="phone" placeholder="Téléphone" max="9" value="<?php echo ($user->isLoggedIn()) ? '0'.$user->data()->phone : ""; ?>" required pattern="number" <?php echo ($user->isLoggedIn()) ? "disabled" : ""; ?> >
 														<small class="error"> Le numéro doit être composé uniquement de chiffres. </small>
+
 													</div><!-- class small-10 columns -->
 												</div><!-- class row collapse prefix-radius -->
 											</div><!-- class row -->
